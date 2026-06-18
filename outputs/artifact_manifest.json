@@ -81,8 +81,8 @@
     },
     {
       "path": "CITATION.cff",
-      "sha256": "2499679d9f7eddfd81466c870bbcbf3cc749c6c53dba860f711bf8d0bc339c20",
-      "bytes": 649
+      "sha256": "b3334fc81dc070e0982a4cb074b1148de6f7546c080842065be4d649a10603fc",
+      "bytes": 890
     },
     {
       "path": "CONTRIBUTING.md",
@@ -2041,8 +2041,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "3257e2b93661cbbd683c6c86ee559bdf89d4fa629e1e1452efe812b14044ca1b",
-      "bytes": 7366
+      "sha256": "5d3e1e0f728a09d37cf36584b8720e336c658100b84195e5c3fa910399fe43bc",
+      "bytes": 7723
     },
     {
       "path": "schemas/adversarial-prompt-execution.schema.json",
@@ -3101,8 +3101,8 @@
     },
     {
       "path": "tests/readmeClaims.test.ts",
-      "sha256": "311ef445918901735c83481e749ae6909759dee55130e836f1ac999936157e91",
-      "bytes": 2895
+      "sha256": "edfbadf433bf9bb3a7c776c932948c8df767fbe9204558ffeaa473dee9545a92",
+      "bytes": 3053
     },
     {
       "path": "tests/releaseArtifacts.test.ts",

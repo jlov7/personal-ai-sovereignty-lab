@@ -9,6 +9,13 @@ date-released: 2026-06-18
 version: 1.0.0-rc.0
 license: MIT
 repository-code: "https://github.com/jlov7/personal-ai-sovereignty-lab"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20753227
+    description: "Archived release v1.0.0-rc.0 on Zenodo."
+  - type: doi
+    value: 10.5281/zenodo.20753226
+    description: "Zenodo concept DOI for all PAISL software releases."
 abstract: "A local-first benchmark scaffold for evaluating user-sovereign personal AI agents across privacy, autonomy, consent, usefulness, explainability, data minimization, and overreach containment."
 keywords:
   - personal AI

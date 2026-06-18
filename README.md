@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/jlov7/personal-ai-sovereignty-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/jlov7/personal-ai-sovereignty-lab/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20753227.svg)](https://doi.org/10.5281/zenodo.20753227)
 ![Runs offline](https://img.shields.io/badge/runs-local-success)
 
 A local-first benchmark scaffold and runnable demo for evaluating whether a personal AI agent stays useful while respecting the user's data boundaries.
@@ -108,7 +109,13 @@ Every schema contract, generated report, fixture, and public-review artifact is 
 
 ## License and Citation
 
-MIT; see [LICENSE](LICENSE). To cite, use [CITATION.cff](CITATION.cff). Contributions and public review are welcome via [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+MIT; see [LICENSE](LICENSE). To cite this release, use the version DOI
+[10.5281/zenodo.20753227](https://doi.org/10.5281/zenodo.20753227) or
+[CITATION.cff](CITATION.cff). Use the concept DOI
+[10.5281/zenodo.20753226](https://doi.org/10.5281/zenodo.20753226) when
+referring to the evolving PAISL project across versions.
+
+Contributions and public review are welcome via [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
 
 ## Disclaimer
 

@@ -13,10 +13,15 @@ function readJson<T>(path: string): T {
 }
 
 function readmeNumbers(): string[] {
-  const readmeWithoutCode = read("README.md")
+  const readme = read("README.md");
+  const evidenceSpine = readme.slice(
+    readme.indexOf("## Evidence Spine"),
+    readme.indexOf("## Positioning"),
+  );
+  const evidenceWithoutCode = evidenceSpine
     .replace(/```[\s\S]*?```/g, "")
     .replace(/`[^`\n]+`/g, "");
-  return [...readmeWithoutCode.matchAll(/\b\d+(?:\.\d+)?\b/g)].map((match) => match[0]);
+  return [...evidenceWithoutCode.matchAll(/\b\d+(?:\.\d+)?\b/g)].map((match) => match[0]);
 }
 
 function averageScore(): string {
