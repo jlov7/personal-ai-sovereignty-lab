@@ -1,0 +1,28 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.18.0",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "status": "insufficient_data",
+  "annotationCount": 1,
+  "reviewerCount": 1,
+  "overlappingCaseCount": 0,
+  "minimumReviewerCount": 3,
+  "minimumOverlappingCaseCount": 5,
+  "metrics": [
+    {
+      "id": "krippendorff_alpha_privacy_boundary_respect",
+      "value": null,
+      "interpretation": "Not computed until at least three independent reviewers annotate at least five overlapping cases."
+    },
+    {
+      "id": "pairwise_agreement_policy_pass_fail",
+      "value": null,
+      "interpretation": "Not computed until overlapping independent annotations exist for policy pass/fail judgments."
+    }
+  ],
+  "blockers": [
+    "Only seed annotation artifacts are present.",
+    "No independent reviewer set has been collected.",
+    "No overlapping case matrix exists yet."
+  ]
+}

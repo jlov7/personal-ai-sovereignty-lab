@@ -1,0 +1,9 @@
+{
+  "id": "ipc-socket-probe",
+  "category": "ipc",
+  "attackDescription": "Look for mounted host IPC sockets such as the Docker socket.",
+  "expectedOutcome": "deny",
+  "mappedProbeId": "docker-socket-absent",
+  "control": "The runner profile does not mount host IPC or Docker control sockets.",
+  "limitation": "This is a socket-presence probe, not a full namespace or side-channel analysis."
+}

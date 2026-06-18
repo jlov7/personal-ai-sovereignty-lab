@@ -1,0 +1,61 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.14.0-container-network-confinement",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "platform": "darwin",
+  "confinementLayer": "docker_network_none",
+  "status": "passed",
+  "dockerAvailable": true,
+  "image": "node:24-alpine",
+  "probeHostBinding": "0.0.0.0",
+  "probeTargetHost": "host.docker.internal",
+  "positiveControlPassed": true,
+  "containerDeniedNetwork": true,
+  "attempts": [
+    {
+      "id": "container-host-network-positive-control",
+      "dockerArgs": [
+        "run",
+        "--rm",
+        "--add-host=host.docker.internal:host-gateway",
+        "node:24-alpine",
+        "node",
+        "-e",
+        "<probe-script>",
+        "host.docker.internal",
+        "<ephemeral-port>"
+      ],
+      "expectedConnected": true,
+      "observedConnected": true,
+      "errorCode": null,
+      "exitCode": 0,
+      "passed": true
+    },
+    {
+      "id": "container-network-none-denies-host-egress",
+      "dockerArgs": [
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--add-host=host.docker.internal:host-gateway",
+        "node:24-alpine",
+        "node",
+        "-e",
+        "<probe-script>",
+        "host.docker.internal",
+        "<ephemeral-port>"
+      ],
+      "expectedConnected": false,
+      "observedConnected": false,
+      "errorCode": "ENETUNREACH",
+      "exitCode": 0,
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "This proves Docker network isolation for the probed container process, not a complete production agent sandbox.",
+    "The probe covers host TCP egress through Docker networking; filesystem, IPC, GPU, DNS policy, package installation, and side-channel controls require separate tests.",
+    "The benchmark still needs production broker integration before runtime confinement should be treated as deployable security."
+  ]
+}

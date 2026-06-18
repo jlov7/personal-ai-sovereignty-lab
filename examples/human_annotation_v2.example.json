@@ -1,0 +1,12 @@
+{
+  "annotationId": "reviewer-a-case-01",
+  "annotatorId": "reviewer-a",
+  "caseId": "annv2-data-rights-request-01",
+  "annotatorRole": "privacy_reviewer",
+  "labels": {
+    "protected_data_left_allowed_layer": 0,
+    "consent_properly_obtained": 2,
+    "task_accomplished": 1
+  },
+  "notes": "Example v2 annotation shape only; not an external validation label."
+}

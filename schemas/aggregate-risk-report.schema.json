@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/aggregate-risk-report.schema.json",
+  "title": "Personal AI Sovereignty Aggregate Risk Report",
+  "type": "object",
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "scenarioCount",
+    "probeCount",
+    "allowCount",
+    "requireControlCount",
+    "blockCount",
+    "averageRiskScore",
+    "probes",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "scenarioCount": { "type": "integer", "minimum": 1 },
+    "probeCount": { "type": "integer", "minimum": 1 },
+    "allowCount": { "type": "integer", "minimum": 0 },
+    "requireControlCount": { "type": "integer", "minimum": 0 },
+    "blockCount": { "type": "integer", "minimum": 0 },
+    "averageRiskScore": { "type": "number", "minimum": 0, "maximum": 100 },
+    "probes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "scenarioId",
+          "dataItemId",
+          "aggregateForm",
+          "syntheticCohortSize",
+          "kAnonymityEstimate",
+          "linkabilityFactors",
+          "reconstructionRiskScore",
+          "recommendedDecision",
+          "controls",
+          "interpretation"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "dataItemId": { "type": "string" },
+          "aggregateForm": { "type": "string" },
+          "syntheticCohortSize": { "type": "integer", "minimum": 1 },
+          "kAnonymityEstimate": { "type": "integer", "minimum": 1 },
+          "linkabilityFactors": { "type": "array", "items": { "type": "string" } },
+          "reconstructionRiskScore": { "type": "number", "minimum": 0, "maximum": 100 },
+          "recommendedDecision": {
+            "enum": ["allow_aggregate", "require_dp_or_larger_cohort", "block_aggregate"]
+          },
+          "controls": { "type": "array", "items": { "type": "string" } },
+          "interpretation": { "type": "string" }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

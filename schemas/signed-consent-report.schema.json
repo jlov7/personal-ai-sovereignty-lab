@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/signed-consent-report.schema.json",
+  "title": "Personal AI Sovereignty Signed Consent Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "signatureAlgorithm",
+    "keyManagement",
+    "probeCount",
+    "passed",
+    "failed",
+    "probes",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "signatureAlgorithm": { "type": "string", "enum": ["HMAC-SHA256"] },
+    "keyManagement": { "type": "string", "enum": ["deterministic_fixture_key"] },
+    "probeCount": { "type": "integer", "minimum": 1 },
+    "passed": { "type": "integer", "minimum": 0 },
+    "failed": { "type": "integer", "minimum": 0 },
+    "probes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "expectedValidSignature",
+          "observedValidSignature",
+          "expectedAllowedEgress",
+          "observedAllowedEgress",
+          "passed",
+          "reason"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "expectedValidSignature": { "type": "boolean" },
+          "observedValidSignature": { "type": "boolean" },
+          "expectedAllowedEgress": { "type": "boolean" },
+          "observedAllowedEgress": { "type": "boolean" },
+          "passed": { "type": "boolean" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

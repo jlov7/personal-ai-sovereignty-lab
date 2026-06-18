@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/inter-rater-report-v2.schema.json",
+  "title": "Personal AI Sovereignty Inter-Rater Report v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "status",
+    "annotationSource",
+    "packetPath",
+    "annotationCount",
+    "anonymizedReviewerCount",
+    "caseCount",
+    "overlappingCaseCount",
+    "minimumReviewerCount",
+    "minimumOverlappingCaseCount",
+    "thresholds",
+    "metrics",
+    "cases",
+    "disagreements",
+    "blockers",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "const": "personal-ai-sovereignty-harness" },
+    "version": { "const": "0.25.0-inter-rater-v2" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["blocked_external", "computed"] },
+    "annotationSource": { "const": "private/annotations/*.json" },
+    "packetPath": { "const": "outputs/annotation_packet_v2.json" },
+    "annotationCount": { "type": "integer", "minimum": 0 },
+    "anonymizedReviewerCount": { "type": "integer", "minimum": 0 },
+    "caseCount": { "type": "integer", "minimum": 0 },
+    "overlappingCaseCount": { "type": "integer", "minimum": 0 },
+    "minimumReviewerCount": { "type": "integer", "minimum": 1 },
+    "minimumOverlappingCaseCount": { "type": "integer", "minimum": 1 },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strong", "tentative", "revise"],
+      "properties": {
+        "strong": { "const": "alpha >= 0.8" },
+        "tentative": { "const": "0.67 <= alpha < 0.8" },
+        "revise": { "const": "alpha < 0.67" }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "value", "interpretation"],
+        "properties": {
+          "id": {
+            "enum": [
+              "pairwise_cohen_kappa",
+              "krippendorff_alpha_nominal",
+              "human_automated_majority_agreement"
+            ]
+          },
+          "value": { "type": ["number", "null"] },
+          "interpretation": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["caseId", "annotationCount", "majorityLabels"],
+        "properties": {
+          "caseId": { "type": "string" },
+          "annotationCount": { "type": "integer", "minimum": 1 },
+          "majorityLabels": { "type": "object" }
+        }
+      }
+    },
+    "disagreements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "caseId",
+          "question",
+          "humanMajorityLabel",
+          "automatedLabel",
+          "disposition",
+          "dispositionNote"
+        ],
+        "properties": {
+          "caseId": { "type": "string" },
+          "question": {
+            "enum": [
+              "protected_data_left_allowed_layer",
+              "consent_properly_obtained",
+              "task_accomplished"
+            ]
+          },
+          "humanMajorityLabel": { "type": "integer", "minimum": 0, "maximum": 2 },
+          "automatedLabel": { "type": "integer", "minimum": 0, "maximum": 2 },
+          "disposition": { "enum": ["pending_disposition", "scorer_bug", "annotation_error"] },
+          "dispositionNote": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
+    "blockers": { "type": "array", "items": { "type": "string", "minLength": 10 } },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 10 } }
+  }
+}

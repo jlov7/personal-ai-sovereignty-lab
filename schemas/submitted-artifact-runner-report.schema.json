@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/submitted-artifact-runner-report.schema.json",
+  "title": "Personal AI Sovereignty Submitted Artifact Runner Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "runnerMode",
+    "sourcePaths",
+    "submissionCount",
+    "traceEmissionCount",
+    "signedReceiptCount",
+    "verifiedReceiptCount",
+    "passedSubmissionCount",
+    "brokerExecutedActionCount",
+    "brokerBlockedActionCount",
+    "sandboxedExecutionPassedCount",
+    "dockerProfile",
+    "receipts",
+    "executions",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "runnerMode": {
+      "type": "string",
+      "enum": ["submitted_artifact_contract_with_broker_and_sandbox_attestations"]
+    },
+    "sourcePaths": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "submissionCount": { "type": "integer", "minimum": 1 },
+    "traceEmissionCount": { "type": "integer", "minimum": 0 },
+    "signedReceiptCount": { "type": "integer", "minimum": 0 },
+    "verifiedReceiptCount": { "type": "integer", "minimum": 0 },
+    "passedSubmissionCount": { "type": "integer", "minimum": 0 },
+    "brokerExecutedActionCount": { "type": "integer", "minimum": 0 },
+    "brokerBlockedActionCount": { "type": "integer", "minimum": 0 },
+    "sandboxedExecutionPassedCount": { "type": "integer", "minimum": 0 },
+    "dockerProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "dockerAvailable",
+        "image",
+        "profile",
+        "profileArgs",
+        "controlProbeCount",
+        "passedControlProbeCount",
+        "probes",
+        "limitations"
+      ],
+      "properties": {
+        "status": { "type": "string", "enum": ["passed", "failed", "unavailable", "skipped"] },
+        "dockerAvailable": { "type": "boolean" },
+        "image": { "type": "string" },
+        "profile": {
+          "type": "string",
+          "enum": ["docker_network_none_readonly_workspace_no_new_privileges"]
+        },
+        "profileArgs": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "controlProbeCount": { "type": "integer", "minimum": 0 },
+        "passedControlProbeCount": { "type": "integer", "minimum": 0 },
+        "probes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "expected", "observed", "errorCode", "passed"],
+            "properties": {
+              "id": { "type": "string" },
+              "expected": { "type": "string" },
+              "observed": { "type": "string" },
+              "errorCode": { "type": ["string", "null"] },
+              "passed": { "type": "boolean" }
+            }
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "receiptId",
+          "artifactId",
+          "runnerVersion",
+          "generatedAt",
+          "scenarioId",
+          "expectedTraceId",
+          "emittedTraceId",
+          "sourcePath",
+          "sourceSha256",
+          "sourceBytes",
+          "traceSha256",
+          "brokerAttestationId",
+          "sandboxedExecutionAttestationId",
+          "passed",
+          "signature"
+        ],
+        "properties": {
+          "receiptId": { "type": "string" },
+          "artifactId": { "type": "string" },
+          "runnerVersion": { "type": "string" },
+          "generatedAt": { "type": "string", "format": "date-time" },
+          "scenarioId": { "type": "string" },
+          "expectedTraceId": { "type": "string" },
+          "emittedTraceId": { "type": ["string", "null"] },
+          "sourcePath": { "type": "string" },
+          "sourceSha256": { "type": "string" },
+          "sourceBytes": { "type": "integer", "minimum": 0 },
+          "traceSha256": { "type": ["string", "null"] },
+          "brokerAttestationId": { "type": ["string", "null"] },
+          "sandboxedExecutionAttestationId": { "type": ["string", "null"] },
+          "passed": { "type": "boolean" },
+          "signature": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["algorithm", "keyId", "canonicalization", "value"],
+            "properties": {
+              "algorithm": { "type": "string", "enum": ["HMAC-SHA256"] },
+              "keyId": { "type": "string" },
+              "canonicalization": { "type": "string", "enum": ["json-stable-sort-v1"] },
+              "value": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "executions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifactId",
+          "sourcePath",
+          "sourceSha256",
+          "artifactExitCode",
+          "emittedTraceId",
+          "traceMatchesManifest",
+          "brokerSignatureValid",
+          "brokerExecutedActionCount",
+          "brokerBlockedActionCount",
+          "sandboxedExecutionPassed",
+          "sandboxedChildExecutedActionCount",
+          "sandboxedSkippedByBrokerCount",
+          "receiptVerified",
+          "passed",
+          "limitations"
+        ],
+        "properties": {
+          "artifactId": { "type": "string" },
+          "sourcePath": { "type": "string" },
+          "sourceSha256": { "type": "string" },
+          "artifactExitCode": { "type": ["integer", "null"] },
+          "emittedTraceId": { "type": ["string", "null"] },
+          "traceMatchesManifest": { "type": "boolean" },
+          "brokerSignatureValid": { "type": "boolean" },
+          "brokerExecutedActionCount": { "type": "integer", "minimum": 0 },
+          "brokerBlockedActionCount": { "type": "integer", "minimum": 0 },
+          "sandboxedExecutionPassed": { "type": "boolean" },
+          "sandboxedChildExecutedActionCount": { "type": "integer", "minimum": 0 },
+          "sandboxedSkippedByBrokerCount": { "type": "integer", "minimum": 0 },
+          "receiptVerified": { "type": "boolean" },
+          "passed": { "type": "boolean" },
+          "limitations": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

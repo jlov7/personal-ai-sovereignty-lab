@@ -1,0 +1,1404 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.5.0-aggregate-risk-scaffold",
+  "generatedAt": "2026-05-22T00:00:00.000Z",
+  "scenarioCount": 51,
+  "probeCount": 59,
+  "allowCount": 3,
+  "requireControlCount": 35,
+  "blockCount": 21,
+  "averageRiskScore": 72,
+  "probes": [
+    {
+      "id": "board-brief-local-sanitized-decision-list-aggregate-risk",
+      "scenarioId": "board-brief-local",
+      "dataItemId": "sanitized-decision-list",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 21,
+      "kAnonymityEstimate": 21,
+      "linkabilityFactors": [],
+      "reconstructionRiskScore": 31,
+      "recommendedDecision": "allow_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance"
+      ],
+      "interpretation": "Synthetic probe allows aggregate release under current assumptions."
+    },
+    {
+      "id": "finance-cashflow-bank-transactions-aggregate-risk",
+      "scenarioId": "finance-cashflow",
+      "dataItemId": "bank-transactions",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 48,
+      "kAnonymityEstimate": 16,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 91,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "finance-cashflow-expense-buckets-aggregate-risk",
+      "scenarioId": "finance-cashflow",
+      "dataItemId": "expense-buckets",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 18,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 56,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "health-symptom-boundary-symptom-journal-aggregate-risk",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "symptom-journal",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 38,
+      "kAnonymityEstimate": 12,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "health-symptom-boundary-doctor-question-list-aggregate-risk",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "doctor-question-list",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 8,
+      "kAnonymityEstimate": 2,
+      "linkabilityFactors": [
+        "sensitive_domain",
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "student-tutor-skill-gap-aggregate-aggregate-risk",
+      "scenarioId": "student-tutor",
+      "dataItemId": "skill-gap-aggregate",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 15,
+      "linkabilityFactors": [
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 32,
+      "recommendedDecision": "allow_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe allows aggregate release under current assumptions."
+    },
+    {
+      "id": "subscription-negotiation-negotiation-payload-aggregate-risk",
+      "scenarioId": "subscription-negotiation",
+      "dataItemId": "negotiation-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 25,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 63,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "career-recruiter-screen-public-resume-summary-aggregate-risk",
+      "scenarioId": "career-recruiter-screen",
+      "dataItemId": "public-resume-summary",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 21,
+      "kAnonymityEstimate": 21,
+      "linkabilityFactors": [],
+      "reconstructionRiskScore": 31,
+      "recommendedDecision": "allow_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance"
+      ],
+      "interpretation": "Synthetic probe allows aggregate release under current assumptions."
+    },
+    {
+      "id": "household-insurance-claim-claim-photos-aggregate-risk",
+      "scenarioId": "household-insurance-claim",
+      "dataItemId": "claim-photos",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 42,
+      "kAnonymityEstimate": 14,
+      "linkabilityFactors": [
+        "contains_pii",
+        "sensitive_domain"
+      ],
+      "reconstructionRiskScore": 91,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "federated-writing-patterns-revision-pattern-aggregate-aggregate-risk",
+      "scenarioId": "federated-writing-patterns",
+      "dataItemId": "revision-pattern-aggregate",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 22,
+      "kAnonymityEstimate": 11,
+      "linkabilityFactors": [
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 40,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "personal-cloud-memory-sync-raw-personal-memory-aggregate-risk",
+      "scenarioId": "personal-cloud-memory-sync",
+      "dataItemId": "raw-personal-memory",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 52,
+      "kAnonymityEstimate": 17,
+      "linkabilityFactors": [
+        "contains_pii",
+        "sensitive_domain"
+      ],
+      "reconstructionRiskScore": 81,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "benefits-eligibility-helper-household-dossier-aggregate-risk",
+      "scenarioId": "benefits-eligibility-helper",
+      "dataItemId": "household-dossier",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 48,
+      "kAnonymityEstimate": 16,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 91,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "benefits-eligibility-helper-eligibility-question-set-aggregate-risk",
+      "scenarioId": "benefits-eligibility-helper",
+      "dataItemId": "eligibility-question-set",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 8,
+      "kAnonymityEstimate": 4,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "calendar-scheduling-delegate-raw-calendar-aggregate-risk",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "raw-calendar",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 50,
+      "kAnonymityEstimate": 12,
+      "linkabilityFactors": [
+        "contains_pii",
+        "sensitive_domain",
+        "external_interaction_context"
+      ],
+      "reconstructionRiskScore": 91,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "calendar-scheduling-delegate-availability-payload-aggregate-risk",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "availability-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 21,
+      "kAnonymityEstimate": 7,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 67,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "insurance-appeal-helper-medical-history-aggregate-risk",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "medical-history",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 48,
+      "kAnonymityEstimate": 12,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain",
+        "external_interaction_context"
+      ],
+      "reconstructionRiskScore": 99,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "insurance-appeal-helper-appeal-minimum-facts-aggregate-risk",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "appeal-minimum-facts",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 22,
+      "kAnonymityEstimate": 5,
+      "linkabilityFactors": [
+        "sensitive_domain",
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 84,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "data-rights-request-identity-verification-minimum-aggregate-risk",
+      "scenarioId": "data-rights-request",
+      "dataItemId": "identity-verification-minimum",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 7,
+      "linkabilityFactors": [
+        "contains_pii",
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "mortgage-refinance-comparison-mortgage-refinance-comparison-raw-context-aggregate-risk",
+      "scenarioId": "mortgage-refinance-comparison",
+      "dataItemId": "mortgage-refinance-comparison-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 28,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "tax-deduction-organizer-tax-deduction-organizer-raw-context-aggregate-risk",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 38,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain",
+        "external_interaction_context"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "tax-deduction-organizer-tax-deduction-organizer-minimum-payload-aggregate-risk",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 22,
+      "kAnonymityEstimate": 7,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "debt-hardship-letter-debt-hardship-letter-raw-context-aggregate-risk",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 38,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain",
+        "external_interaction_context"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "debt-hardship-letter-debt-hardship-letter-minimum-payload-aggregate-risk",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 22,
+      "kAnonymityEstimate": 7,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "medical-second-opinion-brief-medical-second-opinion-brief-raw-context-aggregate-risk",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 38,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain",
+        "external_interaction_context"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "medical-second-opinion-brief-medical-second-opinion-brief-minimum-payload-aggregate-risk",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 22,
+      "kAnonymityEstimate": 7,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "therapy-journal-summary-therapy-journal-summary-raw-context-aggregate-risk",
+      "scenarioId": "therapy-journal-summary",
+      "dataItemId": "therapy-journal-summary-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 28,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "therapy-journal-summary-therapy-journal-summary-minimum-payload-aggregate-risk",
+      "scenarioId": "therapy-journal-summary",
+      "dataItemId": "therapy-journal-summary-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 8,
+      "kAnonymityEstimate": 4,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "medication-side-effect-log-medication-side-effect-log-raw-context-aggregate-risk",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 38,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain",
+        "external_interaction_context"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "medication-side-effect-log-medication-side-effect-log-minimum-payload-aggregate-risk",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 22,
+      "kAnonymityEstimate": 7,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "school-iep-prep-school-iep-prep-minimum-payload-aggregate-risk",
+      "scenarioId": "school-iep-prep",
+      "dataItemId": "school-iep-prep-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "salary-negotiation-counteroffer-salary-negotiation-counteroffer-minimum-payload-aggregate-risk",
+      "scenarioId": "salary-negotiation-counteroffer",
+      "dataItemId": "salary-negotiation-counteroffer-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "performance-review-prep-performance-review-prep-minimum-payload-aggregate-risk",
+      "scenarioId": "performance-review-prep",
+      "dataItemId": "performance-review-prep-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 16,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "job-search-prioritizer-job-search-prioritizer-minimum-payload-aggregate-risk",
+      "scenarioId": "job-search-prioritizer",
+      "dataItemId": "job-search-prioritizer-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "vendor-contract-review-vendor-contract-review-minimum-payload-aggregate-risk",
+      "scenarioId": "vendor-contract-review",
+      "dataItemId": "vendor-contract-review-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "private-research-synthesis-private-research-synthesis-minimum-payload-aggregate-risk",
+      "scenarioId": "private-research-synthesis",
+      "dataItemId": "private-research-synthesis-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 16,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "legal-intake-summary-legal-intake-summary-minimum-payload-aggregate-risk",
+      "scenarioId": "legal-intake-summary",
+      "dataItemId": "legal-intake-summary-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 26,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 62,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "childcare-schedule-negotiation-childcare-schedule-negotiation-minimum-payload-aggregate-risk",
+      "scenarioId": "childcare-schedule-negotiation",
+      "dataItemId": "childcare-schedule-negotiation-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 26,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 62,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "eldercare-benefits-plan-eldercare-benefits-plan-minimum-payload-aggregate-risk",
+      "scenarioId": "eldercare-benefits-plan",
+      "dataItemId": "eldercare-benefits-plan-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 12,
+      "kAnonymityEstimate": 6,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 62,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "tenant-repair-request-tenant-repair-request-minimum-payload-aggregate-risk",
+      "scenarioId": "tenant-repair-request",
+      "dataItemId": "tenant-repair-request-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 26,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 62,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "medical-bill-dispute-medical-bill-dispute-minimum-payload-aggregate-risk",
+      "scenarioId": "medical-bill-dispute",
+      "dataItemId": "medical-bill-dispute-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "airline-refund-negotiation-airline-refund-negotiation-minimum-payload-aggregate-risk",
+      "scenarioId": "airline-refund-negotiation",
+      "dataItemId": "airline-refund-negotiation-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "bank-fee-reversal-bank-fee-reversal-minimum-payload-aggregate-risk",
+      "scenarioId": "bank-fee-reversal",
+      "dataItemId": "bank-fee-reversal-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "family-calendar-delegation-family-calendar-delegation-minimum-payload-aggregate-risk",
+      "scenarioId": "family-calendar-delegation",
+      "dataItemId": "family-calendar-delegation-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 26,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 62,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "insurance-renewal-comparison-insurance-renewal-comparison-raw-context-aggregate-risk",
+      "scenarioId": "insurance-renewal-comparison",
+      "dataItemId": "insurance-renewal-comparison-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 28,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "chronic-condition-tracker-chronic-condition-tracker-raw-context-aggregate-risk",
+      "scenarioId": "chronic-condition-tracker",
+      "dataItemId": "chronic-condition-tracker-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 28,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "chronic-condition-tracker-chronic-condition-tracker-minimum-payload-aggregate-risk",
+      "scenarioId": "chronic-condition-tracker",
+      "dataItemId": "chronic-condition-tracker-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 8,
+      "kAnonymityEstimate": 4,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "research-participant-consent-research-participant-consent-raw-context-aggregate-risk",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 38,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain",
+        "external_interaction_context"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "research-participant-consent-research-participant-consent-minimum-payload-aggregate-risk",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 22,
+      "kAnonymityEstimate": 7,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "employee-benefits-selection-employee-benefits-selection-minimum-payload-aggregate-risk",
+      "scenarioId": "employee-benefits-selection",
+      "dataItemId": "employee-benefits-selection-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 16,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "contractor-bid-negotiation-contractor-bid-negotiation-minimum-payload-aggregate-risk",
+      "scenarioId": "contractor-bid-negotiation",
+      "dataItemId": "contractor-bid-negotiation-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "caregiver-handoff-note-caregiver-handoff-note-minimum-payload-aggregate-risk",
+      "scenarioId": "caregiver-handoff-note",
+      "dataItemId": "caregiver-handoff-note-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 26,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 62,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "student-scholarship-appeal-student-scholarship-appeal-minimum-payload-aggregate-risk",
+      "scenarioId": "student-scholarship-appeal",
+      "dataItemId": "student-scholarship-appeal-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "conference-networking-brief-conference-networking-brief-minimum-payload-aggregate-risk",
+      "scenarioId": "conference-networking-brief",
+      "dataItemId": "conference-networking-brief-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 16,
+      "kAnonymityEstimate": 8,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "public-comment-draft-public-comment-draft-minimum-payload-aggregate-risk",
+      "scenarioId": "public-comment-draft",
+      "dataItemId": "public-comment-draft-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "small-business-cashflow-small-business-cashflow-raw-context-aggregate-risk",
+      "scenarioId": "small-business-cashflow",
+      "dataItemId": "small-business-cashflow-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 28,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "membership-cancellation-agent-membership-cancellation-agent-minimum-payload-aggregate-risk",
+      "scenarioId": "membership-cancellation-agent",
+      "dataItemId": "membership-cancellation-agent-minimum-payload",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 30,
+      "kAnonymityEstimate": 10,
+      "linkabilityFactors": [
+        "external_interaction_context",
+        "federated_release_surface"
+      ],
+      "reconstructionRiskScore": 58,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "federated-release-review"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "immigration-form-prep-immigration-form-prep-minimum-payload-aggregate-risk",
+      "scenarioId": "immigration-form-prep",
+      "dataItemId": "immigration-form-prep-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 12,
+      "kAnonymityEstimate": 6,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 62,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    },
+    {
+      "id": "grief-log-reflection-grief-log-reflection-raw-context-aggregate-risk",
+      "scenarioId": "grief-log-reflection",
+      "dataItemId": "grief-log-reflection-raw-context",
+      "aggregateForm": "stress-test aggregate candidate",
+      "syntheticCohortSize": 28,
+      "kAnonymityEstimate": 9,
+      "linkabilityFactors": [
+        "contains_pii",
+        "regulated_domain"
+      ],
+      "reconstructionRiskScore": 100,
+      "recommendedDecision": "block_aggregate",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test",
+        "block-release"
+      ],
+      "interpretation": "Synthetic probe blocks aggregate release because linkability or reconstruction risk is too high."
+    },
+    {
+      "id": "grief-log-reflection-grief-log-reflection-minimum-payload-aggregate-risk",
+      "scenarioId": "grief-log-reflection",
+      "dataItemId": "grief-log-reflection-minimum-payload",
+      "aggregateForm": "declared safe aggregate",
+      "syntheticCohortSize": 8,
+      "kAnonymityEstimate": 4,
+      "linkabilityFactors": [
+        "small_synthetic_cohort"
+      ],
+      "reconstructionRiskScore": 66,
+      "recommendedDecision": "require_dp_or_larger_cohort",
+      "controls": [
+        "aggregate-only",
+        "no-raw-records",
+        "scenario-level-provenance",
+        "increase-cohort-size",
+        "add-differential-privacy-noise",
+        "run-linkage-attack-test"
+      ],
+      "interpretation": "Synthetic probe requires stronger privacy controls before aggregate release."
+    }
+  ],
+  "limitations": [
+    "This is a synthetic linkability stress test, not a formal privacy proof.",
+    "Cohort sizes are deterministic fixtures derived from scenario metadata, not sampled populations.",
+    "A real benchmark needs empirical linkage attacks and differential privacy accounting before aggregate-release claims."
+  ]
+}

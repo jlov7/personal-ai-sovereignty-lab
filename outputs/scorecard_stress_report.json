@@ -1,0 +1,99 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.8.0-scorecard-stress",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "scenarioCount": 51,
+  "baselineAverages": [
+    {
+      "baselineId": "sovereign_hybrid",
+      "totalScore": 91.04,
+      "usefulness": 80.78,
+      "privacyPreservation": 98,
+      "autonomyAppropriateness": 94.39,
+      "dataMinimization": 96.71,
+      "userControlAlignment": 90.16
+    },
+    {
+      "baselineId": "brokered_tool_agent",
+      "totalScore": 91.47,
+      "usefulness": 92.31,
+      "privacyPreservation": 98,
+      "autonomyAppropriateness": 92,
+      "dataMinimization": 96.65,
+      "userControlAlignment": 82.55
+    },
+    {
+      "baselineId": "centralized_cloud",
+      "totalScore": 68.47,
+      "usefulness": 93,
+      "privacyPreservation": 2.78,
+      "autonomyAppropriateness": 77.29,
+      "dataMinimization": 89.06,
+      "userControlAlignment": 42.63
+    },
+    {
+      "baselineId": "local_only",
+      "totalScore": 85.22,
+      "usefulness": 61.94,
+      "privacyPreservation": 98,
+      "autonomyAppropriateness": 93.06,
+      "dataMinimization": 100,
+      "userControlAlignment": 81.02
+    }
+  ],
+  "saturation": {
+    "excellentScenarioCount": 0,
+    "excellentScenarioRate": 0,
+    "maxScore": 93,
+    "interpretation": "The deterministic policy simulator does not saturate the top of the score scale."
+  },
+  "checks": [
+    {
+      "id": "centralized-negative-control-gap",
+      "result": "pass",
+      "observed": 22.57,
+      "threshold": "sovereign_hybrid average must exceed centralized_cloud by at least 20 points",
+      "interpretation": "The scorecard should punish raw convenience-first disclosure enough that it cannot look competitive."
+    },
+    {
+      "id": "brokered-tool-negative-control-gap",
+      "result": "pass",
+      "observed": 23,
+      "threshold": "brokered_tool_agent average must exceed centralized_cloud by at least 20 points",
+      "interpretation": "A consent-mediated tool path should remain clearly better than raw centralized disclosure."
+    },
+    {
+      "id": "centralized-privacy-floor",
+      "result": "pass",
+      "observed": 2.78,
+      "threshold": "centralized_cloud privacy average must be 45 or lower",
+      "interpretation": "The privacy metric should not give near-passing marks to a raw external-disclosure baseline."
+    },
+    {
+      "id": "centralized-user-control-floor",
+      "result": "pass",
+      "observed": 42.63,
+      "threshold": "centralized_cloud user-control average must be 45 or lower",
+      "interpretation": "The user-control metric should punish unconsented boundary crossing."
+    },
+    {
+      "id": "local-only-usefulness-penalty",
+      "result": "pass",
+      "observed": 5.82,
+      "threshold": "sovereign_hybrid average must exceed local_only by at least 3 points",
+      "interpretation": "The scorecard should not reward blanket refusal as equivalent to consented usefulness."
+    },
+    {
+      "id": "ceiling-effect-check",
+      "result": "pass",
+      "observed": 0,
+      "threshold": "no more than 10% of deterministic policy runs should score 95+",
+      "interpretation": "If too many synthetic runs saturate the ceiling, the benchmark cannot distinguish excellent systems."
+    }
+  ],
+  "limitations": [
+    "This is a meta-evaluation over author-defined baselines, not independent measurement validation.",
+    "Passing these checks does not prove the scorecard matches human judgment.",
+    "The stress report is useful for catching obvious scorecard collapse before external review."
+  ]
+}

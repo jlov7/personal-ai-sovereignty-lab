@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/scenario-generation-report.schema.json",
+  "title": "PAISL Scenario Generation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "generatorVersion",
+    "publicGenerationSeed",
+    "duplicateThreshold",
+    "curatedScenarioCount",
+    "generatedScenarioCount",
+    "publicScenarioCount",
+    "grammarHash",
+    "holdoutCommitment",
+    "publicReferenceAggregate",
+    "generatedScenarioSample",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": {
+      "const": "personal-ai-sovereignty-benchmark"
+    },
+    "version": {
+      "const": "0.22.0-scenario-generation"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "generatorVersion": {
+      "type": "string",
+      "minLength": 3
+    },
+    "publicGenerationSeed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duplicateThreshold": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "exclusiveMaximum": 1
+    },
+    "curatedScenarioCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatedScenarioCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "publicScenarioCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "grammarHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "holdoutCommitment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256OfSeedFile", "count", "generatorVersion", "grammarHash"],
+      "properties": {
+        "sha256OfSeedFile": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "generatorVersion": {
+          "type": "string",
+          "minLength": 3
+        },
+        "grammarHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "publicReferenceAggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scenarioCount", "meanScore", "minScore", "maxScore", "weakestScenarioIds"],
+      "properties": {
+        "scenarioCount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "meanScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "minScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "maxScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "weakestScenarioIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        }
+      }
+    },
+    "generatedScenarioSample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["seed", "count", "scenarioIds", "scorecards"],
+      "properties": {
+        "seed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "scenarioIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "scorecards": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["scenarioId", "totalScore", "grade", "failureCaseCount"],
+            "properties": {
+              "scenarioId": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "totalScore": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "grade": {
+                "enum": ["excellent", "strong", "mixed", "weak"]
+              },
+              "failureCaseCount": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 12
+      }
+    }
+  }
+}

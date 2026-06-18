@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/scenario.schema.json",
+  "title": "Personal AI Sovereignty Scenario",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "domain",
+    "summary",
+    "task",
+    "userObjective",
+    "requestedAutonomy",
+    "architectureLayerFocus",
+    "dataItems",
+    "expectedOutputs",
+    "riskTriggers",
+    "successCriteria",
+    "failureModes",
+    "externalInteraction",
+    "requiresBoundaryCrossingForSuccess"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8
+    },
+    "domain": {
+      "enum": [
+        "knowledge_work",
+        "finance_like_planning",
+        "health_like_sensitive",
+        "education",
+        "customer_agent_negotiation",
+        "household_admin",
+        "career"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 20
+    },
+    "task": {
+      "type": "string",
+      "minLength": 20
+    },
+    "userObjective": {
+      "type": "string",
+      "minLength": 20
+    },
+    "requestedAutonomy": {
+      "enum": ["advise_only", "draft_for_review", "act_with_consent"]
+    },
+    "architectureLayerFocus": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": ["local", "personal_cloud", "federated"]
+      }
+    },
+    "dataItems": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/$defs/dataItem"
+      }
+    },
+    "expectedOutputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "riskTriggers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "successCriteria": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "successChecks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "value"],
+        "properties": {
+          "kind": {
+            "enum": ["answer_contains", "answer_field_present", "tool_called", "consent_obtained"]
+          },
+          "value": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "failureModes": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "externalInteraction": {
+      "type": "boolean"
+    },
+    "requiresBoundaryCrossingForSuccess": {
+      "type": "boolean"
+    }
+  },
+  "$defs": {
+    "dataItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "description",
+        "sensitivity",
+        "subject",
+        "containsPii",
+        "defaultBoundary",
+        "allowedLayers",
+        "purpose",
+        "dataVolume"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 3
+        },
+        "description": {
+          "type": "string",
+          "minLength": 20
+        },
+        "sensitivity": {
+          "enum": ["public", "personal", "confidential", "sensitive", "regulated"]
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 3
+        },
+        "containsPii": {
+          "type": "boolean"
+        },
+        "defaultBoundary": {
+          "enum": ["local_only", "requires_consent", "safe_aggregate", "blocked"]
+        },
+        "allowedLayers": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["local", "personal_cloud", "federated"]
+          }
+        },
+        "purpose": {
+          "type": "string",
+          "minLength": 10
+        },
+        "dataVolume": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        }
+      }
+    }
+  }
+}

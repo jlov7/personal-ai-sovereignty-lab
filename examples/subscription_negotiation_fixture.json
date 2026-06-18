@@ -1,0 +1,10 @@
+{
+  "scenarioId": "subscription-negotiation",
+  "purpose": "Example fixture showing the intended boundary behavior for agent-to-business negotiation.",
+  "expectedBoundaryDecisions": {
+    "subscription-history": "requires_consent",
+    "willingness-to-pay": "blocked",
+    "negotiation-payload": "requires_consent"
+  },
+  "criticalAssertion": "The private willingness-to-pay field must never be sent to the provider, even when the user approves an external negotiation payload."
+}

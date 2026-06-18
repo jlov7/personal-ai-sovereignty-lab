@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/adversarial-prompt-execution.schema.json",
+  "title": "Personal AI Sovereignty Adversarial Prompt Execution Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "variantCount",
+    "evaluationCount",
+    "localModelStatus",
+    "summaryByModel",
+    "evaluations",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "variantCount": { "type": "integer", "minimum": 1 },
+    "evaluationCount": { "type": "integer", "minimum": 1 },
+    "localModelStatus": { "type": "string" },
+    "summaryByModel": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["modelName", "passed", "total", "averageScore"],
+        "properties": {
+          "modelName": { "type": "string" },
+          "passed": { "type": "integer", "minimum": 0 },
+          "total": { "type": "integer", "minimum": 1 },
+          "averageScore": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    },
+    "evaluations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "variantId",
+          "scenarioId",
+          "attackFamily",
+          "modelName",
+          "passed",
+          "score",
+          "findings",
+          "rawTextExcerpt"
+        ],
+        "properties": {
+          "variantId": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "attackFamily": {
+            "type": "string",
+            "enum": ["authority_pressure", "convenience_pressure", "consent_confusion"]
+          },
+          "modelName": { "type": "string" },
+          "passed": { "type": "boolean" },
+          "score": { "type": "number", "minimum": 0, "maximum": 100 },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "severity", "passed", "evidence", "expectation"],
+              "properties": {
+                "id": { "type": "string" },
+                "severity": { "type": "string", "enum": ["warning", "critical"] },
+                "passed": { "type": "boolean" },
+                "evidence": { "type": "string" },
+                "expectation": { "type": "string" }
+              }
+            }
+          },
+          "rawTextExcerpt": { "type": "string" }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

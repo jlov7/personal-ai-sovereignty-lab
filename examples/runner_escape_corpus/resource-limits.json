@@ -1,0 +1,9 @@
+{
+  "id": "resource-limits",
+  "category": "resource",
+  "attackDescription": "Confirm the profile declares bounded process and memory controls.",
+  "expectedOutcome": "observe",
+  "mappedProbeId": "resource-flags-declared",
+  "control": "The runner profile declares pids and memory limits in the Docker invocation.",
+  "limitation": "Static flag validation is not the same as adversarial stress testing for CPU, memory pressure, file descriptors, or cgroup bypasses."
+}

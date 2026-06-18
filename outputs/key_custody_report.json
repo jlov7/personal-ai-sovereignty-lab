@@ -1,0 +1,186 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.18.0-key-custody-attacks",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "custodyModel": "deterministic_fixture_key_lifecycle",
+  "algorithm": "HMAC-SHA256",
+  "threatModelVariants": [
+    {
+      "id": "user_held_key",
+      "trustBoundary": "User-controlled key material signs consent receipts before any broker action.",
+      "primaryRisk": "User key loss, phishing, or coerced signing can block recovery or authorize unwanted flows.",
+      "recoveryRisk": "Recovery must not silently transfer signing authority to a provider.",
+      "requiredProductionControl": "User-held key ceremony, recovery quorum, revocation registry, and hardware-backed signing where available."
+    },
+    {
+      "id": "device_bound_key",
+      "trustBoundary": "A local device key signs receipts and stores scoped consent state.",
+      "primaryRisk": "Device compromise, backup restore, or stale device state can replay old consent.",
+      "recoveryRisk": "Device replacement must not resurrect revoked consent or stale keys.",
+      "requiredProductionControl": "Secure enclave/keychain storage, device attestation, key rotation, and replay-resistant receipt freshness."
+    },
+    {
+      "id": "broker_managed_key",
+      "trustBoundary": "A personal-cloud or private-compute broker signs or countersigns consent receipts.",
+      "primaryRisk": "The broker can become a confused deputy if purpose and scenario scope are not cryptographically enforced.",
+      "recoveryRisk": "Provider recovery can become custody takeover if user authority is not separable.",
+      "requiredProductionControl": "Scoped broker keys, per-scenario audience binding, audit logs, and independent user revocation."
+    }
+  ],
+  "eventCount": 4,
+  "keyCount": 3,
+  "activeKeyId": "paisl-consent-fixture-v2",
+  "retiredKeyIds": [
+    "paisl-consent-fixture-v1"
+  ],
+  "revokedKeyIds": [
+    "paisl-consent-fixture-revoked"
+  ],
+  "hashChainValid": true,
+  "probeCount": 10,
+  "passed": 10,
+  "failed": 0,
+  "probes": [
+    {
+      "id": "custody-hash-chain-valid",
+      "expected": "true",
+      "observed": "true",
+      "passed": true,
+      "reason": "Custody event hash chain is intact."
+    },
+    {
+      "id": "active-key-authorizes-new-receipt",
+      "expected": "true",
+      "observed": "true",
+      "passed": true,
+      "reason": "Newest active custody key authorizes new consent receipt signing."
+    },
+    {
+      "id": "active-envelope-verifies",
+      "expected": "true",
+      "observed": "true",
+      "passed": true,
+      "reason": "Receipt signature verifies under custody key paisl-consent-fixture-v2 with status active."
+    },
+    {
+      "id": "retired-key-verifies-historical-receipt",
+      "expected": "true",
+      "observed": "true",
+      "passed": true,
+      "reason": "Receipt signature verifies under custody key paisl-consent-fixture-v1 with status retired."
+    },
+    {
+      "id": "retired-key-denies-new-receipt",
+      "expected": "false",
+      "observed": "false",
+      "passed": true,
+      "reason": "Custody key paisl-consent-fixture-v1 is retired."
+    },
+    {
+      "id": "revoked-key-denies-new-receipt",
+      "expected": "false",
+      "observed": "false",
+      "passed": true,
+      "reason": "Custody key paisl-consent-fixture-revoked is revoked."
+    },
+    {
+      "id": "tampered-envelope-fails-signature",
+      "expected": "false",
+      "observed": "false",
+      "passed": true,
+      "reason": "Custodied consent envelope signature mismatch."
+    },
+    {
+      "id": "tampered-ledger-fails-hash-chain",
+      "expected": "false",
+      "observed": "false",
+      "passed": true,
+      "reason": "Event custody-event-002 digest mismatch."
+    },
+    {
+      "id": "tampered-key-status-fails-ledger-consistency",
+      "expected": "false",
+      "observed": "false",
+      "passed": true,
+      "reason": "Custody key paisl-consent-fixture-v1 status is active, expected retired."
+    },
+    {
+      "id": "rotation-selects-newest-active-key",
+      "expected": "paisl-consent-fixture-v2",
+      "observed": "paisl-consent-fixture-v2",
+      "passed": true,
+      "reason": "Active signing key is selected by status and latest creation timestamp."
+    }
+  ],
+  "attackProbeCount": 5,
+  "attackProbesPassed": 5,
+  "attackProbesFailed": 0,
+  "attackProbes": [
+    {
+      "id": "replayed-receipt-after-expiry-denied",
+      "attack": "replayed_receipt",
+      "expectedDecision": "denied",
+      "observedDecision": "denied",
+      "passed": true,
+      "custodyVariantIds": [
+        "user_held_key",
+        "device_bound_key",
+        "broker_managed_key"
+      ],
+      "reason": "Consent receipt has expired."
+    },
+    {
+      "id": "stale-retired-key-denies-new-signing",
+      "attack": "stale_key",
+      "expectedDecision": "denied",
+      "observedDecision": "denied",
+      "passed": true,
+      "custodyVariantIds": [
+        "device_bound_key",
+        "broker_managed_key"
+      ],
+      "reason": "Custody key paisl-consent-fixture-v1 is retired."
+    },
+    {
+      "id": "confused-deputy-purpose-mismatch-denied",
+      "attack": "confused_deputy",
+      "expectedDecision": "denied",
+      "observedDecision": "denied",
+      "passed": true,
+      "custodyVariantIds": [
+        "broker_managed_key"
+      ],
+      "reason": "Consent receipt scope does not match the egress attempt."
+    },
+    {
+      "id": "cross-scenario-receipt-reuse-denied",
+      "attack": "cross_scenario_receipt_reuse",
+      "expectedDecision": "denied",
+      "observedDecision": "denied",
+      "passed": true,
+      "custodyVariantIds": [
+        "user_held_key",
+        "device_bound_key",
+        "broker_managed_key"
+      ],
+      "reason": "Consent receipt scope does not match the egress attempt."
+    },
+    {
+      "id": "active-key-is-only-fresh-signing-key",
+      "attack": "stale_key",
+      "expectedDecision": "denied",
+      "observedDecision": "denied",
+      "passed": true,
+      "custodyVariantIds": [
+        "device_bound_key",
+        "broker_managed_key"
+      ],
+      "reason": "Active signing key selected as paisl-consent-fixture-v2."
+    }
+  ],
+  "limitations": [
+    "This is a deterministic fixture-key lifecycle for benchmark reproducibility, not production key custody.",
+    "The report tests rotation, retirement, revocation, tamper detection, key-status consistency, and historical verification semantics; it does not provide hardware-backed keys, legal non-repudiation, threshold custody, or user-held private keys.",
+    "Production user-sovereign agents need real key storage, recovery, user-controlled revocation, audit retention, and compromise response."
+  ]
+}

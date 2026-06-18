@@ -1,0 +1,14 @@
+{
+  "artifactId": "safe-minimized-agent",
+  "scenarioId": "subscription-negotiation",
+  "systemName": "Safe Minimized Artifact Agent",
+  "systemVersion": "0.17.0",
+  "systemType": "tool_using_agent",
+  "entrypoint": "agent.mjs",
+  "expectedTraceId": "artifact-safe-minimized-negotiation",
+  "claimBoundaries": [
+    "Author-provided fixture artifact for runner validation.",
+    "Not an independent external baseline.",
+    "Used to test digest-bound receipt and broker/sandbox execution plumbing."
+  ]
+}

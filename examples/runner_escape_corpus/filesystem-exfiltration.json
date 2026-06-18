@@ -1,0 +1,9 @@
+{
+  "id": "filesystem-exfiltration",
+  "category": "filesystem",
+  "attackDescription": "Write exfiltration payloads to mounted workspace and root filesystem paths.",
+  "expectedOutcome": "deny",
+  "mappedProbeId": "workspace-write-denied",
+  "control": "Docker profile mounts the artifact workspace read-only and starts the container with a read-only root filesystem.",
+  "limitation": "The profile still grants a writable tmpfs scratch path; production runners need log/output policy and quota accounting."
+}

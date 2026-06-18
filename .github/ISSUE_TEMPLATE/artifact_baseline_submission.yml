@@ -1,0 +1,68 @@
+name: Artifact baseline submission
+description: Submit a reproducible personal-agent artifact bundle for PAISL review.
+title: "[Artifact Baseline]: "
+labels: ["artifact-submission", "baseline", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit only artifacts you are authorized to share. Do not include secrets, private user data, production credentials, or proprietary traces without explicit permission.
+  - type: input
+    id: artifact_id
+    attributes:
+      label: Artifact ID
+      description: The stable ID from `bundle.json`.
+      placeholder: "my-personal-agent-v1"
+    validations:
+      required: true
+  - type: dropdown
+    id: independence
+    attributes:
+      label: Submitter independence
+      options:
+        - independent_external
+        - vendor_self_report
+        - author_seed
+    validations:
+      required: true
+  - type: textarea
+    id: bundle_evidence
+    attributes:
+      label: Bundle evidence
+      description: Link to the bundle, manifest, source digest evidence, runner receipt, broker/sandbox attestations, and scorecard output.
+      placeholder: |
+        Bundle:
+        Manifest SHA-256:
+        Runner receipt:
+        Broker attestation:
+        Sandbox attestation:
+        Scorecard:
+    validations:
+      required: true
+  - type: textarea
+    id: scenario_coverage
+    attributes:
+      label: Scenario coverage
+      description: List covered scenario IDs and any scenarios intentionally excluded.
+    validations:
+      required: true
+  - type: textarea
+    id: claim_boundaries
+    attributes:
+      label: Claim boundaries
+      description: State exactly what this submission does and does not prove.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Submission checks
+      options:
+        - label: I ran `pnpm artifact:bundles` or an equivalent verifier against the bundle.
+          required: true
+        - label: I ran the submitted artifact through the runner and retained receipts/attestations.
+          required: true
+        - label: The artifact contains no secrets, credentials, or private personal data.
+          required: true
+        - label: I understand this is a submission for review, not automatic benchmark acceptance.
+          required: true

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/artifact-transparency-ledger-report.schema.json",
+  "title": "Personal AI Sovereignty Artifact Transparency Ledger Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "ledgerId",
+    "algorithm",
+    "entryCount",
+    "chainHead",
+    "entries",
+    "integrity",
+    "tamperProbe",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string", "const": "personal-ai-sovereignty-benchmark" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "ledgerId": { "type": "string", "const": "paisl-submitted-artifact-ledger-v1" },
+    "algorithm": { "type": "string", "const": "sha256-json-stable-sort-v1" },
+    "entryCount": { "type": "integer", "minimum": 0 },
+    "chainHead": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "index",
+          "artifactId",
+          "receiptId",
+          "previousHash",
+          "receiptHash",
+          "bundleManifestHash",
+          "bundleVerificationStatus",
+          "entryHash"
+        ],
+        "properties": {
+          "index": { "type": "integer", "minimum": 0 },
+          "artifactId": { "type": "string" },
+          "receiptId": { "type": "string" },
+          "previousHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "receiptHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "bundleManifestHash": { "type": ["string", "null"] },
+          "bundleVerificationStatus": { "type": "string", "enum": ["pass", "fail", "missing"] },
+          "entryHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+        }
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["valid", "failures"],
+      "properties": {
+        "valid": { "type": "boolean" },
+        "failures": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "tamperProbe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["originalValid", "tamperedValid", "detected", "tamperedField"],
+      "properties": {
+        "originalValid": { "type": "boolean" },
+        "tamperedValid": { "type": "boolean" },
+        "detected": { "type": "boolean" },
+        "tamperedField": { "type": "string", "const": "receiptHash" }
+      }
+    },
+    "limitations": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  }
+}

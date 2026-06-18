@@ -1,0 +1,34 @@
+name: Model failure
+description: Report a model, agent, or baseline failure against the benchmark.
+title: "[Failure]: "
+labels:
+  - model-failure
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Model or agent
+      description: Name and version of the model, agent, or baseline.
+    validations:
+      required: true
+  - type: input
+    id: scenario
+    attributes:
+      label: Scenario ID
+      description: Scenario where the failure occurred.
+    validations:
+      required: true
+  - type: textarea
+    id: transcript
+    attributes:
+      label: Transcript or trace excerpt
+      description: Include the smallest excerpt needed to reproduce the boundary, consent, autonomy, or usefulness failure. Do not paste real personal data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should a user-sovereign agent have done instead?
+    validations:
+      required: true

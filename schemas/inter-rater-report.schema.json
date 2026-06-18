@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/inter-rater-report.schema.json",
+  "title": "Personal AI Sovereignty Inter-Rater Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "status",
+    "annotationCount",
+    "reviewerCount",
+    "overlappingCaseCount",
+    "minimumReviewerCount",
+    "minimumOverlappingCaseCount",
+    "metrics",
+    "blockers"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["insufficient_data", "computed"] },
+    "annotationCount": { "type": "integer", "minimum": 0 },
+    "reviewerCount": { "type": "integer", "minimum": 0 },
+    "overlappingCaseCount": { "type": "integer", "minimum": 0 },
+    "minimumReviewerCount": { "type": "integer", "minimum": 1 },
+    "minimumOverlappingCaseCount": { "type": "integer", "minimum": 1 },
+    "metrics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/metric" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "value", "interpretation"],
+      "properties": {
+        "id": { "type": "string" },
+        "value": {
+          "type": ["number", "null"]
+        },
+        "interpretation": { "type": "string" }
+      }
+    }
+  }
+}

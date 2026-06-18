@@ -1,0 +1,35 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.14.0-os-network-confinement",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "platform": "darwin",
+  "confinementLayer": "macos_sandbox_exec",
+  "status": "passed",
+  "sandboxAvailable": true,
+  "probeHost": "127.0.0.1",
+  "positiveControlPassed": true,
+  "sandboxDeniedNetwork": true,
+  "attempts": [
+    {
+      "id": "unsandboxed-loopback-positive-control",
+      "command": "node",
+      "expectedConnected": true,
+      "observedConnected": true,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "id": "sandbox-denies-loopback-network",
+      "command": "sandbox-exec",
+      "expectedConnected": false,
+      "observedConnected": false,
+      "errorCode": "EPERM",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "This is an OS-level macOS sandbox experiment against a local loopback TCP server, not a production broker or full container policy.",
+    "It proves the sandbox profile can deny network access for the probed child process; it does not prove all future agent execution paths are confined.",
+    "Linux/container confinement is covered by the separate Docker network-none probe; production broker integration still needs additional work."
+  ]
+}

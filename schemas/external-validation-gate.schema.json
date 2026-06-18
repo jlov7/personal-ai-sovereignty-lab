@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/external-validation-gate.schema.json",
+  "title": "Personal AI Sovereignty External Validation Gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "status",
+    "checks",
+    "nextEvidenceRequired",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "status": { "type": "string", "enum": ["blocked_external", "candidate_ready"] },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "result", "evidence", "interpretation"],
+        "properties": {
+          "id": { "type": "string" },
+          "result": { "type": "string", "enum": ["pass", "partial", "blocked_external"] },
+          "evidence": { "type": "string" },
+          "interpretation": { "type": "string" }
+        }
+      }
+    },
+    "nextEvidenceRequired": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

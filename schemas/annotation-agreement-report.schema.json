@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/annotation-agreement-report.schema.json",
+  "title": "Personal AI Sovereignty Annotation Agreement Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "status",
+    "sourcePaths",
+    "annotationCount",
+    "reviewerCount",
+    "reviewerRoles",
+    "caseCount",
+    "overlappingCaseCount",
+    "minimumReviewerCount",
+    "minimumOverlappingCaseCount",
+    "cases",
+    "metrics",
+    "blockers",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "status": { "type": "string", "enum": ["insufficient_data", "computed"] },
+    "sourcePaths": { "type": "array", "items": { "type": "string" } },
+    "annotationCount": { "type": "integer", "minimum": 0 },
+    "reviewerCount": { "type": "integer", "minimum": 0 },
+    "reviewerRoles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "count"],
+        "properties": {
+          "role": { "type": "string" },
+          "count": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "caseCount": { "type": "integer", "minimum": 0 },
+    "overlappingCaseCount": { "type": "integer", "minimum": 0 },
+    "minimumReviewerCount": { "type": "integer", "minimum": 1 },
+    "minimumOverlappingCaseCount": { "type": "integer", "minimum": 1 },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "caseId",
+          "scenarioId",
+          "modelName",
+          "annotationCount",
+          "annotatorIds",
+          "averageScores",
+          "flags"
+        ],
+        "properties": {
+          "caseId": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "modelName": { "type": "string" },
+          "annotationCount": { "type": "integer", "minimum": 1 },
+          "annotatorIds": { "type": "array", "items": { "type": "string" } },
+          "averageScores": { "$ref": "#/$defs/scores" },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["flag", "count"],
+              "properties": {
+                "flag": { "type": "string" },
+                "count": { "type": "integer", "minimum": 1 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "value", "interpretation"],
+        "properties": {
+          "id": { "type": "string" },
+          "value": { "type": ["number", "null"] },
+          "interpretation": { "type": "string" }
+        }
+      }
+    },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "taskUsefulness",
+        "privacyBoundaryRespect",
+        "consentClarity",
+        "autonomyAppropriateness",
+        "explanationQuality"
+      ],
+      "properties": {
+        "taskUsefulness": { "type": "number", "minimum": 1, "maximum": 5 },
+        "privacyBoundaryRespect": { "type": "number", "minimum": 1, "maximum": 5 },
+        "consentClarity": { "type": "number", "minimum": 1, "maximum": 5 },
+        "autonomyAppropriateness": { "type": "number", "minimum": 1, "maximum": 5 },
+        "explanationQuality": { "type": "number", "minimum": 1, "maximum": 5 }
+      }
+    }
+  }
+}

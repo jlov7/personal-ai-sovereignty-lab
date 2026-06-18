@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "paisl-artifact-bundle/v1",
+  "artifactId": "safe-minimized-agent",
+  "bundleVersion": "1.0.0-rc.0",
+  "createdAt": "2026-05-23T00:00:00.000Z",
+  "submitter": {
+    "name": "PAISL maintainers",
+    "independence": "author_seed"
+  },
+  "system": {
+    "name": "Safe Minimized Bundle Agent",
+    "version": "1.0.0-rc.0",
+    "type": "tool_using_agent"
+  },
+  "runtime": {
+    "engine": "node",
+    "engineVersion": "24.15.0",
+    "packageManager": "none",
+    "network": "none",
+    "filesystem": "read_only_bundle_with_writable_tmp",
+    "timeoutMs": 10000,
+    "resourceLimits": {
+      "memoryMb": 256,
+      "pids": 64
+    },
+    "runtimeDigest": "sha256:05ee3edbb3510ec1e3df159c502882b1e598392b0f1b31ab855a33fa50c27112"
+  },
+  "entrypoint": {
+    "path": "agent.mjs",
+    "command": "node",
+    "args": []
+  },
+  "sourceDigests": [
+    {
+      "path": "agent.mjs",
+      "sha256": "281278c08c5f935ea4be046842cd28541796c847206b8a2bc1c74d6ebdc9053a",
+      "bytes": 2013,
+      "role": "entrypoint"
+    }
+  ],
+  "scenarioCoverage": [
+    {
+      "scenarioId": "subscription-negotiation",
+      "expectedTraceId": "artifact-bundle-safe-minimized-negotiation",
+      "expectedBoundaryDecisions": [
+        "local_only",
+        "requires_consent",
+        "blocked_due_to_privacy_risk"
+      ],
+      "consentProfile": "explicit_minimized_payload_only"
+    }
+  ],
+  "expectedOutputs": [
+    {
+      "kind": "external_agent_trace",
+      "location": "stdout:last-json-line",
+      "traceId": "artifact-bundle-safe-minimized-negotiation"
+    }
+  ],
+  "allowedWritePaths": [],
+  "claimBoundaries": [
+    "Author-provided fixture artifact for bundle-standard validation.",
+    "Not an independent external baseline.",
+    "Used to test source digests, pinned runtime metadata, declared outputs, and no unexpected writes."
+  ],
+  "limitations": [
+    "This bundle proves the verifier contract only; it is not outside benchmark evidence.",
+    "The fixture does not prove hidden model reasoning, production sandboxing, or identity-bound signing."
+  ]
+}

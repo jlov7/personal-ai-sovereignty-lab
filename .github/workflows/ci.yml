@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  benchmark:
+    name: benchmark scaffold
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.1.3 --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Regenerate benchmark artifacts
+        run: pnpm eval
+
+      - name: Regenerate artifact manifest
+        run: pnpm artifact:manifest
+
+      - name: Check generated artifact drift
+        run: git diff --exit-code -- outputs huggingface
+
+      - name: Verify artifact manifest
+        run: pnpm artifact:verify
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Build demo
+        run: pnpm build

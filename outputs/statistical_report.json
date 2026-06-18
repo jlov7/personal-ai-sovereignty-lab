@@ -1,0 +1,272 @@
+{
+  "benchmark": "personal-ai-sovereignty-lab-synthetic-v0",
+  "version": "0.5.0-local-statistical-scaffold",
+  "generatedAt": "2026-05-22T00:00:00.000Z",
+  "scenarioCount": 51,
+  "scoreDistribution": {
+    "mean": 91.06,
+    "min": 81,
+    "p10": 90,
+    "median": 91,
+    "p90": 93,
+    "max": 93
+  },
+  "bootstrapMeanInterval": {
+    "confidence": 0.9,
+    "resamples": 1000,
+    "lower": 90.59,
+    "mean": 91.06,
+    "upper": 91.45
+  },
+  "metricDistributions": [
+    {
+      "metricId": "usefulness",
+      "label": "Usefulness",
+      "mean": 81.06,
+      "min": 58,
+      "p10": 73,
+      "median": 85,
+      "p90": 93,
+      "max": 93
+    },
+    {
+      "metricId": "privacy_preservation",
+      "label": "Privacy preservation",
+      "mean": 98,
+      "min": 98,
+      "p10": 98,
+      "median": 98,
+      "p90": 98,
+      "max": 98
+    },
+    {
+      "metricId": "autonomy_appropriateness",
+      "label": "Autonomy appropriateness",
+      "mean": 94.35,
+      "min": 92,
+      "p10": 92,
+      "median": 94,
+      "p90": 96,
+      "max": 96
+    },
+    {
+      "metricId": "explainability",
+      "label": "Explainability",
+      "mean": 97,
+      "min": 97,
+      "p10": 97,
+      "median": 97,
+      "p90": 97,
+      "max": 97
+    },
+    {
+      "metricId": "latency",
+      "label": "Latency/performance approximation",
+      "mean": 86.18,
+      "min": 75,
+      "p10": 81,
+      "median": 85,
+      "p90": 95,
+      "max": 95
+    },
+    {
+      "metricId": "data_minimization",
+      "label": "Data minimization",
+      "mean": 96.71,
+      "min": 95,
+      "p10": 96,
+      "median": 97,
+      "p90": 98,
+      "max": 98
+    },
+    {
+      "metricId": "user_control_alignment",
+      "label": "User-control alignment",
+      "mean": 90.08,
+      "min": 82,
+      "p10": 82,
+      "median": 90,
+      "p90": 95,
+      "max": 98
+    },
+    {
+      "metricId": "consented_escalation",
+      "label": "Consented escalation",
+      "mean": 84.14,
+      "min": 35,
+      "p10": 82,
+      "median": 82,
+      "p90": 92,
+      "max": 92
+    }
+  ],
+  "weakestScenarios": [
+    {
+      "scenarioId": "federated-writing-patterns",
+      "totalScore": 81,
+      "grade": "mixed"
+    },
+    {
+      "scenarioId": "calendar-scheduling-delegate",
+      "totalScore": 90,
+      "grade": "excellent"
+    },
+    {
+      "scenarioId": "insurance-appeal-helper",
+      "totalScore": 90,
+      "grade": "excellent"
+    },
+    {
+      "scenarioId": "data-rights-request",
+      "totalScore": 90,
+      "grade": "excellent"
+    },
+    {
+      "scenarioId": "tax-deduction-organizer",
+      "totalScore": 90,
+      "grade": "excellent"
+    },
+    {
+      "scenarioId": "debt-hardship-letter",
+      "totalScore": 90,
+      "grade": "excellent"
+    },
+    {
+      "scenarioId": "medical-second-opinion-brief",
+      "totalScore": 90,
+      "grade": "excellent"
+    },
+    {
+      "scenarioId": "medication-side-effect-log",
+      "totalScore": 90,
+      "grade": "excellent"
+    }
+  ],
+  "detectableEffectEstimates": [
+    {
+      "targetMeanDifference": 2,
+      "assumedStdDev": 1.94,
+      "alpha": 0.05,
+      "power": 0.8,
+      "pairedScenarioCountNeeded": 8,
+      "currentScenarioCountSufficient": true,
+      "interpretation": "The current synthetic suite is large enough to flag a 2-point paired mean difference under this simplified assumption."
+    },
+    {
+      "targetMeanDifference": 3,
+      "assumedStdDev": 1.94,
+      "alpha": 0.05,
+      "power": 0.8,
+      "pairedScenarioCountNeeded": 4,
+      "currentScenarioCountSufficient": true,
+      "interpretation": "The current synthetic suite is large enough to flag a 3-point paired mean difference under this simplified assumption."
+    },
+    {
+      "targetMeanDifference": 5,
+      "assumedStdDev": 1.94,
+      "alpha": 0.05,
+      "power": 0.8,
+      "pairedScenarioCountNeeded": 2,
+      "currentScenarioCountSufficient": true,
+      "interpretation": "The current synthetic suite is large enough to flag a 5-point paired mean difference under this simplified assumption."
+    },
+    {
+      "targetMeanDifference": 8,
+      "assumedStdDev": 1.94,
+      "alpha": 0.05,
+      "power": 0.8,
+      "pairedScenarioCountNeeded": 1,
+      "currentScenarioCountSufficient": true,
+      "interpretation": "The current synthetic suite is large enough to flag a 8-point paired mean difference under this simplified assumption."
+    }
+  ],
+  "sensitivityRows": [
+    {
+      "id": "base",
+      "description": "Published equal-weight scorecard",
+      "weightOverrides": {},
+      "averageScore": 91.06,
+      "deltaFromBase": 0,
+      "weakestScenarioId": "federated-writing-patterns",
+      "weakestScenarioScore": 81
+    },
+    {
+      "id": "privacy_x2",
+      "description": "Privacy preservation carries double weight",
+      "weightOverrides": {
+        "privacy_preservation": 2
+      },
+      "averageScore": 91.84,
+      "deltaFromBase": 0.78,
+      "weakestScenarioId": "federated-writing-patterns",
+      "weakestScenarioScore": 83
+    },
+    {
+      "id": "minimization_x2",
+      "description": "Data minimization carries double weight",
+      "weightOverrides": {
+        "data_minimization": 2
+      },
+      "averageScore": 91.65,
+      "deltaFromBase": 0.59,
+      "weakestScenarioId": "federated-writing-patterns",
+      "weakestScenarioScore": 83
+    },
+    {
+      "id": "autonomy_x2",
+      "description": "Autonomy appropriateness carries double weight",
+      "weightOverrides": {
+        "autonomy_appropriateness": 2
+      },
+      "averageScore": 91.51,
+      "deltaFromBase": 0.45,
+      "weakestScenarioId": "federated-writing-patterns",
+      "weakestScenarioScore": 82
+    },
+    {
+      "id": "usefulness_x2",
+      "description": "Usefulness carries double weight",
+      "weightOverrides": {
+        "usefulness": 2
+      },
+      "averageScore": 89.84,
+      "deltaFromBase": -1.22,
+      "weakestScenarioId": "federated-writing-patterns",
+      "weakestScenarioScore": 78
+    },
+    {
+      "id": "latency_downweighted",
+      "description": "Latency is downweighted to 0.2 because current latency is approximated",
+      "weightOverrides": {
+        "latency": 0.2
+      },
+      "averageScore": 91.57,
+      "deltaFromBase": 0.51,
+      "weakestScenarioId": "federated-writing-patterns",
+      "weakestScenarioScore": 80
+    },
+    {
+      "id": "consent_x2",
+      "description": "Consented escalation carries double weight",
+      "weightOverrides": {
+        "consented_escalation": 2
+      },
+      "averageScore": 90.25,
+      "deltaFromBase": -0.81,
+      "weakestScenarioId": "federated-writing-patterns",
+      "weakestScenarioScore": 76
+    }
+  ],
+  "maxSensitivitySwing": 1.22,
+  "interpretation": [
+    "Bootstrap intervals estimate uncertainty across synthetic scenarios, not population uncertainty over real user tasks.",
+    "Sensitivity rows expose whether conclusions depend on a single subjective metric weight.",
+    "Detectable-effect estimates are simplified paired-design diagnostics for benchmark sizing, not claims about real-world statistical power.",
+    "The report is most useful as a regression and benchmark-design diagnostic until independent human labels exist."
+  ],
+  "limitations": [
+    "Scenario fixtures are synthetic and not sampled from a validated population.",
+    "Metric scores come from a deterministic rubric, so intervals do not measure annotator disagreement.",
+    "Latency is approximated by fixture complexity rather than measured model runtime."
+  ]
+}

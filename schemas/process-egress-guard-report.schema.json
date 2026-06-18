@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/process-egress-guard-report.schema.json",
+  "title": "Personal AI Sovereignty Process Egress Guard Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "enforcementLayer",
+    "guardedApis",
+    "childExitCode",
+    "auditEventCount",
+    "probeCount",
+    "passed",
+    "failed",
+    "probes",
+    "auditEvents",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "enforcementLayer": { "type": "string", "enum": ["process_preload"] },
+    "guardedApis": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "childExitCode": { "type": ["integer", "null"] },
+    "auditEventCount": { "type": "integer", "minimum": 0 },
+    "probeCount": { "type": "integer", "minimum": 1 },
+    "passed": { "type": "integer", "minimum": 0 },
+    "failed": { "type": "integer", "minimum": 0 },
+    "probes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "api",
+          "expectedAllowed",
+          "observedAllowed",
+          "passed",
+          "reason"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "api": { "type": "string" },
+          "expectedAllowed": { "type": "boolean" },
+          "observedAllowed": { "type": "boolean" },
+          "passed": { "type": "boolean" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "auditEvents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["api", "host", "allowed", "reason"],
+        "properties": {
+          "api": { "type": "string" },
+          "host": { "type": "string" },
+          "allowed": { "type": "boolean" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

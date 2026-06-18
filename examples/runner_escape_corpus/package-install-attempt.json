@@ -1,0 +1,9 @@
+{
+  "id": "package-install-attempt",
+  "category": "package_install",
+  "attackDescription": "Attempt to reach the package registry from inside the submitted-artifact runner profile.",
+  "expectedOutcome": "deny",
+  "mappedProbeId": "package-install-denied",
+  "control": "Docker profile uses --network none; package-manager egress should fail even if npm is present.",
+  "limitation": "This probe denies network-backed install/lookup. It does not yet implement a package allowlist or filesystem-level package cache policy."
+}

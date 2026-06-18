@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/aggregate-privacy-challenge-report.schema.json",
+  "title": "Personal AI Sovereignty Aggregate Privacy Challenge Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "probeCount",
+    "challengeCount",
+    "naiveSuccessCount",
+    "controlledSuccessCount",
+    "averageNaiveConfidence",
+    "averageControlledConfidence",
+    "averageConfidenceDrop",
+    "cases",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "probeCount": { "type": "integer", "minimum": 0 },
+    "challengeCount": { "type": "integer", "minimum": 0 },
+    "naiveSuccessCount": { "type": "integer", "minimum": 0 },
+    "controlledSuccessCount": { "type": "integer", "minimum": 0 },
+    "averageNaiveConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "averageControlledConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "averageConfidenceDrop": { "type": "number", "minimum": 0, "maximum": 1 },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "probeId",
+          "scenarioId",
+          "dataItemId",
+          "populationSize",
+          "targetRecordId",
+          "targetSensitiveValue",
+          "naiveBucketSize",
+          "naiveConfidence",
+          "naiveInference",
+          "naiveAttackSucceeded",
+          "controlledRelease",
+          "controlledBucketSize",
+          "controlledConfidence",
+          "controlledInference",
+          "controlledAttackSucceeded",
+          "confidenceDrop",
+          "interpretation"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "probeId": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "dataItemId": { "type": "string" },
+          "populationSize": { "type": "integer", "minimum": 0 },
+          "targetRecordId": { "type": "string" },
+          "targetSensitiveValue": { "type": "integer", "enum": [0, 1] },
+          "naiveBucketSize": { "type": "integer", "minimum": 0 },
+          "naiveConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "naiveInference": { "type": ["integer", "null"], "enum": [0, 1, null] },
+          "naiveAttackSucceeded": { "type": "boolean" },
+          "controlledRelease": {
+            "type": "string",
+            "enum": ["blocked", "suppressed", "coarsened_noisy_count"]
+          },
+          "controlledBucketSize": { "type": "integer", "minimum": 0 },
+          "controlledConfidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "controlledInference": { "type": ["integer", "null"], "enum": [0, 1, null] },
+          "controlledAttackSucceeded": { "type": "boolean" },
+          "confidenceDrop": { "type": "number", "minimum": 0, "maximum": 1 },
+          "interpretation": { "type": "string" }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

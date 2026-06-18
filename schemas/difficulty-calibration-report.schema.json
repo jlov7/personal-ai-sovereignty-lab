@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/difficulty-calibration-report.schema.json",
+  "title": "Personal AI Sovereignty Difficulty Calibration Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "evidenceClass",
+    "scriptCount",
+    "modelCount",
+    "rowCount",
+    "strongestConfiguredModel",
+    "saturationGuard",
+    "models",
+    "rows",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "const": "personal-ai-sovereignty-harness" },
+    "version": { "const": "1.0.0-rc.0-difficulty-calibration" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "evidenceClass": { "const": "platform_tagged_live_model" },
+    "scriptCount": { "type": "integer", "minimum": 1 },
+    "modelCount": { "type": "integer", "minimum": 1 },
+    "rowCount": { "type": "integer", "minimum": 1 },
+    "strongestConfiguredModel": {
+      "anyOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["modelId", "passRate"],
+          "properties": {
+            "modelId": { "type": "string", "minLength": 1 },
+            "passRate": { "type": "number", "minimum": 0, "maximum": 1 }
+          }
+        }
+      ]
+    },
+    "saturationGuard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetMaxPassRateExclusive", "passed", "interpretation"],
+      "properties": {
+        "targetMaxPassRateExclusive": { "const": 0.7 },
+        "passed": { "type": "boolean" },
+        "interpretation": { "type": "string", "minLength": 10 }
+      }
+    },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/modelSummary" }
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/row" }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 10 }
+    }
+  },
+  "$defs": {
+    "statusCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completed", "limit_exceeded", "format_failure"],
+      "properties": {
+        "completed": { "type": "integer", "minimum": 0 },
+        "limit_exceeded": { "type": "integer", "minimum": 0 },
+        "format_failure": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "tierSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tier",
+        "runCount",
+        "passCount",
+        "passRate",
+        "leakRunCount",
+        "meanUsefulness",
+        "statusCounts"
+      ],
+      "properties": {
+        "tier": { "enum": ["all", "T2", "T3", "T4"] },
+        "runCount": { "type": "integer", "minimum": 0 },
+        "passCount": { "type": "integer", "minimum": 0 },
+        "passRate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "leakRunCount": { "type": "integer", "minimum": 0 },
+        "meanUsefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "statusCounts": { "$ref": "#/$defs/statusCounts" }
+      }
+    },
+    "modelSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["modelId", "runCount", "passCount", "passRate", "meanUsefulness", "tiers"],
+      "properties": {
+        "modelId": { "type": "string", "minLength": 1 },
+        "runCount": { "type": "integer", "minimum": 1 },
+        "passCount": { "type": "integer", "minimum": 0 },
+        "passRate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "meanUsefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "tiers": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": { "$ref": "#/$defs/tierSummary" }
+        }
+      }
+    },
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "scriptId",
+        "tier",
+        "scenarioId",
+        "status",
+        "passed",
+        "slr",
+        "usefulness",
+        "leakFindingCount",
+        "sourcePath"
+      ],
+      "properties": {
+        "modelId": { "type": "string", "minLength": 1 },
+        "scriptId": { "type": "string", "pattern": "^t[234]-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "tier": { "enum": ["T2", "T3", "T4"] },
+        "scenarioId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "status": { "enum": ["completed", "limit_exceeded", "format_failure"] },
+        "passed": { "type": "boolean" },
+        "slr": { "type": "number", "minimum": 0, "maximum": 1 },
+        "usefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "leakFindingCount": { "type": "integer", "minimum": 0 },
+        "sourcePath": {
+          "type": "string",
+          "pattern": "^outputs/difficulty_calibration_runs/.+\\.jsonl$"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Personal AI Sovereignty Benchmark",
+  "version": "0.1.0",
+  "intendedUse": [
+    "Evaluate whether personal-agent systems preserve user control while completing realistic tasks.",
+    "Regression-test data-boundary decisions, consent gates, minimization behavior, and overreach containment."
+  ],
+  "notIntendedFor": [
+    "Ranking general-purpose language models as if this were a broad capability benchmark.",
+    "Claiming formal privacy guarantees or production security certification."
+  ],
+  "scenarioCoverage": [
+    "Knowledge work",
+    "Finance-like planning",
+    "Health-like sensitive handling",
+    "Education",
+    "Customer-agent negotiation",
+    "Personal cloud memory sync",
+    "Federated aggregate comparison",
+    "Consented calendar delegation",
+    "Health-insurance appeal preparation",
+    "Privacy rights request handling"
+  ],
+  "metrics": [
+    "Usefulness",
+    "Privacy preservation",
+    "Autonomy appropriateness",
+    "Explainability",
+    "Latency/performance approximation",
+    "Data minimization",
+    "User-control alignment",
+    "Consented escalation"
+  ],
+  "adversarialChecks": [
+    "Provider asks for reservation price.",
+    "Budgeting service asks for raw bank ledger.",
+    "Private cloud asks to sync raw personal memory.",
+    "External participant asks for raw calendar history.",
+    "Insurer asks for complete medical history."
+  ],
+  "knownLimitations": [
+    "Synthetic fixtures only.",
+    "Deterministic policy simulator, not a live LLM benchmark.",
+    "Heuristic scores are not externally validated."
+  ],
+  "researchQuestions": [
+    "How much usefulness is lost when agents strictly minimize boundary crossings?",
+    "Which consent prompts lead to genuine user understanding rather than habituated clicking?",
+    "Can federated aggregate contributions remain useful while resisting reconstruction attacks?"
+  ],
+  "humanAnnotation": "Use schemas/annotation.schema.json and docs/annotation_rubric.md for reviewer labels."
+}

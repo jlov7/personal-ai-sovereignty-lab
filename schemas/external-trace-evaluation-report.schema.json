@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/external-trace-evaluation-report.schema.json",
+  "title": "Personal AI Sovereignty External Trace Evaluation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "sourcePaths",
+    "traceCount",
+    "averageScore",
+    "privacyBoundaryViolations",
+    "consentViolations",
+    "aggregateControlViolations",
+    "unknownDataItemReferences",
+    "evaluations",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sourcePaths": { "type": "array", "items": { "type": "string" } },
+    "traceCount": { "type": "integer", "minimum": 1 },
+    "averageScore": { "type": "number", "minimum": 0, "maximum": 100 },
+    "privacyBoundaryViolations": { "type": "integer", "minimum": 0 },
+    "consentViolations": { "type": "integer", "minimum": 0 },
+    "aggregateControlViolations": { "type": "integer", "minimum": 0 },
+    "unknownDataItemReferences": { "type": "integer", "minimum": 0 },
+    "evaluations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "traceId",
+          "systemName",
+          "scenarioId",
+          "totalScore",
+          "privacyBoundaryViolations",
+          "consentViolations",
+          "aggregateControlViolations",
+          "unknownDataItemReferences",
+          "completedActionCount",
+          "blockedActionCount",
+          "findings"
+        ],
+        "properties": {
+          "traceId": { "type": "string" },
+          "systemName": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "totalScore": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "privacyBoundaryViolations": { "type": "integer", "minimum": 0 },
+          "consentViolations": { "type": "integer", "minimum": 0 },
+          "aggregateControlViolations": { "type": "integer", "minimum": 0 },
+          "unknownDataItemReferences": { "type": "integer", "minimum": 0 },
+          "completedActionCount": { "type": "integer", "minimum": 0 },
+          "blockedActionCount": { "type": "integer", "minimum": 0 },
+          "findings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["id", "severity", "actionId", "dataItemId", "message"],
+              "properties": {
+                "id": { "type": "string" },
+                "severity": { "type": "string", "enum": ["info", "warning", "critical"] },
+                "actionId": { "type": "string" },
+                "dataItemId": { "type": ["string", "null"] },
+                "message": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

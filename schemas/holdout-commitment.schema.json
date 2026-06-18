@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/holdout-commitment.schema.json",
+  "title": "PAISL Holdout Commitment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["sha256OfSeedFile", "count", "generatorVersion", "grammarHash"],
+  "properties": {
+    "sha256OfSeedFile": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "generatorVersion": {
+      "type": "string",
+      "minLength": 3
+    },
+    "grammarHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}

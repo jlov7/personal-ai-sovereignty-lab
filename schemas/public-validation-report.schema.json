@@ -1,0 +1,625 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/public-validation-report.schema.json",
+  "title": "Personal AI Sovereignty Public Validation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "repository",
+    "publicReviewThreads",
+    "publicReviewPacket",
+    "paperPackage",
+    "externalValidationGate",
+    "aggregateAttack",
+    "executableAggregateAttack",
+    "externalTraceEvaluation",
+    "baselineLeaderboard",
+    "brokerAttestations",
+    "sandboxedTraceRunner",
+    "submittedArtifactRunner",
+    "artifactBundleStandard",
+    "artifactTransparencyLedger",
+    "runnerHardening",
+    "measurementValidity",
+    "scenarioProvenance",
+    "processEgressGuard",
+    "signedConsent",
+    "keyCustody",
+    "aggregatePrivacyChallenge",
+    "osNetworkConfinement",
+    "containerNetworkConfinement",
+    "huggingFace",
+    "remainingExternalBlockers",
+    "releaseEvidenceCorrection"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "visibility",
+        "defaultBranch",
+        "latestReleaseUrl",
+        "lastLiveVerifiedPushedHead",
+        "verifiedCiRunUrl",
+        "verifiedCiConclusion",
+        "verifiedOsConfinementRunUrl",
+        "verifiedOsConfinementConclusion",
+        "verifiedContainerConfinementRunUrl",
+        "verifiedContainerConfinementConclusion",
+        "verifiedSubmittedArtifactRunnerRunUrl",
+        "verifiedSubmittedArtifactRunnerConclusion",
+        "discussionsEnabled",
+        "topics"
+      ],
+      "properties": {
+        "url": { "type": "string", "format": "uri" },
+        "visibility": { "type": "string" },
+        "defaultBranch": { "type": "string" },
+        "latestReleaseUrl": { "type": "string", "format": "uri" },
+        "lastLiveVerifiedPushedHead": { "type": "string" },
+        "verifiedCiRunUrl": { "type": "string", "format": "uri" },
+        "verifiedCiConclusion": { "type": "string" },
+        "verifiedOsConfinementRunUrl": { "type": "string", "format": "uri" },
+        "verifiedOsConfinementConclusion": { "type": "string" },
+        "verifiedContainerConfinementRunUrl": { "type": "string", "format": "uri" },
+        "verifiedContainerConfinementConclusion": { "type": "string" },
+        "verifiedSubmittedArtifactRunnerRunUrl": { "type": "string", "format": "uri" },
+        "verifiedSubmittedArtifactRunnerConclusion": { "type": "string" },
+        "discussionsEnabled": { "type": "boolean" },
+        "topics": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "publicReviewThreads": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["track", "title", "url", "status"],
+        "properties": {
+          "track": { "type": "string" },
+          "title": { "type": "string" },
+          "url": { "type": "string", "format": "uri" },
+          "status": { "type": "string" }
+        }
+      }
+    },
+    "publicReviewPacket": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issueTemplateCount",
+        "requiredIssueTemplates",
+        "claimEvidenceIndex",
+        "falsificationCriteria",
+        "huggingFaceSpacePath",
+        "credentialFreeSpaceTemplate",
+        "blockedOnExternalReview",
+        "interpretation"
+      ],
+      "properties": {
+        "issueTemplateCount": { "type": "integer", "minimum": 0 },
+        "requiredIssueTemplates": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "claimEvidenceIndex": { "type": "string" },
+        "falsificationCriteria": { "type": "string" },
+        "huggingFaceSpacePath": { "type": "string" },
+        "credentialFreeSpaceTemplate": { "type": "boolean" },
+        "blockedOnExternalReview": { "type": "boolean" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "paperPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paperDraft",
+        "benchmarkReleaseCard",
+        "systemCard",
+        "figuresAndTables",
+        "reproducibilityChecklist",
+        "generatedBy",
+        "blockedOnExternalScholarlyReview",
+        "interpretation"
+      ],
+      "properties": {
+        "paperDraft": { "type": "string" },
+        "benchmarkReleaseCard": { "type": "string" },
+        "systemCard": { "type": "string" },
+        "figuresAndTables": { "type": "string" },
+        "reproducibilityChecklist": { "type": "string" },
+        "generatedBy": { "type": "string" },
+        "blockedOnExternalScholarlyReview": { "type": "boolean" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "externalValidationGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["report", "status", "interpretation"],
+      "properties": {
+        "report": { "type": "string" },
+        "status": { "type": "string", "enum": ["blocked_external", "candidate_ready"] },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "aggregateAttack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "attackFamilyCount",
+        "attackCount",
+        "attackCardCount",
+        "highestEstimatedSuccessProbability",
+        "privacyAccountingLabel",
+        "formalEpsilonProvided",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "attackFamilyCount": { "type": "integer", "minimum": 0 },
+        "attackCount": { "type": "integer", "minimum": 0 },
+        "attackCardCount": { "type": "integer", "minimum": 0 },
+        "highestEstimatedSuccessProbability": { "type": "number", "minimum": 0, "maximum": 1 },
+        "privacyAccountingLabel": { "type": "string", "const": "not_differential_privacy" },
+        "formalEpsilonProvided": { "type": "boolean", "const": false },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "executableAggregateAttack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "attackCount",
+        "naiveSuccessCount",
+        "blockedByExistingGateCount",
+        "needsReleaseControlCount",
+        "noObservedLeakCount",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "attackCount": { "type": "integer", "minimum": 0 },
+        "naiveSuccessCount": { "type": "integer", "minimum": 0 },
+        "blockedByExistingGateCount": { "type": "integer", "minimum": 0 },
+        "needsReleaseControlCount": { "type": "integer", "minimum": 0 },
+        "noObservedLeakCount": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "externalTraceEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "traceCount",
+        "averageScore",
+        "privacyBoundaryViolations",
+        "consentViolations",
+        "aggregateControlViolations",
+        "unknownDataItemReferences",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "traceCount": { "type": "integer", "minimum": 0 },
+        "averageScore": { "type": "number", "minimum": 0, "maximum": 100 },
+        "privacyBoundaryViolations": { "type": "integer", "minimum": 0 },
+        "consentViolations": { "type": "integer", "minimum": 0 },
+        "aggregateControlViolations": { "type": "integer", "minimum": 0 },
+        "unknownDataItemReferences": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "baselineLeaderboard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "entryCount",
+        "runnableLocalAdapterCount",
+        "submittedArtifactFixtureCoverage",
+        "blockedStrongBaselineClaim",
+        "openAiCompatibleWrapperDocs",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "entryCount": { "type": "integer", "minimum": 0 },
+        "runnableLocalAdapterCount": { "type": "integer", "minimum": 0 },
+        "submittedArtifactFixtureCoverage": { "type": "string" },
+        "blockedStrongBaselineClaim": { "type": "boolean" },
+        "openAiCompatibleWrapperDocs": { "type": "string" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "brokerAttestations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "traceCount",
+        "signedAttestationCount",
+        "verifiedAttestationCount",
+        "brokerExecutedActionCount",
+        "brokerBlockedActionCount",
+        "claimedCompletedButBlockedCount",
+        "submittedBlockedConfirmedCount",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "traceCount": { "type": "integer", "minimum": 0 },
+        "signedAttestationCount": { "type": "integer", "minimum": 0 },
+        "verifiedAttestationCount": { "type": "integer", "minimum": 0 },
+        "brokerExecutedActionCount": { "type": "integer", "minimum": 0 },
+        "brokerBlockedActionCount": { "type": "integer", "minimum": 0 },
+        "claimedCompletedButBlockedCount": { "type": "integer", "minimum": 0 },
+        "submittedBlockedConfirmedCount": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "sandboxedTraceRunner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "traceCount",
+        "signedExecutionAttestationCount",
+        "verifiedExecutionAttestationCount",
+        "passedExecutionAttestationCount",
+        "childExecutedActionCount",
+        "skippedByBrokerCount",
+        "escapeAttemptCount",
+        "guardDeniedEscapeCount",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "traceCount": { "type": "integer", "minimum": 0 },
+        "signedExecutionAttestationCount": { "type": "integer", "minimum": 0 },
+        "verifiedExecutionAttestationCount": { "type": "integer", "minimum": 0 },
+        "passedExecutionAttestationCount": { "type": "integer", "minimum": 0 },
+        "childExecutedActionCount": { "type": "integer", "minimum": 0 },
+        "skippedByBrokerCount": { "type": "integer", "minimum": 0 },
+        "escapeAttemptCount": { "type": "integer", "minimum": 0 },
+        "guardDeniedEscapeCount": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "submittedArtifactRunner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "workflow",
+        "submissionCount",
+        "traceEmissionCount",
+        "signedReceiptCount",
+        "verifiedReceiptCount",
+        "passedSubmissionCount",
+        "brokerExecutedActionCount",
+        "brokerBlockedActionCount",
+        "sandboxedExecutionPassedCount",
+        "dockerProfileStatus",
+        "dockerControlProbeCount",
+        "dockerPassedControlProbeCount",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "workflow": { "type": "string" },
+        "submissionCount": { "type": "integer", "minimum": 0 },
+        "traceEmissionCount": { "type": "integer", "minimum": 0 },
+        "signedReceiptCount": { "type": "integer", "minimum": 0 },
+        "verifiedReceiptCount": { "type": "integer", "minimum": 0 },
+        "passedSubmissionCount": { "type": "integer", "minimum": 0 },
+        "brokerExecutedActionCount": { "type": "integer", "minimum": 0 },
+        "brokerBlockedActionCount": { "type": "integer", "minimum": 0 },
+        "sandboxedExecutionPassedCount": { "type": "integer", "minimum": 0 },
+        "dockerProfileStatus": { "type": "string" },
+        "dockerControlProbeCount": { "type": "integer", "minimum": 0 },
+        "dockerPassedControlProbeCount": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "artifactBundleStandard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestSchema",
+        "verificationReport",
+        "issueTemplate",
+        "runnerEscapeTemplate",
+        "bundleCount",
+        "passedBundleCount",
+        "rejectedBundleCount",
+        "expectedFailureCount",
+        "expectationMatchCount",
+        "interpretation"
+      ],
+      "properties": {
+        "manifestSchema": { "type": "string" },
+        "verificationReport": { "type": "string" },
+        "issueTemplate": { "type": "string" },
+        "runnerEscapeTemplate": { "type": "string" },
+        "bundleCount": { "type": "integer", "minimum": 0 },
+        "passedBundleCount": { "type": "integer", "minimum": 0 },
+        "rejectedBundleCount": { "type": "integer", "minimum": 0 },
+        "expectedFailureCount": { "type": "integer", "minimum": 0 },
+        "expectationMatchCount": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "artifactTransparencyLedger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "entryCount",
+        "chainHead",
+        "integrityValid",
+        "tamperDetected",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "entryCount": { "type": "integer", "minimum": 0 },
+        "chainHead": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "integrityValid": { "type": "boolean" },
+        "tamperDetected": { "type": "boolean" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "runnerHardening": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "profile",
+        "escapeCorpusCount",
+        "probeCount",
+        "passedProbeCount",
+        "deniedProbeCount",
+        "observedLimitationCount",
+        "seccompAppArmorStatus",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "profile": { "type": "string" },
+        "escapeCorpusCount": { "type": "integer", "minimum": 0 },
+        "probeCount": { "type": "integer", "minimum": 0 },
+        "passedProbeCount": { "type": "integer", "minimum": 0 },
+        "deniedProbeCount": { "type": "integer", "minimum": 0 },
+        "observedLimitationCount": { "type": "integer", "minimum": 0 },
+        "seccompAppArmorStatus": { "type": "string" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "measurementValidity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "labelPacket",
+        "calibrationMetricCount",
+        "disagreementTemplateCount",
+        "syntheticAgreementCheckCount",
+        "weightProfileCount",
+        "scenarioTagCount",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "labelPacket": { "type": "string" },
+        "calibrationMetricCount": { "type": "integer", "minimum": 0 },
+        "disagreementTemplateCount": { "type": "integer", "minimum": 0 },
+        "syntheticAgreementCheckCount": { "type": "integer", "minimum": 0 },
+        "weightProfileCount": { "type": "integer", "minimum": 0 },
+        "scenarioTagCount": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "scenarioProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "rubric",
+        "scenarioCount",
+        "mutationFamilyCount",
+        "mutationCount",
+        "hiddenCommitmentCount",
+        "publicAnswersInHiddenSplit",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "rubric": { "type": "string" },
+        "scenarioCount": { "type": "integer", "minimum": 0 },
+        "mutationFamilyCount": { "type": "integer", "minimum": 0 },
+        "mutationCount": { "type": "integer", "minimum": 0 },
+        "hiddenCommitmentCount": { "type": "integer", "minimum": 0 },
+        "publicAnswersInHiddenSplit": { "type": "boolean" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "processEgressGuard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "enforcementLayer",
+        "guardedApis",
+        "probeCount",
+        "passed",
+        "failed",
+        "auditEventCount",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "enforcementLayer": { "type": "string" },
+        "guardedApis": { "type": "integer", "minimum": 0 },
+        "probeCount": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "auditEventCount": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "signedConsent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["report", "signatureAlgorithm", "probeCount", "passed", "failed", "interpretation"],
+      "properties": {
+        "report": { "type": "string" },
+        "signatureAlgorithm": { "type": "string" },
+        "probeCount": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "keyCustody": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "custodyModel",
+        "activeKeyId",
+        "threatModelVariantCount",
+        "probeCount",
+        "passed",
+        "failed",
+        "attackProbeCount",
+        "attackProbesPassed",
+        "hashChainValid",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "custodyModel": { "type": "string" },
+        "activeKeyId": { "type": "string" },
+        "threatModelVariantCount": { "type": "integer", "minimum": 0 },
+        "probeCount": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "attackProbeCount": { "type": "integer", "minimum": 0 },
+        "attackProbesPassed": { "type": "integer", "minimum": 0 },
+        "hashChainValid": { "type": "boolean" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "aggregatePrivacyChallenge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "challengeCount",
+        "naiveSuccessCount",
+        "controlledSuccessCount",
+        "averageConfidenceDrop",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "challengeCount": { "type": "integer", "minimum": 0 },
+        "naiveSuccessCount": { "type": "integer", "minimum": 0 },
+        "controlledSuccessCount": { "type": "integer", "minimum": 0 },
+        "averageConfidenceDrop": { "type": "number", "minimum": 0, "maximum": 1 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "osNetworkConfinement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "workflow",
+        "confinementLayer",
+        "status",
+        "positiveControlPassed",
+        "sandboxDeniedNetwork",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "workflow": { "type": "string" },
+        "confinementLayer": { "type": "string" },
+        "status": { "type": "string" },
+        "positiveControlPassed": { "type": "boolean" },
+        "sandboxDeniedNetwork": { "type": "boolean" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "containerNetworkConfinement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "report",
+        "workflow",
+        "confinementLayer",
+        "status",
+        "positiveControlPassed",
+        "containerDeniedNetwork",
+        "interpretation"
+      ],
+      "properties": {
+        "report": { "type": "string" },
+        "workflow": { "type": "string" },
+        "confinementLayer": { "type": "string" },
+        "status": { "type": "string" },
+        "positiveControlPassed": { "type": "boolean" },
+        "containerDeniedNetwork": { "type": "boolean" },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "huggingFace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reason", "localPackage"],
+      "properties": {
+        "status": { "type": "string" },
+        "reason": { "type": "string" },
+        "localPackage": { "type": "string" }
+      }
+    },
+    "remainingExternalBlockers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "releaseEvidenceCorrection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["issue", "resolution", "finalReleaseBodyPreserves"],
+      "properties": {
+        "issue": { "type": "string" },
+        "resolution": { "type": "string" },
+        "finalReleaseBodyPreserves": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

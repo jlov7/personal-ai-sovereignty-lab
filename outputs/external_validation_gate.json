@@ -1,0 +1,49 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.9.0-external-validation-gate",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "status": "blocked_external",
+  "checks": [
+    {
+      "id": "annotation-files-present",
+      "result": "partial",
+      "evidence": "1 annotation files",
+      "interpretation": "The annotation pipeline has input files, but seed files are not validation."
+    },
+    {
+      "id": "annotation-overlap",
+      "result": "blocked_external",
+      "evidence": "0/5 overlapping cases",
+      "interpretation": "Human-label validity needs enough overlapping cases to compute agreement."
+    },
+    {
+      "id": "independent-baseline-submissions",
+      "result": "blocked_external",
+      "evidence": "0 independent external submissions",
+      "interpretation": "At least one non-author baseline must submit trace-bearing evidence."
+    },
+    {
+      "id": "production-agent-baseline",
+      "result": "blocked_external",
+      "evidence": "0 production personal-agent submissions",
+      "interpretation": "A benchmark about personal agents needs at least one production-grade personal-agent run."
+    },
+    {
+      "id": "aggregate-attack-candidates",
+      "result": "partial",
+      "evidence": "37 synthetic cohort cases need empirical mitigation",
+      "interpretation": "Synthetic attacks identify candidates for real aggregate linkage or differencing experiments."
+    }
+  ],
+  "nextEvidenceRequired": [
+    "Collect at least three independent annotators across at least five overlapping cases.",
+    "Accept at least one independent trace-bearing baseline submission.",
+    "Evaluate at least one production-grade personal-agent or tool-using agent implementation.",
+    "Run a real aggregate linkage, differencing, or reconstruction attack against representative aggregate fixtures."
+  ],
+  "limitations": [
+    "This gate is a release-readiness diagnostic; it cannot certify annotator independence by itself.",
+    "The gate intentionally remains blocked when only seed fixtures are present.",
+    "Passing this gate would make the benchmark validation-ready, not automatically validated."
+  ]
+}

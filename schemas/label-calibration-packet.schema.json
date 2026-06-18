@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/label-calibration-packet.schema.json",
+  "title": "Personal AI Sovereignty Label Calibration Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["metrics", "instructions"],
+  "properties": {
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "metricId",
+          "construct",
+          "observableEvidence",
+          "reviewerQuestion",
+          "failureSignals",
+          "scoreAnchors"
+        ],
+        "properties": {
+          "metricId": {
+            "type": "string",
+            "enum": [
+              "usefulness",
+              "privacy_preservation",
+              "autonomy_appropriateness",
+              "explainability",
+              "latency",
+              "data_minimization",
+              "user_control_alignment",
+              "consented_escalation"
+            ]
+          },
+          "construct": { "type": "string" },
+          "observableEvidence": { "type": "array", "items": { "type": "string" } },
+          "reviewerQuestion": { "type": "string" },
+          "failureSignals": { "type": "array", "items": { "type": "string" } },
+          "scoreAnchors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["range", "evidenceStandard"],
+              "properties": {
+                "range": { "type": "string" },
+                "evidenceStandard": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "instructions": { "type": "array", "items": { "type": "string" } }
+  }
+}

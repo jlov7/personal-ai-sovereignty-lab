@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/executable-aggregate-attack-report.schema.json",
+  "title": "Personal AI Sovereignty Executable Aggregate Attack Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "probeCount",
+    "attackCount",
+    "naiveSuccessCount",
+    "blockedByExistingGateCount",
+    "needsReleaseControlCount",
+    "noObservedLeakCount",
+    "attacks",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "probeCount": { "type": "integer", "minimum": 1 },
+    "attackCount": { "type": "integer", "minimum": 1 },
+    "naiveSuccessCount": { "type": "integer", "minimum": 0 },
+    "blockedByExistingGateCount": { "type": "integer", "minimum": 0 },
+    "needsReleaseControlCount": { "type": "integer", "minimum": 0 },
+    "noObservedLeakCount": { "type": "integer", "minimum": 0 },
+    "attacks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "probeId",
+          "scenarioId",
+          "dataItemId",
+          "attackFamily",
+          "cohortSize",
+          "releaseShape",
+          "targetRecordId",
+          "targetQuasiSignature",
+          "targetSensitiveValue",
+          "inferredSensitiveValue",
+          "attackSucceededAgainstNaiveRelease",
+          "existingDecision",
+          "mitigationStatus",
+          "evidence"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "probeId": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "dataItemId": { "type": "string" },
+          "attackFamily": {
+            "type": "string",
+            "enum": ["exact-differencing", "unique-bucket-linkage", "small-cell-reconstruction"]
+          },
+          "cohortSize": { "type": "integer", "minimum": 1 },
+          "releaseShape": { "type": "string" },
+          "targetRecordId": { "type": "string" },
+          "targetQuasiSignature": { "type": "string" },
+          "targetSensitiveValue": { "type": "integer", "enum": [0, 1] },
+          "inferredSensitiveValue": {
+            "anyOf": [
+              { "type": "integer", "enum": [0, 1] },
+              { "type": "null" }
+            ]
+          },
+          "attackSucceededAgainstNaiveRelease": { "type": "boolean" },
+          "existingDecision": {
+            "type": "string",
+            "enum": ["allow_aggregate", "require_dp_or_larger_cohort", "block_aggregate"]
+          },
+          "mitigationStatus": {
+            "type": "string",
+            "enum": ["blocked_by_existing_gate", "needs_release_control", "no_observed_leak"]
+          },
+          "evidence": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

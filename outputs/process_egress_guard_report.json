@@ -1,0 +1,156 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.12.0-process-egress-guard",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "enforcementLayer": "process_preload",
+  "guardedApis": [
+    "globalThis.fetch",
+    "node:http.request",
+    "node:http.get",
+    "node:https.request",
+    "node:https.get",
+    "node:net.connect",
+    "node:net.createConnection",
+    "node:tls.connect"
+  ],
+  "childExitCode": 0,
+  "auditEventCount": 9,
+  "probeCount": 9,
+  "passed": 9,
+  "failed": 0,
+  "probes": [
+    {
+      "id": "fetch-allowed-host",
+      "api": "fetch",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "host_allowed_by_process_guard"
+    },
+    {
+      "id": "fetch-untrusted-host",
+      "api": "fetch",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "id": "http-untrusted-host",
+      "api": "http.request",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "id": "http-get-untrusted-host",
+      "api": "http.get",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "id": "https-untrusted-host",
+      "api": "https.request",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "id": "https-get-untrusted-host",
+      "api": "https.get",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "id": "net-raw-socket-allowed-host",
+      "api": "net.connect",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "raw_socket_denied_even_when_host_is_allowed"
+    },
+    {
+      "id": "net-create-connection-allowed-host",
+      "api": "net.createConnection",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "raw_socket_denied_even_when_host_is_allowed"
+    },
+    {
+      "id": "tls-raw-socket-allowed-host",
+      "api": "tls.connect",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "raw_socket_denied_even_when_host_is_allowed"
+    }
+  ],
+  "auditEvents": [
+    {
+      "api": "fetch",
+      "host": "provider.example",
+      "allowed": true,
+      "reason": "host_allowed_by_process_guard"
+    },
+    {
+      "api": "fetch",
+      "host": "untrusted.example",
+      "allowed": false,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "api": "http.request",
+      "host": "untrusted.example",
+      "allowed": false,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "api": "http.get",
+      "host": "untrusted.example",
+      "allowed": false,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "api": "https.request",
+      "host": "untrusted.example",
+      "allowed": false,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "api": "https.get",
+      "host": "untrusted.example",
+      "allowed": false,
+      "reason": "host_not_in_process_allowlist"
+    },
+    {
+      "api": "net.connect",
+      "host": "provider.example",
+      "allowed": false,
+      "reason": "raw_socket_denied_even_when_host_is_allowed"
+    },
+    {
+      "api": "net.createConnection",
+      "host": "provider.example",
+      "allowed": false,
+      "reason": "raw_socket_denied_even_when_host_is_allowed"
+    },
+    {
+      "api": "tls.connect",
+      "host": "provider.example",
+      "allowed": false,
+      "reason": "raw_socket_denied_even_when_host_is_allowed"
+    }
+  ],
+  "limitations": [
+    "This is process-level preload instrumentation for Node runtimes, not a kernel firewall or macOS sandbox profile.",
+    "The guard blocks common Node egress primitives before untrusted benchmark code executes, but code can bypass it if it can spawn an unguarded process or load native networking outside the preload policy.",
+    "Allowed fetch calls return synthetic responses during pnpm eval so the benchmark remains offline and reproducible."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/attack-script.schema.json",
+  "title": "Personal AI Sovereignty Attack Script",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "tier", "family", "scenarioId", "turns", "expectedResistance"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^t[234]-[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "tier": { "enum": ["T2", "T3", "T4"] },
+    "family": { "type": "string", "minLength": 3 },
+    "scenarioId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "turns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["actor", "content", "insertAt"],
+        "properties": {
+          "actor": { "enum": ["counterparty", "tool_poison", "user_impersonation"] },
+          "content": { "type": "string", "minLength": 10 },
+          "insertAt": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "expectedResistance": { "type": "string", "minLength": 10 }
+  }
+}

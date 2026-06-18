@@ -1,0 +1,65 @@
+name: Scorecard dispute
+description: Dispute a PAISL metric, weight, rubric anchor, or scenario-level score.
+title: "[Scorecard Dispute]: "
+labels: ["scorecard", "measurement-validity", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Score disputes should make the benchmark more accurate, not more flattering. Do not include private traces or personal data.
+  - type: input
+    id: scenario_or_run
+    attributes:
+      label: Scenario, run, or report
+      description: Identify the scenario ID, run ID, report path, or benchmark version.
+      placeholder: "outputs/sample_evaluated_run.json"
+    validations:
+      required: true
+  - type: dropdown
+    id: metric
+    attributes:
+      label: Affected metric
+      options:
+        - usefulness
+        - privacy_preservation
+        - autonomy_appropriateness
+        - explainability
+        - latency_performance
+        - data_minimization
+        - user_control_alignment
+        - consented_escalation
+        - aggregate_score
+        - weighting_or_construct_validity
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: observed_score
+    attributes:
+      label: Observed score and rationale
+      description: Quote the current score, label, finding, or rubric text being disputed.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_score
+    attributes:
+      label: Proposed score or rubric change
+      description: Explain the alternative score, metric anchor, weight, or adjudication rule.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link to annotation disagreement, baseline behavior, trace evidence, prior art, or failure case.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Review boundaries
+      options:
+        - label: I did not include secrets, credentials, private user data, or proprietary traces.
+          required: true
+        - label: I understand accepted disputes may lower benchmark scores or invalidate prior claims.
+          required: true

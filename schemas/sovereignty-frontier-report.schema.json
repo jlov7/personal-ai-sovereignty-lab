@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/sovereignty-frontier-report.schema.json",
+  "title": "Personal AI Sovereignty-Usefulness Frontier Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "runCount",
+    "hermeticRunCount",
+    "liveModelRunCount",
+    "agentCount",
+    "tierDefinitions",
+    "rows",
+    "validityControls",
+    "liveEvidence",
+    "figurePath",
+    "methodology",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "const": "personal-ai-sovereignty-harness" },
+    "version": { "const": "0.24.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "runCount": { "type": "integer", "minimum": 1 },
+    "hermeticRunCount": { "type": "integer", "minimum": 1 },
+    "liveModelRunCount": { "type": "integer", "minimum": 0 },
+    "agentCount": { "type": "integer", "minimum": 1 },
+    "tierDefinitions": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tier", "description"],
+        "properties": {
+          "tier": { "enum": ["base_harness", "all"] },
+          "description": { "type": "string", "minLength": 10 }
+        }
+      }
+    },
+    "rows": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/frontierRow" }
+    },
+    "validityControls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "referencePolicySovereignty",
+        "referencePolicyUsefulness",
+        "negativeControlSovereignty",
+        "negativeControlUsefulness",
+        "negativeControlBelowLeftOfReference"
+      ],
+      "properties": {
+        "referencePolicySovereignty": { "type": "number", "minimum": 0, "maximum": 1 },
+        "referencePolicyUsefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "negativeControlSovereignty": { "type": "number", "minimum": 0, "maximum": 1 },
+        "negativeControlUsefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "negativeControlBelowLeftOfReference": { "type": "boolean" }
+      }
+    },
+    "liveEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["present", "sourcePaths", "note"],
+      "properties": {
+        "present": { "type": "boolean" },
+        "sourcePaths": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^outputs/harness_model_runs/.+\\.jsonl$" }
+        },
+        "note": { "type": "string", "minLength": 10 }
+      }
+    },
+    "figurePath": { "const": "outputs/figures/sovereignty_frontier.svg" },
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slr", "usefulness", "sovereignty", "overAskRate", "confidenceIntervals"],
+      "properties": {
+        "slr": { "type": "string", "minLength": 10 },
+        "usefulness": { "type": "string", "minLength": 10 },
+        "sovereignty": { "type": "string", "minLength": 10 },
+        "overAskRate": { "type": "string", "minLength": 10 },
+        "confidenceIntervals": { "type": "string", "minLength": 10 }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 10 } }
+  },
+  "$defs": {
+    "bootstrapInterval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["confidence", "resamples", "lower", "mean", "upper"],
+      "properties": {
+        "confidence": { "const": 0.95 },
+        "resamples": { "type": "integer", "minimum": 1 },
+        "lower": { "type": "number", "minimum": 0, "maximum": 1 },
+        "mean": { "type": "number", "minimum": 0, "maximum": 1 },
+        "upper": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "frontierRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agentId",
+        "tier",
+        "evidenceClass",
+        "runCount",
+        "leakRunCount",
+        "statusCounts",
+        "slr",
+        "sovereignty",
+        "usefulness",
+        "overAskRate",
+        "slrCi",
+        "usefulnessCi",
+        "sourcePaths"
+      ],
+      "properties": {
+        "agentId": { "type": "string" },
+        "tier": { "enum": ["base_harness", "all"] },
+        "evidenceClass": { "enum": ["hermetic_fixture", "live_model"] },
+        "runCount": { "type": "integer", "minimum": 1 },
+        "leakRunCount": { "type": "integer", "minimum": 0 },
+        "statusCounts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["completed", "limit_exceeded", "format_failure"],
+          "properties": {
+            "completed": { "type": "integer", "minimum": 0 },
+            "limit_exceeded": { "type": "integer", "minimum": 0 },
+            "format_failure": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "slr": { "type": "number", "minimum": 0, "maximum": 1 },
+        "sovereignty": { "type": "number", "minimum": 0, "maximum": 1 },
+        "usefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "overAskRate": { "type": "number", "minimum": 0 },
+        "slrCi": { "$ref": "#/$defs/bootstrapInterval" },
+        "usefulnessCi": { "$ref": "#/$defs/bootstrapInterval" },
+        "sourcePaths": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^outputs/harness_(runs|model_runs)/.+\\.jsonl$" }
+        }
+      }
+    }
+  }
+}

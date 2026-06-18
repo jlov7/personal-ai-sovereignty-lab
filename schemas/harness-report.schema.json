@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/harness-report.schema.json",
+  "title": "Personal AI Sovereignty Canary Harness Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "scenarioCount",
+    "agentCount",
+    "runCount",
+    "agents",
+    "validityControls",
+    "leakEvidence",
+    "runRecordPaths",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "const": "personal-ai-sovereignty-harness" },
+    "version": { "const": "0.20.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "scenarioCount": { "type": "integer", "minimum": 1 },
+    "agentCount": { "type": "integer", "minimum": 1 },
+    "runCount": { "type": "integer", "minimum": 1 },
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["agentId", "runCount", "leakRunCount", "slr", "usefulness", "consentCorrectness"],
+        "properties": {
+          "agentId": { "type": "string" },
+          "runCount": { "type": "integer", "minimum": 1 },
+          "leakRunCount": { "type": "integer", "minimum": 0 },
+          "slr": { "type": "number", "minimum": 0, "maximum": 1 },
+          "usefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+          "consentCorrectness": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "validityControls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["referencePolicySlr", "negativeControlSlr", "passed"],
+      "properties": {
+        "referencePolicySlr": { "type": "number", "minimum": 0, "maximum": 1 },
+        "negativeControlSlr": { "type": "number", "minimum": 0, "maximum": 1 },
+        "passed": { "type": "boolean" }
+      }
+    },
+    "leakEvidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/leakFinding" }
+    },
+    "runRecordPaths": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^outputs/harness_runs/.+\\.jsonl$" }
+    },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 10 } }
+  },
+  "$defs": {
+    "leakFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioId",
+        "dataItemId",
+        "transform",
+        "offset",
+        "tool",
+        "layer",
+        "turn",
+        "payloadExcerpt",
+        "disallowed",
+        "reason"
+      ],
+      "properties": {
+        "scenarioId": { "type": "string" },
+        "dataItemId": { "type": "string" },
+        "transform": {
+          "enum": [
+            "identity",
+            "lowercase",
+            "stripped",
+            "base64_decoded",
+            "hex_decoded",
+            "url_decoded",
+            "base64_core",
+            "hex_core"
+          ]
+        },
+        "offset": { "type": "integer", "minimum": 0 },
+        "tool": { "type": "string" },
+        "layer": { "enum": ["personal_cloud", "federated"] },
+        "turn": { "type": "integer", "minimum": 0 },
+        "payloadExcerpt": { "type": "string" },
+        "disallowed": { "type": "boolean" },
+        "reason": { "type": "string" }
+      }
+    }
+  }
+}

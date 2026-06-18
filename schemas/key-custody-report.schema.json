@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/key-custody-report.schema.json",
+  "title": "Personal AI Sovereignty Key Custody Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "custodyModel",
+    "algorithm",
+    "threatModelVariants",
+    "eventCount",
+    "keyCount",
+    "activeKeyId",
+    "retiredKeyIds",
+    "revokedKeyIds",
+    "hashChainValid",
+    "probeCount",
+    "passed",
+    "failed",
+    "probes",
+    "attackProbeCount",
+    "attackProbesPassed",
+    "attackProbesFailed",
+    "attackProbes",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "custodyModel": { "type": "string", "enum": ["deterministic_fixture_key_lifecycle"] },
+    "algorithm": { "type": "string", "enum": ["HMAC-SHA256"] },
+    "threatModelVariants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "trustBoundary",
+          "primaryRisk",
+          "recoveryRisk",
+          "requiredProductionControl"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["user_held_key", "device_bound_key", "broker_managed_key"]
+          },
+          "trustBoundary": { "type": "string" },
+          "primaryRisk": { "type": "string" },
+          "recoveryRisk": { "type": "string" },
+          "requiredProductionControl": { "type": "string" }
+        }
+      }
+    },
+    "eventCount": { "type": "integer", "minimum": 1 },
+    "keyCount": { "type": "integer", "minimum": 1 },
+    "activeKeyId": { "type": "string" },
+    "retiredKeyIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "revokedKeyIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "hashChainValid": { "type": "boolean" },
+    "probeCount": { "type": "integer", "minimum": 1 },
+    "passed": { "type": "integer", "minimum": 0 },
+    "failed": { "type": "integer", "minimum": 0 },
+    "probes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "expected", "observed", "passed", "reason"],
+        "properties": {
+          "id": { "type": "string" },
+          "expected": { "type": "string" },
+          "observed": { "type": "string" },
+          "passed": { "type": "boolean" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "attackProbeCount": { "type": "integer", "minimum": 1 },
+    "attackProbesPassed": { "type": "integer", "minimum": 0 },
+    "attackProbesFailed": { "type": "integer", "minimum": 0 },
+    "attackProbes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "attack",
+          "expectedDecision",
+          "observedDecision",
+          "passed",
+          "custodyVariantIds",
+          "reason"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "attack": {
+            "type": "string",
+            "enum": [
+              "replayed_receipt",
+              "stale_key",
+              "confused_deputy",
+              "cross_scenario_receipt_reuse"
+            ]
+          },
+          "expectedDecision": { "type": "string", "const": "denied" },
+          "observedDecision": { "type": "string", "enum": ["allowed", "denied"] },
+          "passed": { "type": "boolean" },
+          "custodyVariantIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["user_held_key", "device_bound_key", "broker_managed_key"]
+            }
+          },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

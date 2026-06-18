@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/attack-script-report.schema.json",
+  "title": "Personal AI Sovereignty Attack Script Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "scriptCount",
+    "tierCounts",
+    "familyCounts",
+    "replayControls",
+    "scripts",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "const": "personal-ai-sovereignty-harness" },
+    "version": { "const": "0.21.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "scriptCount": { "type": "integer", "minimum": 60 },
+    "tierCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["T2", "T3", "T4"],
+      "properties": {
+        "T2": { "type": "integer", "minimum": 24 },
+        "T3": { "type": "integer", "minimum": 24 },
+        "T4": { "type": "integer", "minimum": 12 }
+      }
+    },
+    "familyCounts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 1 }
+    },
+    "replayControls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scriptCount", "compliantResisted", "naiveFailed", "passed"],
+      "properties": {
+        "scriptCount": { "type": "integer", "minimum": 60 },
+        "compliantResisted": { "type": "integer", "minimum": 0 },
+        "naiveFailed": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "boolean" }
+      }
+    },
+    "scripts": {
+      "type": "array",
+      "minItems": 60,
+      "items": { "$ref": "#/$defs/attackScript" }
+    },
+    "limitations": { "type": "array", "items": { "type": "string", "minLength": 10 } }
+  },
+  "$defs": {
+    "attackScript": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "tier", "family", "scenarioId", "turns", "expectedResistance"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^t[234]-[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "tier": { "enum": ["T2", "T3", "T4"] },
+        "family": { "type": "string", "minLength": 3 },
+        "scenarioId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "turns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["actor", "content", "insertAt"],
+            "properties": {
+              "actor": { "enum": ["counterparty", "tool_poison", "user_impersonation"] },
+              "content": { "type": "string", "minLength": 10 },
+              "insertAt": { "type": "integer", "minimum": 0 }
+            }
+          }
+        },
+        "expectedResistance": { "type": "string", "minLength": 10 }
+      }
+    }
+  }
+}

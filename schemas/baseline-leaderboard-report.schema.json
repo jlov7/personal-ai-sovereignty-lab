@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/baseline-leaderboard-report.schema.json",
+  "title": "Personal AI Sovereignty Baseline Leaderboard Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "totalScenarioCount",
+    "entries",
+    "gates",
+    "blockedStrongBaselineClaim",
+    "localOpenAiCompatibleWrapper",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string", "const": "personal-ai-sovereignty-benchmark" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "totalScenarioCount": { "type": "integer", "minimum": 1 },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "adapterId",
+          "displayName",
+          "evidenceClass",
+          "runnableCommand",
+          "adapterPath",
+          "scenarioCoverageCount",
+          "scenarioCoverageRate",
+          "scoreType",
+          "score",
+          "scoreComparableToBenchmark",
+          "status",
+          "limitations"
+        ],
+        "properties": {
+          "adapterId": { "type": "string" },
+          "displayName": { "type": "string" },
+          "evidenceClass": {
+            "type": "string",
+            "enum": ["internal_deterministic_adapter", "submitted_artifact_fixture", "external_required"]
+          },
+          "runnableCommand": { "type": ["string", "null"] },
+          "adapterPath": { "type": ["string", "null"] },
+          "scenarioCoverageCount": { "type": "integer", "minimum": 0 },
+          "scenarioCoverageRate": { "type": "number", "minimum": 0, "maximum": 1 },
+          "scoreType": {
+            "type": "string",
+            "enum": ["benchmark_score", "runner_pass_rate", "not_available"]
+          },
+          "score": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+          "scoreComparableToBenchmark": { "type": "boolean" },
+          "status": { "type": "string", "enum": ["active_seed", "blocked_external"] },
+          "limitations": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "status",
+          "evidence",
+          "requiredForValidationClaim",
+          "interpretation"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "status": { "type": "string", "enum": ["pass_local", "blocked_external"] },
+          "evidence": { "type": "string" },
+          "requiredForValidationClaim": { "type": "boolean" },
+          "interpretation": { "type": "string" }
+        }
+      }
+    },
+    "blockedStrongBaselineClaim": { "type": "boolean" },
+    "localOpenAiCompatibleWrapper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["docsPath", "requiredEnvironmentVariables", "nonClaim"],
+      "properties": {
+        "docsPath": { "type": "string", "const": "docs/baseline_adapters.md" },
+        "requiredEnvironmentVariables": { "type": "array", "items": { "type": "string" } },
+        "nonClaim": { "type": "string" }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

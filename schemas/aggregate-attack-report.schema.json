@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/aggregate-attack-report.schema.json",
+  "title": "Personal AI Sovereignty Aggregate Attack Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "attackFamilies",
+    "attackCount",
+    "blockedByExistingGate",
+    "requiresNewControl",
+    "lowObservedRisk",
+    "highestEstimatedSuccessProbability",
+    "privacyAccounting",
+    "attackCards",
+    "attacks",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "attackFamilies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "membership-inference",
+          "attribute-inference",
+          "repeated-release-differencing",
+          "rare-cohort-join",
+          "threshold-attack",
+          "noisy-release-sensitivity"
+        ]
+      }
+    },
+    "attackCount": { "type": "integer", "minimum": 1 },
+    "blockedByExistingGate": { "type": "integer", "minimum": 0 },
+    "requiresNewControl": { "type": "integer", "minimum": 0 },
+    "lowObservedRisk": { "type": "integer", "minimum": 0 },
+    "highestEstimatedSuccessProbability": { "type": "number", "minimum": 0, "maximum": 1 },
+    "privacyAccounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "privacyBudgetUnit",
+        "formalEpsilonProvided",
+        "accountingInterpretation",
+        "requiredBeforeDpClaim"
+      ],
+      "properties": {
+        "label": { "type": "string", "const": "not_differential_privacy" },
+        "privacyBudgetUnit": { "type": "string", "const": "synthetic_risk_points" },
+        "formalEpsilonProvided": { "type": "boolean", "const": false },
+        "accountingInterpretation": { "type": "string" },
+        "requiredBeforeDpClaim": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "attackCards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scenarioId",
+          "dataItemIds",
+          "attackFamilies",
+          "highestEstimatedSuccessProbability",
+          "highestRiskDecision",
+          "nonDpLabel",
+          "reviewerQuestion"
+        ],
+        "properties": {
+          "scenarioId": { "type": "string" },
+          "dataItemIds": { "type": "array", "items": { "type": "string" } },
+          "attackFamilies": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "membership-inference",
+                "attribute-inference",
+                "repeated-release-differencing",
+                "rare-cohort-join",
+                "threshold-attack",
+                "noisy-release-sensitivity"
+              ]
+            }
+          },
+          "highestEstimatedSuccessProbability": { "type": "number", "minimum": 0, "maximum": 1 },
+          "highestRiskDecision": {
+            "type": "string",
+            "enum": ["blocked_by_existing_gate", "requires_new_control", "low_observed_risk"]
+          },
+          "nonDpLabel": { "type": "string", "const": "not_differential_privacy" },
+          "reviewerQuestion": { "type": "string" }
+        }
+      }
+    },
+    "attacks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "probeId",
+          "scenarioId",
+          "dataItemId",
+          "attackFamily",
+          "estimatedSuccessProbability",
+          "existingDecision",
+          "attackDecision",
+          "attackPreconditions",
+          "syntheticTransferLimits",
+          "requiredControls",
+          "evidence"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "probeId": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "dataItemId": { "type": "string" },
+          "attackFamily": {
+            "type": "string",
+            "enum": [
+              "membership-inference",
+              "attribute-inference",
+              "repeated-release-differencing",
+              "rare-cohort-join",
+              "threshold-attack",
+              "noisy-release-sensitivity"
+            ]
+          },
+          "estimatedSuccessProbability": { "type": "number", "minimum": 0, "maximum": 1 },
+          "existingDecision": {
+            "type": "string",
+            "enum": ["allow_aggregate", "require_dp_or_larger_cohort", "block_aggregate"]
+          },
+          "attackDecision": {
+            "type": "string",
+            "enum": ["blocked_by_existing_gate", "requires_new_control", "low_observed_risk"]
+          },
+          "attackPreconditions": { "type": "array", "items": { "type": "string" } },
+          "syntheticTransferLimits": { "type": "array", "items": { "type": "string" } },
+          "requiredControls": { "type": "array", "items": { "type": "string" } },
+          "evidence": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

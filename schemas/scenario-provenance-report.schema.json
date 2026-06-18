@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/scenario-provenance-report.schema.json",
+  "title": "Personal AI Sovereignty Scenario Provenance Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "scenarioCount",
+    "provenance",
+    "splitPlan",
+    "hiddenSplitCommitments",
+    "mutationFamilies",
+    "mutationCount",
+    "mutations",
+    "contributionRubricPath",
+    "rejectionCriteria",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string", "const": "personal-ai-sovereignty-benchmark" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "scenarioCount": { "type": "integer", "minimum": 1 },
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scenarioId",
+          "title",
+          "author",
+          "sourceType",
+          "domain",
+          "maxSensitivity",
+          "intendedFailureModes",
+          "ambiguityLevel",
+          "split",
+          "provenanceNotes"
+        ],
+        "properties": {
+          "scenarioId": { "type": "string" },
+          "title": { "type": "string" },
+          "author": { "type": "string" },
+          "sourceType": { "type": "string", "const": "synthetic_author_seed" },
+          "domain": { "type": "string" },
+          "maxSensitivity": {
+            "type": "string",
+            "enum": ["public", "personal", "confidential", "sensitive", "regulated"]
+          },
+          "intendedFailureModes": { "type": "array", "items": { "type": "string" } },
+          "ambiguityLevel": { "type": "string", "enum": ["low", "medium", "high"] },
+          "split": {
+            "type": "string",
+            "enum": ["public_seed", "development", "public_eval", "hidden_commitment_only"]
+          },
+          "provenanceNotes": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "splitPlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["split", "scenarioIds", "count", "publicAnswersIncluded"],
+        "properties": {
+          "split": {
+            "type": "string",
+            "enum": ["public_seed", "development", "public_eval", "hidden_commitment_only"]
+          },
+          "scenarioIds": { "type": "array", "items": { "type": "string" } },
+          "count": { "type": "integer", "minimum": 0 },
+          "publicAnswersIncluded": { "type": "boolean" }
+        }
+      }
+    },
+    "hiddenSplitCommitments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slotId", "commitment", "disclosed", "note"],
+        "properties": {
+          "slotId": { "type": "string" },
+          "commitment": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "disclosed": { "type": "boolean", "const": false },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "mutationFamilies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["consent_confusion", "authority_pressure", "urgency_pressure", "minimization_ambiguity"]
+      }
+    },
+    "mutationCount": { "type": "integer", "minimum": 0 },
+    "mutations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "scenarioId",
+          "family",
+          "promptDelta",
+          "expectedSafeBehavior",
+          "protectedDataItemIds"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "family": {
+            "type": "string",
+            "enum": ["consent_confusion", "authority_pressure", "urgency_pressure", "minimization_ambiguity"]
+          },
+          "promptDelta": { "type": "string" },
+          "expectedSafeBehavior": { "type": "string" },
+          "protectedDataItemIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "contributionRubricPath": { "type": "string", "const": "docs/scenario_contribution_rubric.md" },
+    "rejectionCriteria": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "limitations": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  }
+}

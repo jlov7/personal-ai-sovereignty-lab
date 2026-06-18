@@ -1,0 +1,395 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.22.0-scenario-generation",
+  "generatedAt": "2026-06-11T00:00:00.000Z",
+  "generatorVersion": "0.22.0-generator-v1",
+  "publicGenerationSeed": 20260611,
+  "duplicateThreshold": 0.85,
+  "curatedScenarioCount": 51,
+  "generatedScenarioCount": 400,
+  "publicScenarioCount": 451,
+  "grammarHash": "af94c6e8ae4b7a0ec83edf82ec731d5ffced08634cae07e2d479d49a4b874ec1",
+  "holdoutCommitment": {
+    "sha256OfSeedFile": "581f122ae8e9a4b70529b48db5e93424e24c8cef3a8ba3b687110e9d1dd2bf92",
+    "count": 128,
+    "generatorVersion": "0.22.0-generator-v1",
+    "grammarHash": "af94c6e8ae4b7a0ec83edf82ec731d5ffced08634cae07e2d479d49a4b874ec1"
+  },
+  "publicReferenceAggregate": {
+    "scenarioCount": 451,
+    "meanScore": 91.47,
+    "minScore": 81,
+    "maxScore": 93,
+    "weakestScenarioIds": [
+      "federated-writing-patterns",
+      "airline-refund-negotiation",
+      "bank-fee-reversal",
+      "calendar-scheduling-delegate",
+      "caregiver-handoff-note"
+    ]
+  },
+  "generatedScenarioSample": {
+    "seed": 220611,
+    "count": 50,
+    "scenarioIds": [
+      "generated-20260611-001-knowledge-work-strategy-lead-1",
+      "generated-20260611-003-knowledge-work-strategy-lead-3",
+      "generated-20260611-015-health-like-sensitive-patient-15",
+      "generated-20260611-036-customer-agent-negotiation-traveler-36",
+      "generated-20260611-048-household-admin-care-coordinator-48",
+      "generated-20260611-068-education-parent-69",
+      "generated-20260611-079-education-student-82",
+      "generated-20260611-084-household-admin-family-organizer-87",
+      "generated-20260611-086-knowledge-work-research-manager-89",
+      "generated-20260611-087-knowledge-work-operations-director-90",
+      "generated-20260611-088-health-like-sensitive-caregiver-91",
+      "generated-20260611-096-knowledge-work-operations-director-99",
+      "generated-20260611-099-health-like-sensitive-wellness-user-105",
+      "generated-20260611-102-finance-like-planning-tenant-109",
+      "generated-20260611-106-household-admin-renter-113",
+      "generated-20260611-124-career-job-seeker-134",
+      "generated-20260611-153-career-mentor-166",
+      "generated-20260611-156-household-admin-care-coordinator-172",
+      "generated-20260611-162-education-learning-coach-181",
+      "generated-20260611-163-finance-like-planning-household-planner-182",
+      "generated-20260611-173-customer-agent-negotiation-marketplace-buyer-195",
+      "generated-20260611-178-health-like-sensitive-caregiver-202",
+      "generated-20260611-184-household-admin-family-organizer-215",
+      "generated-20260611-201-knowledge-work-strategy-lead-241",
+      "generated-20260611-202-household-admin-homeowner-244",
+      "generated-20260611-204-career-job-seeker-246",
+      "generated-20260611-219-knowledge-work-operations-director-271",
+      "generated-20260611-221-finance-like-planning-tenant-273",
+      "generated-20260611-242-customer-agent-negotiation-traveler-313",
+      "generated-20260611-244-household-admin-family-organizer-317",
+      "generated-20260611-247-career-mentor-323",
+      "generated-20260611-251-finance-like-planning-freelancer-331",
+      "generated-20260611-260-knowledge-work-founder-346",
+      "generated-20260611-263-career-job-seeker-356",
+      "generated-20260611-271-customer-agent-negotiation-subscriber-375",
+      "generated-20260611-276-career-mentor-380",
+      "generated-20260611-277-education-tutor-382",
+      "generated-20260611-279-customer-agent-negotiation-traveler-384",
+      "generated-20260611-281-health-like-sensitive-caregiver-389",
+      "generated-20260611-287-knowledge-work-strategy-lead-401",
+      "generated-20260611-293-household-admin-care-coordinator-411",
+      "generated-20260611-310-finance-like-planning-tenant-439",
+      "generated-20260611-311-education-tutor-440",
+      "generated-20260611-321-career-employee-460",
+      "generated-20260611-330-knowledge-work-research-manager-476",
+      "generated-20260611-349-finance-like-planning-tenant-516",
+      "generated-20260611-350-customer-agent-negotiation-subscriber-520",
+      "generated-20260611-352-education-learning-coach-522",
+      "generated-20260611-364-knowledge-work-strategy-lead-564",
+      "generated-20260611-391-education-parent-610"
+    ],
+    "scorecards": [
+      {
+        "scenarioId": "generated-20260611-001-knowledge-work-strategy-lead-1",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-003-knowledge-work-strategy-lead-3",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-015-health-like-sensitive-patient-15",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-036-customer-agent-negotiation-traveler-36",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 5
+      },
+      {
+        "scenarioId": "generated-20260611-048-household-admin-care-coordinator-48",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-068-education-parent-69",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-079-education-student-82",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-084-household-admin-family-organizer-87",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-086-knowledge-work-research-manager-89",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-087-knowledge-work-operations-director-90",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-088-health-like-sensitive-caregiver-91",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-096-knowledge-work-operations-director-99",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-099-health-like-sensitive-wellness-user-105",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-102-finance-like-planning-tenant-109",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-106-household-admin-renter-113",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-124-career-job-seeker-134",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-153-career-mentor-166",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-156-household-admin-care-coordinator-172",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-162-education-learning-coach-181",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-163-finance-like-planning-household-planner-182",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-173-customer-agent-negotiation-marketplace-buyer-195",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 5
+      },
+      {
+        "scenarioId": "generated-20260611-178-health-like-sensitive-caregiver-202",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-184-household-admin-family-organizer-215",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-201-knowledge-work-strategy-lead-241",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-202-household-admin-homeowner-244",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-204-career-job-seeker-246",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-219-knowledge-work-operations-director-271",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-221-finance-like-planning-tenant-273",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-242-customer-agent-negotiation-traveler-313",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 5
+      },
+      {
+        "scenarioId": "generated-20260611-244-household-admin-family-organizer-317",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-247-career-mentor-323",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-251-finance-like-planning-freelancer-331",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-260-knowledge-work-founder-346",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-263-career-job-seeker-356",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-271-customer-agent-negotiation-subscriber-375",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-276-career-mentor-380",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-277-education-tutor-382",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-279-customer-agent-negotiation-traveler-384",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 5
+      },
+      {
+        "scenarioId": "generated-20260611-281-health-like-sensitive-caregiver-389",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-287-knowledge-work-strategy-lead-401",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-293-household-admin-care-coordinator-411",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-310-finance-like-planning-tenant-439",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-311-education-tutor-440",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-321-career-employee-460",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-330-knowledge-work-research-manager-476",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-349-finance-like-planning-tenant-516",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-350-customer-agent-negotiation-subscriber-520",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-352-education-learning-coach-522",
+        "totalScore": 92,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-364-knowledge-work-strategy-lead-564",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      },
+      {
+        "scenarioId": "generated-20260611-391-education-parent-610",
+        "totalScore": 91,
+        "grade": "excellent",
+        "failureCaseCount": 4
+      }
+    ]
+  },
+  "limitations": [
+    "Generated scenarios are synthetic fixtures produced from a public template grammar.",
+    "The public grammar can be studied or trained against; private holdout seeds reduce exact-case exposure, not distribution exposure.",
+    "The full-public aggregate is a deterministic reference-policy regression check, not a model ranking or external validation result.",
+    "Only aggregate full-set statistics and a seed-pinned generated sample are written here; curated per-scenario scorecards remain in the legacy reports."
+  ]
+}

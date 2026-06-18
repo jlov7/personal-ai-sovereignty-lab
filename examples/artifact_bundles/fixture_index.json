@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "paisl-artifact-bundle-fixture-index/v1",
+  "fixtures": [
+    {
+      "bundleDir": "examples/artifact_bundles/safe-minimized-agent",
+      "expectedStatus": "pass",
+      "reason": "Valid minimized-payload submitted artifact bundle."
+    },
+    {
+      "bundleDir": "examples/artifact_bundles/raw-upload-agent",
+      "expectedStatus": "pass",
+      "reason": "Valid negative-control bundle whose emitted trace must still be rejected by the broker."
+    },
+    {
+      "bundleDir": "examples/artifact_bundles/malformed-unexpected-write-agent",
+      "expectedStatus": "fail",
+      "reason": "Malformed fixture intentionally omits claim boundaries and writes an undeclared file."
+    }
+  ]
+}

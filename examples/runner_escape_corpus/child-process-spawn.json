@@ -1,0 +1,9 @@
+{
+  "id": "child-process-spawn",
+  "category": "process",
+  "attackDescription": "Spawn a child Node process from inside the runner profile.",
+  "expectedOutcome": "observe",
+  "mappedProbeId": "child-process-spawn-observed",
+  "control": "Docker profile applies --pids-limit 64 and no-new-privileges, but child processes are not fully denied.",
+  "limitation": "The current fixture runner observes child-process capability rather than blocking all subprocess creation. Production runners need syscall or broker policy."
+}

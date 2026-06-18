@@ -1,0 +1,9 @@
+{
+  "id": "env-leakage",
+  "category": "environment",
+  "attackDescription": "Read common host secret environment variables from inside the runner.",
+  "expectedOutcome": "deny",
+  "mappedProbeId": "env-secret-absent",
+  "control": "The runner passes a narrow environment instead of inheriting host API keys.",
+  "limitation": "This checks common variable names only. A production runner needs explicit environment allowlists and secret-scanning of outputs."
+}

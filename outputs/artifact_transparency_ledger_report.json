@@ -1,0 +1,46 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.18.0-artifact-transparency-ledger",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "ledgerId": "paisl-submitted-artifact-ledger-v1",
+  "algorithm": "sha256-json-stable-sort-v1",
+  "entryCount": 2,
+  "chainHead": "b9ab1e33f1f473790bc11abfd841a49250c9663cc9c7f8f50daff77d81a0d12f",
+  "entries": [
+    {
+      "index": 0,
+      "artifactId": "raw-upload-agent",
+      "receiptId": "submission-receipt-raw-upload-agent",
+      "previousHash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "receiptHash": "5413bff0eb6c2d377d3f726ceec3a432dcc04943387f53e8758b200b08c0707a",
+      "bundleManifestHash": "0f3ae8e436a95dfd6c0bb5e39dfbb2c14a44822bda34f9f89d599ee5415f0aa4",
+      "bundleVerificationStatus": "pass",
+      "entryHash": "fc049a2f30ed8a308acb73be4d281922a4ca9d34b0c045ebe33eb228b4a5bb4e"
+    },
+    {
+      "index": 1,
+      "artifactId": "safe-minimized-agent",
+      "receiptId": "submission-receipt-safe-minimized-agent",
+      "previousHash": "fc049a2f30ed8a308acb73be4d281922a4ca9d34b0c045ebe33eb228b4a5bb4e",
+      "receiptHash": "cc24ac0a0e7cdafcb929fefe15d1cf175c067678cfee312f00d2bbb586b81924",
+      "bundleManifestHash": "21e86d17f57a42293ef4ecb03b1df0ab2f970ce33e93fc8624d422dad8c4a700",
+      "bundleVerificationStatus": "pass",
+      "entryHash": "b9ab1e33f1f473790bc11abfd841a49250c9663cc9c7f8f50daff77d81a0d12f"
+    }
+  ],
+  "integrity": {
+    "valid": true,
+    "failures": []
+  },
+  "tamperProbe": {
+    "originalValid": true,
+    "tamperedValid": false,
+    "detected": true,
+    "tamperedField": "receiptHash"
+  },
+  "limitations": [
+    "The transparency ledger is deterministic fixture evidence, not a public append-only service.",
+    "Fixture receipts use public HMAC keys for reproducibility and are not identity-bound.",
+    "A production ledger would need independent hosting, monotonic append guarantees, reviewer identity, and revocation handling."
+  ]
+}

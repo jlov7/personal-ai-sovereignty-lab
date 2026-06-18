@@ -1,0 +1,308 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "1.0.0-rc.0-public-release-readiness",
+  "generatedAt": "2026-06-18T00:00:00.000Z",
+  "repository": {
+    "url": "https://github.com/jlov7/personal-ai-sovereignty-lab",
+    "visibility": "public-release-candidate",
+    "defaultBranch": "main",
+    "latestReleaseUrl": "https://github.com/jlov7/personal-ai-sovereignty-lab/releases",
+    "lastLiveVerifiedPushedHead": "release-tag-target-current-main",
+    "verifiedCiRunUrl": "https://github.com/jlov7/personal-ai-sovereignty-lab/actions/workflows/ci.yml",
+    "verifiedCiConclusion": "verify-current-main-before-release",
+    "verifiedOsConfinementRunUrl": "https://github.com/jlov7/personal-ai-sovereignty-lab/actions/workflows/os-confinement.yml",
+    "verifiedOsConfinementConclusion": "verify-current-main-before-release",
+    "verifiedContainerConfinementRunUrl": "https://github.com/jlov7/personal-ai-sovereignty-lab/actions/workflows/container-confinement.yml",
+    "verifiedContainerConfinementConclusion": "verify-current-main-before-release",
+    "verifiedSubmittedArtifactRunnerRunUrl": "https://github.com/jlov7/personal-ai-sovereignty-lab/actions/workflows/submitted-artifact-runner.yml",
+    "verifiedSubmittedArtifactRunnerConclusion": "verify-current-main-before-release",
+    "discussionsEnabled": true,
+    "topics": [
+      "agents",
+      "ai-evaluation",
+      "benchmark",
+      "governance",
+      "local-first",
+      "personal-ai",
+      "privacy"
+    ]
+  },
+  "publicReviewThreads": [
+    {
+      "track": "independent-annotation",
+      "title": "Validation Round 1: independent annotations for 1.0.0-rc.0",
+      "url": "https://github.com/jlov7/personal-ai-sovereignty-lab/issues/6",
+      "status": "open"
+    },
+    {
+      "track": "runtime-enforcement",
+      "title": "Runtime Enforcement: harden submitted artifact execution",
+      "url": "https://github.com/jlov7/personal-ai-sovereignty-lab/issues/8",
+      "status": "open"
+    },
+    {
+      "track": "hugging-face-publication",
+      "title": "Hugging Face publication: maintainer token required",
+      "url": "https://github.com/jlov7/personal-ai-sovereignty-lab/issues/7",
+      "status": "blocked-on-maintainer-token"
+    },
+    {
+      "track": "strong-baselines",
+      "title": "Baseline Challenge: submit strong personal-agent traces",
+      "url": "https://github.com/jlov7/personal-ai-sovereignty-lab/issues/9",
+      "status": "open"
+    },
+    {
+      "track": "aggregate-risk",
+      "title": "Aggregate Risk Challenge: attack safe-aggregate assumptions",
+      "url": "https://github.com/jlov7/personal-ai-sovereignty-lab/issues/10",
+      "status": "open"
+    }
+  ],
+  "publicReviewPacket": {
+    "issueTemplateCount": 8,
+    "requiredIssueTemplates": [
+      ".github/ISSUE_TEMPLATE/artifact_baseline_submission.yml",
+      ".github/ISSUE_TEMPLATE/annotation_submission.yml",
+      ".github/ISSUE_TEMPLATE/scenario_criticism.yml",
+      ".github/ISSUE_TEMPLATE/aggregate_attack_report.yml",
+      ".github/ISSUE_TEMPLATE/runner_escape_report.yml",
+      ".github/ISSUE_TEMPLATE/scorecard_dispute.yml"
+    ],
+    "claimEvidenceIndex": "docs/claim_evidence_index.md",
+    "falsificationCriteria": "docs/falsification_criteria.md",
+    "huggingFaceSpacePath": "huggingface/space/",
+    "credentialFreeSpaceTemplate": true,
+    "blockedOnExternalReview": true,
+    "interpretation": "The public review packet now gives outsiders structured ways to submit annotations, baselines, scenario criticism, aggregate attacks, runner escapes, and scorecard disputes. It improves reviewability but remains blocked on real outside participation."
+  },
+  "paperPackage": {
+    "paperDraft": "paper/personal_ai_sovereignty_benchmark.md",
+    "benchmarkReleaseCard": "outputs/benchmark_release_card.md",
+    "systemCard": "outputs/system_card.md",
+    "figuresAndTables": "outputs/figures_and_tables.md",
+    "reproducibilityChecklist": "docs/citation_and_reproducibility_checklist.md",
+    "generatedBy": "pnpm eval",
+    "blockedOnExternalScholarlyReview": true,
+    "interpretation": "The project now has a generated paper-style research packet tied to current artifacts. It improves communication and reproducibility, but it is not a peer-reviewed paper, preprint acceptance, or external scholarly validation."
+  },
+  "externalValidationGate": {
+    "report": "outputs/external_validation_gate.md",
+    "status": "blocked_external",
+    "interpretation": "The project has validation infrastructure, but it is not validation-ready while only seed annotation, seed baseline, and synthetic attack evidence exists."
+  },
+  "aggregateAttack": {
+    "report": "outputs/aggregate_attack_report.md",
+    "attackFamilyCount": 6,
+    "attackCount": 354,
+    "attackCardCount": 46,
+    "highestEstimatedSuccessProbability": 0.94,
+    "privacyAccountingLabel": "not_differential_privacy",
+    "formalEpsilonProvided": false,
+    "interpretation": "Aggregate-release claims now face six named synthetic attack families with preconditions, required controls, scenario attack cards, and explicit non-DP accounting labels. This improves falsifiability but is still not formal differential privacy or an empirical real-data attack."
+  },
+  "executableAggregateAttack": {
+    "report": "outputs/executable_aggregate_attack_report.md",
+    "attackCount": 177,
+    "naiveSuccessCount": 173,
+    "blockedByExistingGateCount": 63,
+    "needsReleaseControlCount": 110,
+    "noObservedLeakCount": 4,
+    "interpretation": "Aggregate privacy claims are now tested by executable deterministic fixtures, but this is still not an attack against realistic consented data or a formal privacy guarantee."
+  },
+  "externalTraceEvaluation": {
+    "report": "outputs/external_trace_evaluation_report.md",
+    "traceCount": 2,
+    "averageScore": 75,
+    "privacyBoundaryViolations": 2,
+    "consentViolations": 0,
+    "aggregateControlViolations": 0,
+    "unknownDataItemReferences": 0,
+    "interpretation": "Submitted systems now have an action-level trace contract and evaluator with a seed trace plus raw-upload negative control, but checked-in traces are still not independent evidence."
+  },
+  "baselineLeaderboard": {
+    "report": "outputs/baseline_leaderboard_report.md",
+    "entryCount": 6,
+    "runnableLocalAdapterCount": 5,
+    "submittedArtifactFixtureCoverage": "1/51",
+    "blockedStrongBaselineClaim": true,
+    "openAiCompatibleWrapperDocs": "docs/baseline_adapters.md",
+    "interpretation": "The repo now lists runnable deterministic and submitted-artifact fixture adapters while keeping a strong external personal-agent baseline gate blocked. This makes the baseline gap operational instead of rhetorical."
+  },
+  "brokerAttestations": {
+    "report": "outputs/broker_attestation_report.md",
+    "traceCount": 2,
+    "signedAttestationCount": 2,
+    "verifiedAttestationCount": 2,
+    "brokerExecutedActionCount": 2,
+    "brokerBlockedActionCount": 2,
+    "claimedCompletedButBlockedCount": 1,
+    "submittedBlockedConfirmedCount": 1,
+    "interpretation": "Broker replay now signs deterministic execution/block decisions and catches a raw-upload completed-action claim, but this is fixture-key local evidence rather than production broker execution or independent validation."
+  },
+  "sandboxedTraceRunner": {
+    "report": "outputs/sandboxed_trace_runner_report.md",
+    "traceCount": 2,
+    "signedExecutionAttestationCount": 2,
+    "verifiedExecutionAttestationCount": 2,
+    "passedExecutionAttestationCount": 2,
+    "childExecutedActionCount": 2,
+    "skippedByBrokerCount": 2,
+    "escapeAttemptCount": 4,
+    "guardDeniedEscapeCount": 4,
+    "interpretation": "Broker-approved trace actions now execute in a guarded child process and direct untrusted Fetch/raw socket escape attempts are denied, but this is still a fixture runner rather than production sandboxing or independent validation."
+  },
+  "submittedArtifactRunner": {
+    "report": "outputs/submitted_artifact_runner_report.md",
+    "workflow": ".github/workflows/submitted-artifact-runner.yml",
+    "submissionCount": 2,
+    "traceEmissionCount": 2,
+    "signedReceiptCount": 2,
+    "verifiedReceiptCount": 2,
+    "passedSubmissionCount": 2,
+    "brokerExecutedActionCount": 2,
+    "brokerBlockedActionCount": 2,
+    "sandboxedExecutionPassedCount": 2,
+    "dockerProfileStatus": "passed",
+    "dockerControlProbeCount": 6,
+    "dockerPassedControlProbeCount": 6,
+    "interpretation": "Fixture submitted artifacts now execute as source programs, emit traces, bind source digests to signed receipts, preserve broker/sandbox attestations, and pass a Docker hardened-profile probe; this is still author-fixture evidence rather than independent production-agent validation."
+  },
+  "artifactBundleStandard": {
+    "manifestSchema": "schemas/artifact-bundle.schema.json",
+    "verificationReport": "outputs/artifact_bundle_verification_report.md",
+    "issueTemplate": ".github/ISSUE_TEMPLATE/artifact_baseline_submission.yml",
+    "runnerEscapeTemplate": ".github/ISSUE_TEMPLATE/runner_escape_report.yml",
+    "bundleCount": 3,
+    "passedBundleCount": 2,
+    "rejectedBundleCount": 1,
+    "expectedFailureCount": 1,
+    "expectationMatchCount": 3,
+    "interpretation": "The submitted-artifact path now has a standalone bundle standard with pinned runtime metadata, source digests, scenario coverage, expected outputs, claim boundaries, undeclared-write detection, malformed fixture rejection, and public intake templates. This makes future baselines easier to review but remains seed evidence until independent systems submit bundles."
+  },
+  "artifactTransparencyLedger": {
+    "report": "outputs/artifact_transparency_ledger_report.md",
+    "entryCount": 2,
+    "chainHead": "6e45706294818c28cecbb0e69cabc635d66e28cfbfd7dc3aedeee7eb6494a402",
+    "integrityValid": true,
+    "tamperDetected": true,
+    "interpretation": "Submitted-artifact receipts are now chained to bundle manifests with deterministic previous-hash and entry-hash binding plus a receipt-hash tamper probe. This is a local ledger scaffold, not a public append-only transparency service."
+  },
+  "runnerHardening": {
+    "report": "outputs/runner_hardening_report.md",
+    "profile": "docker_network_none_readonly_no_new_privileges_resource_limited_v1",
+    "escapeCorpusCount": 7,
+    "probeCount": 9,
+    "passedProbeCount": 8,
+    "deniedProbeCount": 6,
+    "observedLimitationCount": 1,
+    "seccompAppArmorStatus": "documented_not_enforced_by_fixture",
+    "interpretation": "The runner now has a named Docker hardening contract and escape corpus for package-install, child-process, filesystem, environment, DNS, IPC, and resource-limit assumptions. The report deliberately labels child-process spawning and custom seccomp/AppArmor as limitations rather than claiming production sandboxing."
+  },
+  "measurementValidity": {
+    "report": "outputs/measurement_validity_report.md",
+    "labelPacket": "outputs/label_calibration_packet.md",
+    "calibrationMetricCount": 8,
+    "disagreementTemplateCount": 5,
+    "syntheticAgreementCheckCount": 2,
+    "weightProfileCount": 6,
+    "scenarioTagCount": 51,
+    "interpretation": "The scorecard now has a reviewer-facing calibration packet, disagreement/adjudication templates, synthetic agreement sanity checks, metric-weight ablations, and scenario difficulty/ambiguity tags. This improves construct validity locally but does not replace independent labels."
+  },
+  "scenarioProvenance": {
+    "report": "outputs/scenario_provenance_report.md",
+    "rubric": "docs/scenario_contribution_rubric.md",
+    "scenarioCount": 51,
+    "mutationFamilyCount": 4,
+    "mutationCount": 204,
+    "hiddenCommitmentCount": 10,
+    "publicAnswersInHiddenSplit": false,
+    "interpretation": "The scenario library now has explicit author/source metadata, split assignment, hidden commitment slots without public hidden answers, rejection criteria, and generated mutation cases. This improves scenario governance locally but does not replace independent scenario authorship or private held-out maintenance."
+  },
+  "processEgressGuard": {
+    "report": "outputs/process_egress_guard_report.md",
+    "enforcementLayer": "process_preload",
+    "guardedApis": 8,
+    "probeCount": 9,
+    "passed": 9,
+    "failed": 0,
+    "auditEventCount": 9,
+    "interpretation": "The benchmark now has a child-process preload guard for common Node egress primitives, but this remains a bypassable runtime experiment rather than OS/network confinement."
+  },
+  "signedConsent": {
+    "report": "outputs/signed_consent_report.md",
+    "signatureAlgorithm": "HMAC-SHA256",
+    "probeCount": 4,
+    "passed": 4,
+    "failed": 0,
+    "interpretation": "Consent receipts now have keyed integrity probes, but the key is a deterministic fixture and not production custody or legal non-repudiation."
+  },
+  "keyCustody": {
+    "report": "outputs/key_custody_report.md",
+    "custodyModel": "deterministic_fixture_key_lifecycle",
+    "activeKeyId": "paisl-consent-fixture-v2",
+    "threatModelVariantCount": 3,
+    "probeCount": 10,
+    "passed": 10,
+    "failed": 0,
+    "attackProbeCount": 5,
+    "attackProbesPassed": 5,
+    "hashChainValid": true,
+    "interpretation": "The benchmark now tests rotation, retirement, revocation, historical verification, envelope tampering, event-log tampering, key-status tampering, user-held/device/broker custody variants, and replay/stale-key/confused-deputy/cross-scenario receipt attacks, while still using public deterministic fixture keys rather than production custody."
+  },
+  "aggregatePrivacyChallenge": {
+    "report": "outputs/aggregate_privacy_challenge_report.md",
+    "challengeCount": 59,
+    "naiveSuccessCount": 57,
+    "controlledSuccessCount": 2,
+    "averageConfidenceDrop": 0.817,
+    "interpretation": "Aggregate controls now face a before/after target-inference challenge over synthetic microdata, but this remains synthetic and not a real-data privacy proof."
+  },
+  "osNetworkConfinement": {
+    "report": "outputs/os_network_confinement_probe.md",
+    "workflow": ".github/workflows/os-confinement.yml",
+    "confinementLayer": "macos_sandbox_exec",
+    "status": "passed",
+    "positiveControlPassed": true,
+    "sandboxDeniedNetwork": true,
+    "interpretation": "A public macOS workflow verifies OS-level network denial for the probed child process; this is still a probe rather than a production broker."
+  },
+  "containerNetworkConfinement": {
+    "report": "outputs/container_network_confinement_probe.md",
+    "workflow": ".github/workflows/container-confinement.yml",
+    "confinementLayer": "docker_network_none",
+    "status": "passed",
+    "positiveControlPassed": true,
+    "containerDeniedNetwork": true,
+    "interpretation": "A public Ubuntu workflow verifies Docker network-none denial for the probed host-egress path with a normal-network positive control; this does not cover filesystem, IPC, package installation, or production broker integration."
+  },
+  "huggingFace": {
+    "status": "blocked_missing_auth",
+    "reason": "The local release environment has no Hugging Face CLI login; publication should not be performed under an unrelated connector account.",
+    "localPackage": "huggingface/"
+  },
+  "remainingExternalBlockers": [
+    "Independent reviewers have not yet annotated overlapping cases.",
+    "No strong production tool-agent baseline has been submitted.",
+    "The baseline leaderboard remains blocked for validation claims until an independent production-grade or frontier-adjacent personal-agent baseline submits trace-bearing artifacts.",
+    "Measurement calibration is still author-defined until independent reviewers label overlapping cases.",
+    "All current scenarios are synthetic author-seed scenarios; independent scenario authorship and hidden split maintenance are still missing.",
+    "Aggregate-risk, aggregate-attack, synthetic cohort, executable aggregate, and aggregate privacy challenge probes are synthetic and have not been attacked empirically against consented real data or converted into formal differential privacy accounting.",
+    "Runtime enforcement now includes application-level fetch mediation, a Node child-process preload guard, broker replay attestations, sandboxed runner attestations, submitted-artifact runner receipts, artifact-bundle verification, runner escape-corpus probes, a submitted-artifact Docker profile probe, a macOS sandbox probe, and a Docker network-none probe, but not production broker execution.",
+    "Signed consent, custody lifecycle, and custody attack probes use deterministic fixture keys, not production key custody.",
+    "Hugging Face publication requires maintainer credentials."
+  ],
+  "releaseEvidenceCorrection": {
+    "issue": "Release evidence must remain public-state accurate without embedding self-referential run IDs that become stale after report edits.",
+    "resolution": "The repository is a public release candidate. The GitHub Release tag target should be the checked-in 1.0.0-rc.0 release head after CI, OS-confinement, container-confinement, and submitted-artifact-runner workflows pass, and the local release gate should include pnpm install --frozen-lockfile, pnpm verify, pnpm audit --audit-level low, TruffleHog filesystem and git-history scans, tracked-file exposure scans, and git diff --check. Release DOI metadata is finalized by the GitHub Release and Zenodo records rather than by embedding self-referential run IDs in this file.",
+    "finalReleaseBodyPreserves": [
+      "Public release-candidate repository",
+      "Current-main CI verification required before GitHub Release",
+      "Current-main OS confinement verification required before GitHub Release",
+      "Current-main container confinement verification required before GitHub Release",
+      "Current-main submitted artifact runner verification required before GitHub Release",
+      "Release metadata finalized by GitHub Release and Zenodo records",
+      "1.0.0-rc.0 tag/release target is the checked-in release head"
+    ]
+  }
+}

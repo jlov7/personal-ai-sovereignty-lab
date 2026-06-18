@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/scoring.schema.json",
+  "title": "Personal AI Sovereignty Evaluation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["runId", "scenarioId", "totalScore", "grade", "metrics", "failureCases", "improvementNotes"],
+  "properties": {
+    "runId": {
+      "type": "string",
+      "minLength": 8
+    },
+    "scenarioId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "totalScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "grade": {
+      "enum": ["excellent", "strong", "mixed", "weak"]
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 7,
+      "items": {
+        "$ref": "#/$defs/metric"
+      }
+    },
+    "failureCases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "improvementNotes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "score", "weight", "rationale"],
+      "properties": {
+        "id": {
+          "enum": [
+            "usefulness",
+            "privacy_preservation",
+            "autonomy_appropriateness",
+            "explainability",
+            "latency",
+            "data_minimization",
+            "user_control_alignment",
+            "consented_escalation"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 3
+        },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "weight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 12
+        }
+      }
+    }
+  }
+}

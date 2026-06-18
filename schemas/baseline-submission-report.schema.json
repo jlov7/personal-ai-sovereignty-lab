@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/baseline-submission-report.schema.json",
+  "title": "Personal AI Sovereignty Baseline Submission Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "sourcePaths",
+    "submissionCount",
+    "externalSubmissionCount",
+    "productionSubmissionCount",
+    "systemTypeCounts",
+    "scenarioCoverage",
+    "submissions",
+    "readinessChecks",
+    "blockers",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sourcePaths": { "type": "array", "items": { "type": "string" } },
+    "submissionCount": { "type": "integer", "minimum": 0 },
+    "externalSubmissionCount": { "type": "integer", "minimum": 0 },
+    "productionSubmissionCount": { "type": "integer", "minimum": 0 },
+    "systemTypeCounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["systemType", "count"],
+        "properties": {
+          "systemType": { "type": "string" },
+          "count": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "scenarioCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["coveredScenarioCount", "totalScenarioCount", "coveredScenarioRate"],
+      "properties": {
+        "coveredScenarioCount": { "type": "integer", "minimum": 0 },
+        "totalScenarioCount": { "type": "integer", "minimum": 1 },
+        "coveredScenarioRate": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "submissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "submissionId",
+          "systemName",
+          "systemType",
+          "independence",
+          "scenarioCount",
+          "averageScore",
+          "privacyBoundaryViolations",
+          "consentViolations",
+          "toolCalls",
+          "claimBoundaries"
+        ],
+        "properties": {
+          "submissionId": { "type": "string" },
+          "systemName": { "type": "string" },
+          "systemType": { "type": "string" },
+          "independence": { "type": "string" },
+          "scenarioCount": { "type": "integer", "minimum": 1 },
+          "averageScore": { "type": "number", "minimum": 0, "maximum": 100 },
+          "privacyBoundaryViolations": { "type": "integer", "minimum": 0 },
+          "consentViolations": { "type": "integer", "minimum": 0 },
+          "toolCalls": { "type": "integer", "minimum": 0 },
+          "claimBoundaries": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "readinessChecks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "result", "evidence", "interpretation"],
+        "properties": {
+          "id": { "type": "string" },
+          "result": { "type": "string", "enum": ["pass", "blocked_external"] },
+          "evidence": { "type": "string" },
+          "interpretation": { "type": "string" }
+        }
+      }
+    },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

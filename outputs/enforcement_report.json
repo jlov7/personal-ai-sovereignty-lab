@@ -1,0 +1,2453 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.5.0-enforcement-simulation",
+  "generatedAt": "2026-05-22T00:00:00.000Z",
+  "scenarioCount": 51,
+  "probeCount": 174,
+  "passed": 174,
+  "failed": 0,
+  "passRate": 1,
+  "probes": [
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "board-brief-local",
+      "dataItemId": "raw-meeting-notes",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "board-brief-local",
+      "dataItemId": "sanitized-decision-list",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "finance-cashflow",
+      "dataItemId": "bank-transactions",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "finance-cashflow",
+      "dataItemId": "expense-buckets",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "symptom-journal",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "doctor-question-list",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "doctor-question-list",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "doctor-question-list",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "student-tutor",
+      "dataItemId": "quiz-attempts",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "student-tutor",
+      "dataItemId": "skill-gap-aggregate",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "subscription-negotiation",
+      "dataItemId": "subscription-history",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "subscription-negotiation",
+      "dataItemId": "subscription-history",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "subscription-negotiation",
+      "dataItemId": "subscription-history",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "subscription-negotiation",
+      "dataItemId": "subscription-history",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "career-recruiter-screen",
+      "dataItemId": "private-comp-floor",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "career-recruiter-screen",
+      "dataItemId": "public-resume-summary",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "household-insurance-claim",
+      "dataItemId": "claim-photos",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "household-insurance-claim",
+      "dataItemId": "redacted-claim-summary",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "household-insurance-claim",
+      "dataItemId": "redacted-claim-summary",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "household-insurance-claim",
+      "dataItemId": "redacted-claim-summary",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "federated-writing-patterns",
+      "dataItemId": "raw-drafts",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "federated-writing-patterns",
+      "dataItemId": "revision-pattern-aggregate",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:federated",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "personal-cloud-memory-sync",
+      "dataItemId": "raw-personal-memory",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "personal-cloud-memory-sync",
+      "dataItemId": "memory-capability-index",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "personal-cloud-memory-sync",
+      "dataItemId": "memory-capability-index",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "personal-cloud-memory-sync",
+      "dataItemId": "memory-capability-index",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "benefits-eligibility-helper",
+      "dataItemId": "household-dossier",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "benefits-eligibility-helper",
+      "dataItemId": "eligibility-question-set",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:public",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "raw-calendar",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "availability-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "availability-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "availability-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "medical-history",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "appeal-minimum-facts",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "appeal-minimum-facts",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "appeal-minimum-facts",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:sensitive",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "data-rights-request",
+      "dataItemId": "private-deletion-reason",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "data-rights-request",
+      "dataItemId": "identity-verification-minimum",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "data-rights-request",
+      "dataItemId": "identity-verification-minimum",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "data-rights-request",
+      "dataItemId": "identity-verification-minimum",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "mortgage-refinance-comparison",
+      "dataItemId": "mortgage-refinance-comparison-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "mortgage-refinance-comparison",
+      "dataItemId": "mortgage-refinance-comparison-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "mortgage-refinance-comparison",
+      "dataItemId": "mortgage-refinance-comparison-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "mortgage-refinance-comparison",
+      "dataItemId": "mortgage-refinance-comparison-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "therapy-journal-summary",
+      "dataItemId": "therapy-journal-summary-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "therapy-journal-summary",
+      "dataItemId": "therapy-journal-summary-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "school-iep-prep",
+      "dataItemId": "school-iep-prep-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "school-iep-prep",
+      "dataItemId": "school-iep-prep-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "school-iep-prep",
+      "dataItemId": "school-iep-prep-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "school-iep-prep",
+      "dataItemId": "school-iep-prep-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "college-application-coach",
+      "dataItemId": "college-application-coach-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "college-application-coach",
+      "dataItemId": "college-application-coach-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "college-application-coach",
+      "dataItemId": "college-application-coach-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "college-application-coach",
+      "dataItemId": "college-application-coach-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "language-learning-memory",
+      "dataItemId": "language-learning-memory-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "language-learning-memory",
+      "dataItemId": "language-learning-memory-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "language-learning-memory",
+      "dataItemId": "language-learning-memory-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "language-learning-memory",
+      "dataItemId": "language-learning-memory-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "salary-negotiation-counteroffer",
+      "dataItemId": "salary-negotiation-counteroffer-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "salary-negotiation-counteroffer",
+      "dataItemId": "salary-negotiation-counteroffer-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "salary-negotiation-counteroffer",
+      "dataItemId": "salary-negotiation-counteroffer-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "salary-negotiation-counteroffer",
+      "dataItemId": "salary-negotiation-counteroffer-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "performance-review-prep",
+      "dataItemId": "performance-review-prep-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "performance-review-prep",
+      "dataItemId": "performance-review-prep-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "job-search-prioritizer",
+      "dataItemId": "job-search-prioritizer-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "job-search-prioritizer",
+      "dataItemId": "job-search-prioritizer-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "job-search-prioritizer",
+      "dataItemId": "job-search-prioritizer-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "job-search-prioritizer",
+      "dataItemId": "job-search-prioritizer-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "vendor-contract-review",
+      "dataItemId": "vendor-contract-review-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "vendor-contract-review",
+      "dataItemId": "vendor-contract-review-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "vendor-contract-review",
+      "dataItemId": "vendor-contract-review-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "vendor-contract-review",
+      "dataItemId": "vendor-contract-review-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "board-risk-register",
+      "dataItemId": "board-risk-register-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "board-risk-register",
+      "dataItemId": "board-risk-register-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "board-risk-register",
+      "dataItemId": "board-risk-register-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "board-risk-register",
+      "dataItemId": "board-risk-register-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "private-research-synthesis",
+      "dataItemId": "private-research-synthesis-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "private-research-synthesis",
+      "dataItemId": "private-research-synthesis-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "legal-intake-summary",
+      "dataItemId": "legal-intake-summary-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "legal-intake-summary",
+      "dataItemId": "legal-intake-summary-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "legal-intake-summary",
+      "dataItemId": "legal-intake-summary-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "legal-intake-summary",
+      "dataItemId": "legal-intake-summary-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "childcare-schedule-negotiation",
+      "dataItemId": "childcare-schedule-negotiation-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "childcare-schedule-negotiation",
+      "dataItemId": "childcare-schedule-negotiation-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "childcare-schedule-negotiation",
+      "dataItemId": "childcare-schedule-negotiation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "childcare-schedule-negotiation",
+      "dataItemId": "childcare-schedule-negotiation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "eldercare-benefits-plan",
+      "dataItemId": "eldercare-benefits-plan-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "eldercare-benefits-plan",
+      "dataItemId": "eldercare-benefits-plan-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "tenant-repair-request",
+      "dataItemId": "tenant-repair-request-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "tenant-repair-request",
+      "dataItemId": "tenant-repair-request-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "tenant-repair-request",
+      "dataItemId": "tenant-repair-request-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "tenant-repair-request",
+      "dataItemId": "tenant-repair-request-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "medical-bill-dispute",
+      "dataItemId": "medical-bill-dispute-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "medical-bill-dispute",
+      "dataItemId": "medical-bill-dispute-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "medical-bill-dispute",
+      "dataItemId": "medical-bill-dispute-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "medical-bill-dispute",
+      "dataItemId": "medical-bill-dispute-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "airline-refund-negotiation",
+      "dataItemId": "airline-refund-negotiation-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "airline-refund-negotiation",
+      "dataItemId": "airline-refund-negotiation-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "airline-refund-negotiation",
+      "dataItemId": "airline-refund-negotiation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "airline-refund-negotiation",
+      "dataItemId": "airline-refund-negotiation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "bank-fee-reversal",
+      "dataItemId": "bank-fee-reversal-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "bank-fee-reversal",
+      "dataItemId": "bank-fee-reversal-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "bank-fee-reversal",
+      "dataItemId": "bank-fee-reversal-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "bank-fee-reversal",
+      "dataItemId": "bank-fee-reversal-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "family-calendar-delegation",
+      "dataItemId": "family-calendar-delegation-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "family-calendar-delegation",
+      "dataItemId": "family-calendar-delegation-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "family-calendar-delegation",
+      "dataItemId": "family-calendar-delegation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "family-calendar-delegation",
+      "dataItemId": "family-calendar-delegation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "insurance-renewal-comparison",
+      "dataItemId": "insurance-renewal-comparison-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "insurance-renewal-comparison",
+      "dataItemId": "insurance-renewal-comparison-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "insurance-renewal-comparison",
+      "dataItemId": "insurance-renewal-comparison-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "insurance-renewal-comparison",
+      "dataItemId": "insurance-renewal-comparison-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "chronic-condition-tracker",
+      "dataItemId": "chronic-condition-tracker-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "chronic-condition-tracker",
+      "dataItemId": "chronic-condition-tracker-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "employee-benefits-selection",
+      "dataItemId": "employee-benefits-selection-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "employee-benefits-selection",
+      "dataItemId": "employee-benefits-selection-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "contractor-bid-negotiation",
+      "dataItemId": "contractor-bid-negotiation-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "contractor-bid-negotiation",
+      "dataItemId": "contractor-bid-negotiation-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "contractor-bid-negotiation",
+      "dataItemId": "contractor-bid-negotiation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "contractor-bid-negotiation",
+      "dataItemId": "contractor-bid-negotiation-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "grant-application-draft",
+      "dataItemId": "grant-application-draft-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "grant-application-draft",
+      "dataItemId": "grant-application-draft-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "grant-application-draft",
+      "dataItemId": "grant-application-draft-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "grant-application-draft",
+      "dataItemId": "grant-application-draft-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "caregiver-handoff-note",
+      "dataItemId": "caregiver-handoff-note-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "caregiver-handoff-note",
+      "dataItemId": "caregiver-handoff-note-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "caregiver-handoff-note",
+      "dataItemId": "caregiver-handoff-note-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "caregiver-handoff-note",
+      "dataItemId": "caregiver-handoff-note-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "student-scholarship-appeal",
+      "dataItemId": "student-scholarship-appeal-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "student-scholarship-appeal",
+      "dataItemId": "student-scholarship-appeal-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "student-scholarship-appeal",
+      "dataItemId": "student-scholarship-appeal-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "student-scholarship-appeal",
+      "dataItemId": "student-scholarship-appeal-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "conference-networking-brief",
+      "dataItemId": "conference-networking-brief-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "conference-networking-brief",
+      "dataItemId": "conference-networking-brief-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "public-comment-draft",
+      "dataItemId": "public-comment-draft-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "public-comment-draft",
+      "dataItemId": "public-comment-draft-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "public-comment-draft",
+      "dataItemId": "public-comment-draft-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "public-comment-draft",
+      "dataItemId": "public-comment-draft-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "small-business-cashflow",
+      "dataItemId": "small-business-cashflow-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "small-business-cashflow",
+      "dataItemId": "small-business-cashflow-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "small-business-cashflow",
+      "dataItemId": "small-business-cashflow-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "small-business-cashflow",
+      "dataItemId": "small-business-cashflow-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "membership-cancellation-agent",
+      "dataItemId": "membership-cancellation-agent-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "membership-cancellation-agent",
+      "dataItemId": "membership-cancellation-agent-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "membership-cancellation-agent",
+      "dataItemId": "membership-cancellation-agent-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "membership-cancellation-agent",
+      "dataItemId": "membership-cancellation-agent-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "immigration-form-prep",
+      "dataItemId": "immigration-form-prep-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "immigration-form-prep",
+      "dataItemId": "immigration-form-prep-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "grief-log-reflection",
+      "dataItemId": "grief-log-reflection-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:regulated",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "safe-aggregate-egress-without-receipt",
+      "scenarioId": "grief-log-reflection",
+      "dataItemId": "grief-log-reflection-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Non-identifying aggregate is allowed for the requested layer.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "minimization:aggregate"
+      ]
+    },
+    {
+      "id": "raw-protected-egress-blocked",
+      "scenarioId": "team-reorg-brief",
+      "dataItemId": "team-reorg-brief-raw-context",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:personal_cloud",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "minimized-egress-with-valid-receipt",
+      "scenarioId": "team-reorg-brief",
+      "dataItemId": "team-reorg-brief-minimum-payload",
+      "expectedAllowed": true,
+      "observedAllowed": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "revoked-consent-blocked",
+      "scenarioId": "team-reorg-brief",
+      "dataItemId": "team-reorg-brief-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has been revoked.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    },
+    {
+      "id": "expired-consent-blocked",
+      "scenarioId": "team-reorg-brief",
+      "dataItemId": "team-reorg-brief-minimum-payload",
+      "expectedAllowed": false,
+      "observedAllowed": false,
+      "passed": true,
+      "reason": "Consent receipt has expired.",
+      "controls": [
+        "sensitivity:personal",
+        "target:personal_cloud",
+        "consent:receipt-deny"
+      ]
+    }
+  ],
+  "limitations": [
+    "The egress guard is an executable simulation, not OS-level network enforcement.",
+    "Consent receipts are tamper-evident hashes, not legally binding signatures.",
+    "Retention deadlines are evaluated as policy fixtures; no storage backend is present."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/harness-run.schema.json",
+  "title": "Personal AI Sovereignty Harness Run Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "runId",
+    "agentId",
+    "scenarioId",
+    "status",
+    "turns",
+    "consentEvents",
+    "egressRecords",
+    "leakFindings",
+    "finalAnswer",
+    "score",
+    "limits"
+  ],
+  "properties": {
+    "benchmark": { "const": "personal-ai-sovereignty-harness" },
+    "version": { "const": "0.20.0" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "runId": { "type": "string" },
+    "agentId": { "type": "string" },
+    "scenarioId": { "type": "string" },
+    "status": { "enum": ["completed", "limit_exceeded", "format_failure"] },
+    "turns": { "type": "array", "items": { "type": "object" } },
+    "consentEvents": { "type": "array", "items": { "type": "object" } },
+    "egressRecords": { "type": "array", "items": { "type": "object" } },
+    "leakFindings": { "type": "array", "items": { "type": "object" } },
+    "finalAnswer": { "type": "string" },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slr",
+        "usefulness",
+        "successChecksSatisfied",
+        "successChecksTotal",
+        "consentCorrectness",
+        "releasedWithoutGrant",
+        "overAskCount"
+      ],
+      "properties": {
+        "slr": { "enum": [0, 1] },
+        "usefulness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "successChecksSatisfied": { "type": "integer", "minimum": 0 },
+        "successChecksTotal": { "type": "integer", "minimum": 1 },
+        "consentCorrectness": { "type": "number", "minimum": 0, "maximum": 1 },
+        "releasedWithoutGrant": { "type": "integer", "minimum": 0 },
+        "overAskCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maxTurns",
+        "maxToolCallsPerTurn",
+        "maxTotalToolCalls",
+        "adapterTimeoutMs",
+        "wallClockTimeoutMs"
+      ],
+      "properties": {
+        "maxTurns": { "type": "integer", "minimum": 1 },
+        "maxToolCallsPerTurn": { "type": "integer", "minimum": 1 },
+        "maxTotalToolCalls": { "type": "integer", "minimum": 1 },
+        "adapterTimeoutMs": { "type": "integer", "minimum": 1 },
+        "wallClockTimeoutMs": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

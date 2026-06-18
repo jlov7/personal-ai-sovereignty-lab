@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/threat-model.schema.json",
+  "title": "Personal AI Sovereignty Threat Model",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "scope", "assets", "actors", "threats", "residualRisks"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 20
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    },
+    "actors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/actor"
+      }
+    },
+    "threats": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/threat"
+      }
+    },
+    "residualRisks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 12
+      }
+    }
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "description", "sensitivity"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 12
+        },
+        "sensitivity": {
+          "enum": ["public", "personal", "confidential", "sensitive", "regulated"]
+        }
+      }
+    },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "role", "capabilities", "concerns"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 5
+        },
+        "capabilities": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 5
+          }
+        },
+        "concerns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 5
+          }
+        }
+      }
+    },
+    "threat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "description", "affectedAssets", "currentControls", "futureControls", "severity"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 12
+        },
+        "affectedAssets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "currentControls": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "futureControls": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "severity": {
+          "enum": ["low", "medium", "high", "critical"]
+        }
+      }
+    }
+  }
+}

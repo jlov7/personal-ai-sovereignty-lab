@@ -1,0 +1,1139 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.8.0-synthetic-cohort-attack",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "probeCount": 59,
+  "attackCount": 59,
+  "simulatedSuccessCount": 58,
+  "mitigatedByExistingGateCount": 21,
+  "needsEmpiricalMitigationCount": 37,
+  "averageUniqueSignatureRate": 0.93,
+  "attacks": [
+    {
+      "id": "board-brief-local-sanitized-decision-list-aggregate-risk-synthetic-cohort-join",
+      "probeId": "board-brief-local-sanitized-decision-list-aggregate-risk",
+      "scenarioId": "board-brief-local",
+      "dataItemId": "sanitized-decision-list",
+      "cohortSize": 21,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 19,
+      "uniqueSignatureRate": 0.9,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "allow_aggregate",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=21",
+        "risk_score=31",
+        "linkability=none",
+        "unique_signatures=19"
+      ]
+    },
+    {
+      "id": "finance-cashflow-bank-transactions-aggregate-risk-synthetic-cohort-join",
+      "probeId": "finance-cashflow-bank-transactions-aggregate-risk",
+      "scenarioId": "finance-cashflow",
+      "dataItemId": "bank-transactions",
+      "cohortSize": 48,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 48,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=16",
+        "risk_score=91",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=48"
+      ]
+    },
+    {
+      "id": "finance-cashflow-expense-buckets-aggregate-risk-synthetic-cohort-join",
+      "probeId": "finance-cashflow-expense-buckets-aggregate-risk",
+      "scenarioId": "finance-cashflow",
+      "dataItemId": "expense-buckets",
+      "cohortSize": 18,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 16,
+      "uniqueSignatureRate": 0.89,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=56",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=16"
+      ]
+    },
+    {
+      "id": "health-symptom-boundary-symptom-journal-aggregate-risk-synthetic-cohort-join",
+      "probeId": "health-symptom-boundary-symptom-journal-aggregate-risk",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "symptom-journal",
+      "cohortSize": 38,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 38,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=12",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=38"
+      ]
+    },
+    {
+      "id": "health-symptom-boundary-doctor-question-list-aggregate-risk-synthetic-cohort-join",
+      "probeId": "health-symptom-boundary-doctor-question-list-aggregate-risk",
+      "scenarioId": "health-symptom-boundary",
+      "dataItemId": "doctor-question-list",
+      "cohortSize": 8,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 8,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=2",
+        "risk_score=100",
+        "linkability=sensitive_domain,small_synthetic_cohort",
+        "unique_signatures=8"
+      ]
+    },
+    {
+      "id": "student-tutor-skill-gap-aggregate-aggregate-risk-synthetic-cohort-join",
+      "probeId": "student-tutor-skill-gap-aggregate-aggregate-risk",
+      "scenarioId": "student-tutor",
+      "dataItemId": "skill-gap-aggregate",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 25,
+      "uniqueSignatureRate": 0.83,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "allow_aggregate",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=15",
+        "risk_score=32",
+        "linkability=federated_release_surface",
+        "unique_signatures=25"
+      ]
+    },
+    {
+      "id": "subscription-negotiation-negotiation-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "subscription-negotiation-negotiation-payload-aggregate-risk",
+      "scenarioId": "subscription-negotiation",
+      "dataItemId": "negotiation-payload",
+      "cohortSize": 25,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 19,
+      "uniqueSignatureRate": 0.76,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=63",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=19"
+      ]
+    },
+    {
+      "id": "career-recruiter-screen-public-resume-summary-aggregate-risk-synthetic-cohort-join",
+      "probeId": "career-recruiter-screen-public-resume-summary-aggregate-risk",
+      "scenarioId": "career-recruiter-screen",
+      "dataItemId": "public-resume-summary",
+      "cohortSize": 21,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 15,
+      "uniqueSignatureRate": 0.71,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "allow_aggregate",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=21",
+        "risk_score=31",
+        "linkability=none",
+        "unique_signatures=15"
+      ]
+    },
+    {
+      "id": "household-insurance-claim-claim-photos-aggregate-risk-synthetic-cohort-join",
+      "probeId": "household-insurance-claim-claim-photos-aggregate-risk",
+      "scenarioId": "household-insurance-claim",
+      "dataItemId": "claim-photos",
+      "cohortSize": 42,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 42,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=14",
+        "risk_score=91",
+        "linkability=contains_pii,sensitive_domain",
+        "unique_signatures=42"
+      ]
+    },
+    {
+      "id": "federated-writing-patterns-revision-pattern-aggregate-aggregate-risk-synthetic-cohort-join",
+      "probeId": "federated-writing-patterns-revision-pattern-aggregate-aggregate-risk",
+      "scenarioId": "federated-writing-patterns",
+      "dataItemId": "revision-pattern-aggregate",
+      "cohortSize": 22,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 20,
+      "uniqueSignatureRate": 0.91,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=11",
+        "risk_score=40",
+        "linkability=federated_release_surface",
+        "unique_signatures=20"
+      ]
+    },
+    {
+      "id": "personal-cloud-memory-sync-raw-personal-memory-aggregate-risk-synthetic-cohort-join",
+      "probeId": "personal-cloud-memory-sync-raw-personal-memory-aggregate-risk",
+      "scenarioId": "personal-cloud-memory-sync",
+      "dataItemId": "raw-personal-memory",
+      "cohortSize": 52,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 52,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=17",
+        "risk_score=81",
+        "linkability=contains_pii,sensitive_domain",
+        "unique_signatures=52"
+      ]
+    },
+    {
+      "id": "benefits-eligibility-helper-household-dossier-aggregate-risk-synthetic-cohort-join",
+      "probeId": "benefits-eligibility-helper-household-dossier-aggregate-risk",
+      "scenarioId": "benefits-eligibility-helper",
+      "dataItemId": "household-dossier",
+      "cohortSize": 48,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 48,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=16",
+        "risk_score=91",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=48"
+      ]
+    },
+    {
+      "id": "benefits-eligibility-helper-eligibility-question-set-aggregate-risk-synthetic-cohort-join",
+      "probeId": "benefits-eligibility-helper-eligibility-question-set-aggregate-risk",
+      "scenarioId": "benefits-eligibility-helper",
+      "dataItemId": "eligibility-question-set",
+      "cohortSize": 8,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 8,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=4",
+        "risk_score=66",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=8"
+      ]
+    },
+    {
+      "id": "calendar-scheduling-delegate-raw-calendar-aggregate-risk-synthetic-cohort-join",
+      "probeId": "calendar-scheduling-delegate-raw-calendar-aggregate-risk",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "raw-calendar",
+      "cohortSize": 50,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 50,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=12",
+        "risk_score=91",
+        "linkability=contains_pii,sensitive_domain,external_interaction_context",
+        "unique_signatures=50"
+      ]
+    },
+    {
+      "id": "calendar-scheduling-delegate-availability-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "calendar-scheduling-delegate-availability-payload-aggregate-risk",
+      "scenarioId": "calendar-scheduling-delegate",
+      "dataItemId": "availability-payload",
+      "cohortSize": 21,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 15,
+      "uniqueSignatureRate": 0.71,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=7",
+        "risk_score=67",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=15"
+      ]
+    },
+    {
+      "id": "insurance-appeal-helper-medical-history-aggregate-risk-synthetic-cohort-join",
+      "probeId": "insurance-appeal-helper-medical-history-aggregate-risk",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "medical-history",
+      "cohortSize": 48,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 48,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=12",
+        "risk_score=99",
+        "linkability=contains_pii,regulated_domain,external_interaction_context",
+        "unique_signatures=48"
+      ]
+    },
+    {
+      "id": "insurance-appeal-helper-appeal-minimum-facts-aggregate-risk-synthetic-cohort-join",
+      "probeId": "insurance-appeal-helper-appeal-minimum-facts-aggregate-risk",
+      "scenarioId": "insurance-appeal-helper",
+      "dataItemId": "appeal-minimum-facts",
+      "cohortSize": 22,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 22,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=5",
+        "risk_score=84",
+        "linkability=sensitive_domain,external_interaction_context,federated_release_surface",
+        "unique_signatures=22"
+      ]
+    },
+    {
+      "id": "data-rights-request-identity-verification-minimum-aggregate-risk-synthetic-cohort-join",
+      "probeId": "data-rights-request-identity-verification-minimum-aggregate-risk",
+      "scenarioId": "data-rights-request",
+      "dataItemId": "identity-verification-minimum",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=7",
+        "risk_score=100",
+        "linkability=contains_pii,external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "mortgage-refinance-comparison-mortgage-refinance-comparison-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "mortgage-refinance-comparison-mortgage-refinance-comparison-raw-context-aggregate-risk",
+      "scenarioId": "mortgage-refinance-comparison",
+      "dataItemId": "mortgage-refinance-comparison-raw-context",
+      "cohortSize": 28,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 28,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=28"
+      ]
+    },
+    {
+      "id": "tax-deduction-organizer-tax-deduction-organizer-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "tax-deduction-organizer-tax-deduction-organizer-raw-context-aggregate-risk",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-raw-context",
+      "cohortSize": 38,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 38,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain,external_interaction_context",
+        "unique_signatures=38"
+      ]
+    },
+    {
+      "id": "tax-deduction-organizer-tax-deduction-organizer-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "tax-deduction-organizer-tax-deduction-organizer-minimum-payload-aggregate-risk",
+      "scenarioId": "tax-deduction-organizer",
+      "dataItemId": "tax-deduction-organizer-minimum-payload",
+      "cohortSize": 22,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 22,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=7",
+        "risk_score=66",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=22"
+      ]
+    },
+    {
+      "id": "debt-hardship-letter-debt-hardship-letter-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "debt-hardship-letter-debt-hardship-letter-raw-context-aggregate-risk",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-raw-context",
+      "cohortSize": 38,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 38,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain,external_interaction_context",
+        "unique_signatures=38"
+      ]
+    },
+    {
+      "id": "debt-hardship-letter-debt-hardship-letter-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "debt-hardship-letter-debt-hardship-letter-minimum-payload-aggregate-risk",
+      "scenarioId": "debt-hardship-letter",
+      "dataItemId": "debt-hardship-letter-minimum-payload",
+      "cohortSize": 22,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 4,
+      "uniqueSignatureRate": 0.18,
+      "simulatedAttackSucceeded": false,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "low_synthetic_uniqueness",
+      "evidence": [
+        "k_estimate=7",
+        "risk_score=66",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=4"
+      ]
+    },
+    {
+      "id": "medical-second-opinion-brief-medical-second-opinion-brief-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "medical-second-opinion-brief-medical-second-opinion-brief-raw-context-aggregate-risk",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-raw-context",
+      "cohortSize": 38,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 38,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain,external_interaction_context",
+        "unique_signatures=38"
+      ]
+    },
+    {
+      "id": "medical-second-opinion-brief-medical-second-opinion-brief-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "medical-second-opinion-brief-medical-second-opinion-brief-minimum-payload-aggregate-risk",
+      "scenarioId": "medical-second-opinion-brief",
+      "dataItemId": "medical-second-opinion-brief-minimum-payload",
+      "cohortSize": 22,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 22,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=7",
+        "risk_score=66",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=22"
+      ]
+    },
+    {
+      "id": "therapy-journal-summary-therapy-journal-summary-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "therapy-journal-summary-therapy-journal-summary-raw-context-aggregate-risk",
+      "scenarioId": "therapy-journal-summary",
+      "dataItemId": "therapy-journal-summary-raw-context",
+      "cohortSize": 28,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 28,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=28"
+      ]
+    },
+    {
+      "id": "therapy-journal-summary-therapy-journal-summary-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "therapy-journal-summary-therapy-journal-summary-minimum-payload-aggregate-risk",
+      "scenarioId": "therapy-journal-summary",
+      "dataItemId": "therapy-journal-summary-minimum-payload",
+      "cohortSize": 8,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 6,
+      "uniqueSignatureRate": 0.75,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=4",
+        "risk_score=66",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=6"
+      ]
+    },
+    {
+      "id": "medication-side-effect-log-medication-side-effect-log-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "medication-side-effect-log-medication-side-effect-log-raw-context-aggregate-risk",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-raw-context",
+      "cohortSize": 38,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 38,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain,external_interaction_context",
+        "unique_signatures=38"
+      ]
+    },
+    {
+      "id": "medication-side-effect-log-medication-side-effect-log-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "medication-side-effect-log-medication-side-effect-log-minimum-payload-aggregate-risk",
+      "scenarioId": "medication-side-effect-log",
+      "dataItemId": "medication-side-effect-log-minimum-payload",
+      "cohortSize": 22,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 22,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=7",
+        "risk_score=66",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=22"
+      ]
+    },
+    {
+      "id": "school-iep-prep-school-iep-prep-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "school-iep-prep-school-iep-prep-minimum-payload-aggregate-risk",
+      "scenarioId": "school-iep-prep",
+      "dataItemId": "school-iep-prep-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "salary-negotiation-counteroffer-salary-negotiation-counteroffer-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "salary-negotiation-counteroffer-salary-negotiation-counteroffer-minimum-payload-aggregate-risk",
+      "scenarioId": "salary-negotiation-counteroffer",
+      "dataItemId": "salary-negotiation-counteroffer-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "performance-review-prep-performance-review-prep-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "performance-review-prep-performance-review-prep-minimum-payload-aggregate-risk",
+      "scenarioId": "performance-review-prep",
+      "dataItemId": "performance-review-prep-minimum-payload",
+      "cohortSize": 16,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 16,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=58",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=16"
+      ]
+    },
+    {
+      "id": "job-search-prioritizer-job-search-prioritizer-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "job-search-prioritizer-job-search-prioritizer-minimum-payload-aggregate-risk",
+      "scenarioId": "job-search-prioritizer",
+      "dataItemId": "job-search-prioritizer-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "vendor-contract-review-vendor-contract-review-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "vendor-contract-review-vendor-contract-review-minimum-payload-aggregate-risk",
+      "scenarioId": "vendor-contract-review",
+      "dataItemId": "vendor-contract-review-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 14,
+      "uniqueSignatureRate": 0.47,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=14"
+      ]
+    },
+    {
+      "id": "private-research-synthesis-private-research-synthesis-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "private-research-synthesis-private-research-synthesis-minimum-payload-aggregate-risk",
+      "scenarioId": "private-research-synthesis",
+      "dataItemId": "private-research-synthesis-minimum-payload",
+      "cohortSize": 16,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 16,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=58",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=16"
+      ]
+    },
+    {
+      "id": "legal-intake-summary-legal-intake-summary-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "legal-intake-summary-legal-intake-summary-minimum-payload-aggregate-risk",
+      "scenarioId": "legal-intake-summary",
+      "dataItemId": "legal-intake-summary-minimum-payload",
+      "cohortSize": 26,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 26,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=62",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=26"
+      ]
+    },
+    {
+      "id": "childcare-schedule-negotiation-childcare-schedule-negotiation-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "childcare-schedule-negotiation-childcare-schedule-negotiation-minimum-payload-aggregate-risk",
+      "scenarioId": "childcare-schedule-negotiation",
+      "dataItemId": "childcare-schedule-negotiation-minimum-payload",
+      "cohortSize": 26,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 26,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=62",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=26"
+      ]
+    },
+    {
+      "id": "eldercare-benefits-plan-eldercare-benefits-plan-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "eldercare-benefits-plan-eldercare-benefits-plan-minimum-payload-aggregate-risk",
+      "scenarioId": "eldercare-benefits-plan",
+      "dataItemId": "eldercare-benefits-plan-minimum-payload",
+      "cohortSize": 12,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 10,
+      "uniqueSignatureRate": 0.83,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=6",
+        "risk_score=62",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=10"
+      ]
+    },
+    {
+      "id": "tenant-repair-request-tenant-repair-request-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "tenant-repair-request-tenant-repair-request-minimum-payload-aggregate-risk",
+      "scenarioId": "tenant-repair-request",
+      "dataItemId": "tenant-repair-request-minimum-payload",
+      "cohortSize": 26,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 26,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=62",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=26"
+      ]
+    },
+    {
+      "id": "medical-bill-dispute-medical-bill-dispute-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "medical-bill-dispute-medical-bill-dispute-minimum-payload-aggregate-risk",
+      "scenarioId": "medical-bill-dispute",
+      "dataItemId": "medical-bill-dispute-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 26,
+      "uniqueSignatureRate": 0.87,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=26"
+      ]
+    },
+    {
+      "id": "airline-refund-negotiation-airline-refund-negotiation-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "airline-refund-negotiation-airline-refund-negotiation-minimum-payload-aggregate-risk",
+      "scenarioId": "airline-refund-negotiation",
+      "dataItemId": "airline-refund-negotiation-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 12,
+      "uniqueSignatureRate": 0.4,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=12"
+      ]
+    },
+    {
+      "id": "bank-fee-reversal-bank-fee-reversal-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "bank-fee-reversal-bank-fee-reversal-minimum-payload-aggregate-risk",
+      "scenarioId": "bank-fee-reversal",
+      "dataItemId": "bank-fee-reversal-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "family-calendar-delegation-family-calendar-delegation-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "family-calendar-delegation-family-calendar-delegation-minimum-payload-aggregate-risk",
+      "scenarioId": "family-calendar-delegation",
+      "dataItemId": "family-calendar-delegation-minimum-payload",
+      "cohortSize": 26,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 26,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=62",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=26"
+      ]
+    },
+    {
+      "id": "insurance-renewal-comparison-insurance-renewal-comparison-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "insurance-renewal-comparison-insurance-renewal-comparison-raw-context-aggregate-risk",
+      "scenarioId": "insurance-renewal-comparison",
+      "dataItemId": "insurance-renewal-comparison-raw-context",
+      "cohortSize": 28,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 28,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=28"
+      ]
+    },
+    {
+      "id": "chronic-condition-tracker-chronic-condition-tracker-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "chronic-condition-tracker-chronic-condition-tracker-raw-context-aggregate-risk",
+      "scenarioId": "chronic-condition-tracker",
+      "dataItemId": "chronic-condition-tracker-raw-context",
+      "cohortSize": 28,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 28,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=28"
+      ]
+    },
+    {
+      "id": "chronic-condition-tracker-chronic-condition-tracker-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "chronic-condition-tracker-chronic-condition-tracker-minimum-payload-aggregate-risk",
+      "scenarioId": "chronic-condition-tracker",
+      "dataItemId": "chronic-condition-tracker-minimum-payload",
+      "cohortSize": 8,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 8,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=4",
+        "risk_score=66",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=8"
+      ]
+    },
+    {
+      "id": "research-participant-consent-research-participant-consent-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "research-participant-consent-research-participant-consent-raw-context-aggregate-risk",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-raw-context",
+      "cohortSize": 38,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 38,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain,external_interaction_context",
+        "unique_signatures=38"
+      ]
+    },
+    {
+      "id": "research-participant-consent-research-participant-consent-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "research-participant-consent-research-participant-consent-minimum-payload-aggregate-risk",
+      "scenarioId": "research-participant-consent",
+      "dataItemId": "research-participant-consent-minimum-payload",
+      "cohortSize": 22,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 22,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=7",
+        "risk_score=66",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=22"
+      ]
+    },
+    {
+      "id": "employee-benefits-selection-employee-benefits-selection-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "employee-benefits-selection-employee-benefits-selection-minimum-payload-aggregate-risk",
+      "scenarioId": "employee-benefits-selection",
+      "dataItemId": "employee-benefits-selection-minimum-payload",
+      "cohortSize": 16,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 16,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=58",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=16"
+      ]
+    },
+    {
+      "id": "contractor-bid-negotiation-contractor-bid-negotiation-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "contractor-bid-negotiation-contractor-bid-negotiation-minimum-payload-aggregate-risk",
+      "scenarioId": "contractor-bid-negotiation",
+      "dataItemId": "contractor-bid-negotiation-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "caregiver-handoff-note-caregiver-handoff-note-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "caregiver-handoff-note-caregiver-handoff-note-minimum-payload-aggregate-risk",
+      "scenarioId": "caregiver-handoff-note",
+      "dataItemId": "caregiver-handoff-note-minimum-payload",
+      "cohortSize": 26,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 26,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=62",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=26"
+      ]
+    },
+    {
+      "id": "student-scholarship-appeal-student-scholarship-appeal-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "student-scholarship-appeal-student-scholarship-appeal-minimum-payload-aggregate-risk",
+      "scenarioId": "student-scholarship-appeal",
+      "dataItemId": "student-scholarship-appeal-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "conference-networking-brief-conference-networking-brief-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "conference-networking-brief-conference-networking-brief-minimum-payload-aggregate-risk",
+      "scenarioId": "conference-networking-brief",
+      "dataItemId": "conference-networking-brief-minimum-payload",
+      "cohortSize": 16,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 10,
+      "uniqueSignatureRate": 0.63,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=8",
+        "risk_score=58",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=10"
+      ]
+    },
+    {
+      "id": "public-comment-draft-public-comment-draft-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "public-comment-draft-public-comment-draft-minimum-payload-aggregate-risk",
+      "scenarioId": "public-comment-draft",
+      "dataItemId": "public-comment-draft-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "small-business-cashflow-small-business-cashflow-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "small-business-cashflow-small-business-cashflow-raw-context-aggregate-risk",
+      "scenarioId": "small-business-cashflow",
+      "dataItemId": "small-business-cashflow-raw-context",
+      "cohortSize": 28,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 28,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=28"
+      ]
+    },
+    {
+      "id": "membership-cancellation-agent-membership-cancellation-agent-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "membership-cancellation-agent-membership-cancellation-agent-minimum-payload-aggregate-risk",
+      "scenarioId": "membership-cancellation-agent",
+      "dataItemId": "membership-cancellation-agent-minimum-payload",
+      "cohortSize": 30,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 30,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=10",
+        "risk_score=58",
+        "linkability=external_interaction_context,federated_release_surface",
+        "unique_signatures=30"
+      ]
+    },
+    {
+      "id": "immigration-form-prep-immigration-form-prep-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "immigration-form-prep-immigration-form-prep-minimum-payload-aggregate-risk",
+      "scenarioId": "immigration-form-prep",
+      "dataItemId": "immigration-form-prep-minimum-payload",
+      "cohortSize": 12,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 10,
+      "uniqueSignatureRate": 0.83,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=6",
+        "risk_score=62",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=10"
+      ]
+    },
+    {
+      "id": "grief-log-reflection-grief-log-reflection-raw-context-aggregate-risk-synthetic-cohort-join",
+      "probeId": "grief-log-reflection-grief-log-reflection-raw-context-aggregate-risk",
+      "scenarioId": "grief-log-reflection",
+      "dataItemId": "grief-log-reflection-raw-context",
+      "cohortSize": 28,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 28,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "block_aggregate",
+      "mitigationStatus": "blocked_by_existing_gate",
+      "evidence": [
+        "k_estimate=9",
+        "risk_score=100",
+        "linkability=contains_pii,regulated_domain",
+        "unique_signatures=28"
+      ]
+    },
+    {
+      "id": "grief-log-reflection-grief-log-reflection-minimum-payload-aggregate-risk-synthetic-cohort-join",
+      "probeId": "grief-log-reflection-grief-log-reflection-minimum-payload-aggregate-risk",
+      "scenarioId": "grief-log-reflection",
+      "dataItemId": "grief-log-reflection-minimum-payload",
+      "cohortSize": 8,
+      "quasiIdentifierCount": 6,
+      "uniqueSignatureCount": 8,
+      "uniqueSignatureRate": 1,
+      "simulatedAttackSucceeded": true,
+      "existingDecision": "require_dp_or_larger_cohort",
+      "mitigationStatus": "needs_empirical_mitigation",
+      "evidence": [
+        "k_estimate=4",
+        "risk_score=66",
+        "linkability=small_synthetic_cohort",
+        "unique_signatures=8"
+      ]
+    }
+  ],
+  "limitations": [
+    "This is a synthetic cohort uniqueness experiment, not an attack against real user data.",
+    "Quasi-identifiers are deterministic fixtures derived from probe metadata.",
+    "The report is meant to identify where empirical privacy work is required before aggregate-release claims."
+  ]
+}

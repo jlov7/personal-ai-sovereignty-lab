@@ -1,0 +1,65 @@
+name: Annotation submission
+description: Submit independent annotation evidence for PAISL scenarios or traces.
+title: "[Annotation]: "
+labels: ["annotation", "validation", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit only labels, rationales, and review metadata you are authorized to share. Do not include secrets, private user data, production credentials, or personal records.
+  - type: dropdown
+    id: reviewer_relationship
+    attributes:
+      label: Reviewer relationship
+      description: This is used to separate independent validation from author or vendor self-review.
+      options:
+        - independent_external
+        - project_maintainer
+        - vendor_or_system_owner
+        - other_disclosed_relationship
+    validations:
+      required: true
+  - type: textarea
+    id: annotation_scope
+    attributes:
+      label: Annotation scope
+      description: List scenario IDs, trace IDs, model/baseline IDs, and annotation packet version.
+      placeholder: |
+        Annotation packet:
+        Scenario IDs:
+        Trace IDs:
+        Model or baseline IDs:
+    validations:
+      required: true
+  - type: textarea
+    id: label_summary
+    attributes:
+      label: Label summary
+      description: Summarize usefulness, privacy, autonomy, explainability, consent, and overreach labels. Link to machine-readable annotation files if available.
+    validations:
+      required: true
+  - type: textarea
+    id: disagreements
+    attributes:
+      label: Disagreements or ambiguity
+      description: Identify cases where the rubric was unclear, where reviewers disagreed, or where an adjudication rule should change.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence_links
+    attributes:
+      label: Evidence links
+      description: Link to annotation JSON, review notes, reproducibility commands, or signed packets. Avoid raw private traces.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Submission checks
+      options:
+        - label: I removed secrets, private data, credentials, and personal records from this submission.
+          required: true
+        - label: I disclosed any relationship that could affect reviewer independence.
+          required: true
+        - label: I understand this submission may improve evidence quality but does not automatically validate the benchmark.
+          required: true

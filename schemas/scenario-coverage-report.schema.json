@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/scenario-coverage-report.schema.json",
+  "title": "Personal AI Sovereignty Scenario Coverage Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "scenarioCount",
+    "domainCoverage",
+    "sensitivityCoverage",
+    "architectureLayerCoverage",
+    "externalInteractionCount",
+    "boundaryCrossingRequiredCount",
+    "adversarialVariantCount",
+    "heldOutVariantPlan",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "scenarioCount": { "type": "integer", "minimum": 1 },
+    "domainCoverage": { "$ref": "#/$defs/buckets" },
+    "sensitivityCoverage": { "$ref": "#/$defs/buckets" },
+    "architectureLayerCoverage": { "$ref": "#/$defs/buckets" },
+    "externalInteractionCount": { "type": "integer", "minimum": 0 },
+    "boundaryCrossingRequiredCount": { "type": "integer", "minimum": 0 },
+    "adversarialVariantCount": { "type": "integer", "minimum": 1 },
+    "heldOutVariantPlan": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["split", "scenarioIds"],
+        "properties": {
+          "split": { "type": "string", "enum": ["seed", "development", "held_out"] },
+          "scenarioIds": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "buckets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "count", "percentage"],
+        "properties": {
+          "id": { "type": "string" },
+          "count": { "type": "integer", "minimum": 0 },
+          "percentage": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    }
+  }
+}

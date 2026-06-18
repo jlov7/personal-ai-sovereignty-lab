@@ -1,0 +1,53 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.13.0-signed-consent-receipts",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "signatureAlgorithm": "HMAC-SHA256",
+  "keyManagement": "deterministic_fixture_key",
+  "probeCount": 4,
+  "passed": 4,
+  "failed": 0,
+  "probes": [
+    {
+      "id": "valid-signed-receipt-allows-scoped-egress",
+      "expectedValidSignature": true,
+      "observedValidSignature": true,
+      "expectedAllowedEgress": true,
+      "observedAllowedEgress": true,
+      "passed": true,
+      "reason": "Consent receipt signature is valid for the canonical payload. Consent receipt is active, scoped, and tamper-evident."
+    },
+    {
+      "id": "tampered-signed-receipt-fails-signature",
+      "expectedValidSignature": false,
+      "observedValidSignature": false,
+      "expectedAllowedEgress": false,
+      "observedAllowedEgress": false,
+      "passed": true,
+      "reason": "Consent receipt signature does not match the canonical payload. Consent receipt digest does not match its fields."
+    },
+    {
+      "id": "valid-signature-denies-scope-mismatch",
+      "expectedValidSignature": true,
+      "observedValidSignature": true,
+      "expectedAllowedEgress": false,
+      "observedAllowedEgress": false,
+      "passed": true,
+      "reason": "Consent receipt signature is valid for the canonical payload. Target layer is outside the data item's allowed processing boundary."
+    },
+    {
+      "id": "revoked-signed-receipt-denies-egress",
+      "expectedValidSignature": true,
+      "observedValidSignature": true,
+      "expectedAllowedEgress": false,
+      "observedAllowedEgress": false,
+      "passed": true,
+      "reason": "Consent receipt signature is valid for the canonical payload. Consent receipt has been revoked."
+    }
+  ],
+  "limitations": [
+    "The signing key is a deterministic public fixture so reports are reproducible; it is not production key custody.",
+    "HMAC-SHA256 gives keyed integrity for benchmark receipts, not legal identity, hardware-backed signing, or non-repudiation.",
+    "A production personal-agent system still needs user-held keys, rotation, revocation registries, and auditable storage."
+  ]
+}

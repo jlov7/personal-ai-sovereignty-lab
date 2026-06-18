@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/aggregate-empirical-attack-report.schema.json",
+  "title": "Personal AI Sovereignty Aggregate Empirical Attack Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "probeCount",
+    "attackCount",
+    "simulatedSuccessCount",
+    "mitigatedByExistingGateCount",
+    "needsEmpiricalMitigationCount",
+    "averageUniqueSignatureRate",
+    "attacks",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "probeCount": { "type": "integer", "minimum": 1 },
+    "attackCount": { "type": "integer", "minimum": 1 },
+    "simulatedSuccessCount": { "type": "integer", "minimum": 0 },
+    "mitigatedByExistingGateCount": { "type": "integer", "minimum": 0 },
+    "needsEmpiricalMitigationCount": { "type": "integer", "minimum": 0 },
+    "averageUniqueSignatureRate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "attacks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "probeId",
+          "scenarioId",
+          "dataItemId",
+          "cohortSize",
+          "quasiIdentifierCount",
+          "uniqueSignatureCount",
+          "uniqueSignatureRate",
+          "simulatedAttackSucceeded",
+          "existingDecision",
+          "mitigationStatus",
+          "evidence"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "probeId": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "dataItemId": { "type": "string" },
+          "cohortSize": { "type": "integer", "minimum": 1 },
+          "quasiIdentifierCount": { "type": "integer", "minimum": 1 },
+          "uniqueSignatureCount": { "type": "integer", "minimum": 0 },
+          "uniqueSignatureRate": { "type": "number", "minimum": 0, "maximum": 1 },
+          "simulatedAttackSucceeded": { "type": "boolean" },
+          "existingDecision": {
+            "type": "string",
+            "enum": ["allow_aggregate", "require_dp_or_larger_cohort", "block_aggregate"]
+          },
+          "mitigationStatus": {
+            "type": "string",
+            "enum": [
+              "blocked_by_existing_gate",
+              "needs_empirical_mitigation",
+              "low_synthetic_uniqueness"
+            ]
+          },
+          "evidence": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

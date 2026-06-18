@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/artifact-bundle.schema.json",
+  "title": "Personal AI Sovereignty Artifact Bundle Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "artifactId",
+    "bundleVersion",
+    "createdAt",
+    "submitter",
+    "system",
+    "runtime",
+    "entrypoint",
+    "sourceDigests",
+    "scenarioCoverage",
+    "expectedOutputs",
+    "allowedWritePaths",
+    "claimBoundaries",
+    "limitations"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "paisl-artifact-bundle/v1" },
+    "artifactId": { "type": "string", "minLength": 3 },
+    "bundleVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z]+(?:\\.[0-9A-Za-z]+)*)?$"
+    },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "submitter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "independence"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "independence": {
+          "type": "string",
+          "enum": ["author_seed", "independent_external", "vendor_self_report"]
+        }
+      }
+    },
+    "system": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "type"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 },
+        "type": {
+          "type": "string",
+          "enum": [
+            "deterministic_reference",
+            "local_model",
+            "cloud_model",
+            "tool_using_agent",
+            "production_personal_agent",
+            "negative_control"
+          ]
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "engine",
+        "engineVersion",
+        "packageManager",
+        "network",
+        "filesystem",
+        "timeoutMs",
+        "resourceLimits",
+        "runtimeDigest"
+      ],
+      "properties": {
+        "engine": { "type": "string", "const": "node" },
+        "engineVersion": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "packageManager": {
+          "oneOf": [
+            { "type": "string", "const": "none" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "version"],
+              "properties": {
+                "name": { "type": "string", "enum": ["pnpm", "npm", "yarn"] },
+                "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" }
+              }
+            }
+          ]
+        },
+        "network": { "type": "string", "enum": ["none", "loopback_only", "declared_external"] },
+        "filesystem": { "type": "string", "const": "read_only_bundle_with_writable_tmp" },
+        "timeoutMs": { "type": "integer", "minimum": 1000, "maximum": 60000 },
+        "resourceLimits": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["memoryMb", "pids"],
+          "properties": {
+            "memoryMb": { "type": "integer", "minimum": 64, "maximum": 32768 },
+            "pids": { "type": "integer", "minimum": 1, "maximum": 4096 }
+          }
+        },
+        "runtimeDigest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+      }
+    },
+    "entrypoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "command", "args"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "command": { "type": "string", "const": "node" },
+        "args": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "sourceDigests": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes", "role"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "role": { "type": "string", "enum": ["entrypoint", "supporting_file", "lockfile"] }
+        }
+      }
+    },
+    "scenarioCoverage": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scenarioId",
+          "expectedTraceId",
+          "expectedBoundaryDecisions",
+          "consentProfile"
+        ],
+        "properties": {
+          "scenarioId": { "type": "string", "minLength": 1 },
+          "expectedTraceId": { "type": "string", "minLength": 1 },
+          "expectedBoundaryDecisions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": [
+                "local_only",
+                "requires_consent",
+                "safe_aggregated_output",
+                "blocked_due_to_privacy_risk"
+              ]
+            }
+          },
+          "consentProfile": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "expectedOutputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "location"],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": ["external_agent_trace", "scorecard", "markdown_report"]
+          },
+          "location": { "type": "string", "minLength": 1 },
+          "traceId": { "type": "string" }
+        }
+      }
+    },
+    "allowedWritePaths": { "type": "array", "items": { "type": "string" } },
+    "claimBoundaries": { "type": "array", "minItems": 2, "items": { "type": "string" } },
+    "limitations": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  }
+}

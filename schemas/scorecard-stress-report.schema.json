@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/scorecard-stress-report.schema.json",
+  "title": "Personal AI Sovereignty Scorecard Stress Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "scenarioCount",
+    "baselineAverages",
+    "saturation",
+    "checks",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "scenarioCount": { "type": "integer", "minimum": 1 },
+    "baselineAverages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "baselineId",
+          "totalScore",
+          "usefulness",
+          "privacyPreservation",
+          "autonomyAppropriateness",
+          "dataMinimization",
+          "userControlAlignment"
+        ],
+        "properties": {
+          "baselineId": { "type": "string" },
+          "totalScore": { "type": "number", "minimum": 0, "maximum": 100 },
+          "usefulness": { "type": "number", "minimum": 0, "maximum": 100 },
+          "privacyPreservation": { "type": "number", "minimum": 0, "maximum": 100 },
+          "autonomyAppropriateness": { "type": "number", "minimum": 0, "maximum": 100 },
+          "dataMinimization": { "type": "number", "minimum": 0, "maximum": 100 },
+          "userControlAlignment": { "type": "number", "minimum": 0, "maximum": 100 }
+        }
+      }
+    },
+    "saturation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["excellentScenarioCount", "excellentScenarioRate", "maxScore", "interpretation"],
+      "properties": {
+        "excellentScenarioCount": { "type": "integer", "minimum": 0 },
+        "excellentScenarioRate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "maxScore": { "type": "number", "minimum": 0, "maximum": 100 },
+        "interpretation": { "type": "string" }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "result", "observed", "threshold", "interpretation"],
+        "properties": {
+          "id": { "type": "string" },
+          "result": { "type": "string", "enum": ["pass", "partial", "fail"] },
+          "observed": { "type": "number" },
+          "threshold": { "type": "string" },
+          "interpretation": { "type": "string" }
+        }
+      }
+    },
+    "limitations": { "type": "array", "items": { "type": "string" } }
+  }
+}

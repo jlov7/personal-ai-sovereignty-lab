@@ -1,0 +1,69 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.8.0-baseline-submission",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "sourcePaths": [
+    "examples/baseline_submission.example.json"
+  ],
+  "submissionCount": 1,
+  "externalSubmissionCount": 0,
+  "productionSubmissionCount": 0,
+  "systemTypeCounts": [
+    {
+      "systemType": "deterministic_reference",
+      "count": 1
+    }
+  ],
+  "scenarioCoverage": {
+    "coveredScenarioCount": 2,
+    "totalScenarioCount": 51,
+    "coveredScenarioRate": 0.04
+  },
+  "submissions": [
+    {
+      "submissionId": "seed-brokered-tool-agent",
+      "systemName": "Seed Brokered Tool-Agent Baseline",
+      "systemType": "deterministic_reference",
+      "independence": "author_seed",
+      "scenarioCount": 2,
+      "averageScore": 92,
+      "privacyBoundaryViolations": 0,
+      "consentViolations": 0,
+      "toolCalls": 3,
+      "claimBoundaries": [
+        "Seed fixture for schema and report validation only.",
+        "Not an external baseline submission.",
+        "Not a production personal-agent implementation."
+      ]
+    }
+  ],
+  "readinessChecks": [
+    {
+      "id": "independent-external-baseline",
+      "result": "blocked_external",
+      "evidence": "0 independent external submissions",
+      "interpretation": "A credible benchmark needs systems submitted by people other than the author."
+    },
+    {
+      "id": "production-personal-agent-baseline",
+      "result": "blocked_external",
+      "evidence": "0 production personal-agent submissions",
+      "interpretation": "The scaffold still needs at least one production-grade personal-agent run."
+    },
+    {
+      "id": "tool-using-baseline",
+      "result": "pass",
+      "evidence": "1 submissions with tool-use evidence",
+      "interpretation": "Tool traces are necessary because personal-agent failures often happen at action boundaries."
+    }
+  ],
+  "blockers": [
+    "independent-external-baseline: A credible benchmark needs systems submitted by people other than the author.",
+    "production-personal-agent-baseline: The scaffold still needs at least one production-grade personal-agent run."
+  ],
+  "limitations": [
+    "Seed baseline submissions exercise the contract but are not independent evidence.",
+    "Scenario coverage from a submission report is only meaningful when run artifacts are attached.",
+    "External submissions must include enough trace evidence to audit data movement, not only final scores."
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/sandboxed-trace-runner-report.schema.json",
+  "title": "Personal AI Sovereignty Sandboxed Trace Runner Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "runnerMode",
+    "sourcePaths",
+    "traceCount",
+    "signedExecutionAttestationCount",
+    "verifiedExecutionAttestationCount",
+    "passedExecutionAttestationCount",
+    "brokerExecutedActionCount",
+    "childExecutedActionCount",
+    "brokerBlockedActionCount",
+    "skippedByBrokerCount",
+    "escapeAttemptCount",
+    "guardDeniedEscapeCount",
+    "guardAuditEventCount",
+    "attestations",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "runnerMode": { "type": "string", "enum": ["node_child_process_preload_guard"] },
+    "sourcePaths": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "traceCount": { "type": "integer", "minimum": 1 },
+    "signedExecutionAttestationCount": { "type": "integer", "minimum": 1 },
+    "verifiedExecutionAttestationCount": { "type": "integer", "minimum": 0 },
+    "passedExecutionAttestationCount": { "type": "integer", "minimum": 0 },
+    "brokerExecutedActionCount": { "type": "integer", "minimum": 0 },
+    "childExecutedActionCount": { "type": "integer", "minimum": 0 },
+    "brokerBlockedActionCount": { "type": "integer", "minimum": 0 },
+    "skippedByBrokerCount": { "type": "integer", "minimum": 0 },
+    "escapeAttemptCount": { "type": "integer", "minimum": 0 },
+    "guardDeniedEscapeCount": { "type": "integer", "minimum": 0 },
+    "guardAuditEventCount": { "type": "integer", "minimum": 0 },
+    "attestations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "attestationId",
+          "traceId",
+          "brokerAttestationId",
+          "runnerVersion",
+          "runnerMode",
+          "generatedAt",
+          "brokerSignatureValid",
+          "childExitCode",
+          "brokerSubmittedActionCount",
+          "brokerExecutedActionCount",
+          "brokerBlockedActionCount",
+          "childExecutedActionCount",
+          "skippedByBrokerCount",
+          "escapeAttemptCount",
+          "guardDeniedEscapeCount",
+          "guardAuditEventCount",
+          "actionExecutions",
+          "escapeAttempts",
+          "guardAuditEvents",
+          "passed",
+          "limitations",
+          "signature"
+        ],
+        "properties": {
+          "attestationId": { "type": "string" },
+          "traceId": { "type": "string" },
+          "brokerAttestationId": { "type": "string" },
+          "runnerVersion": { "type": "string" },
+          "runnerMode": { "type": "string", "enum": ["node_child_process_preload_guard"] },
+          "generatedAt": { "type": "string", "format": "date-time" },
+          "brokerSignatureValid": { "type": "boolean" },
+          "childExitCode": { "type": ["integer", "null"] },
+          "brokerSubmittedActionCount": { "type": "integer", "minimum": 0 },
+          "brokerExecutedActionCount": { "type": "integer", "minimum": 0 },
+          "brokerBlockedActionCount": { "type": "integer", "minimum": 0 },
+          "childExecutedActionCount": { "type": "integer", "minimum": 0 },
+          "skippedByBrokerCount": { "type": "integer", "minimum": 0 },
+          "escapeAttemptCount": { "type": "integer", "minimum": 0 },
+          "guardDeniedEscapeCount": { "type": "integer", "minimum": 0 },
+          "guardAuditEventCount": { "type": "integer", "minimum": 0 },
+          "actionExecutions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "actionId",
+                "brokerDecision",
+                "attemptedInChild",
+                "observedStatus",
+                "targetHost",
+                "api",
+                "errorCode",
+                "passed"
+              ],
+              "properties": {
+                "actionId": { "type": "string" },
+                "brokerDecision": { "type": "string" },
+                "attemptedInChild": { "type": "boolean" },
+                "observedStatus": { "type": "string" },
+                "targetHost": { "type": "string" },
+                "api": { "type": ["string", "null"] },
+                "errorCode": { "type": ["string", "null"] },
+                "passed": { "type": "boolean" }
+              }
+            }
+          },
+          "escapeAttempts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "api",
+                "targetHost",
+                "expectedDenied",
+                "observedDenied",
+                "errorCode",
+                "passed"
+              ],
+              "properties": {
+                "id": { "type": "string" },
+                "api": { "type": "string" },
+                "targetHost": { "type": "string" },
+                "expectedDenied": { "type": "boolean" },
+                "observedDenied": { "type": "boolean" },
+                "errorCode": { "type": ["string", "null"] },
+                "passed": { "type": "boolean" }
+              }
+            }
+          },
+          "guardAuditEvents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["api", "host", "allowed", "reason"],
+              "properties": {
+                "api": { "type": "string" },
+                "host": { "type": "string" },
+                "allowed": { "type": "boolean" },
+                "reason": { "type": "string" }
+              }
+            }
+          },
+          "passed": { "type": "boolean" },
+          "limitations": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "signature": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["algorithm", "keyId", "canonicalization", "value"],
+            "properties": {
+              "algorithm": { "type": "string", "enum": ["HMAC-SHA256"] },
+              "keyId": { "type": "string" },
+              "canonicalization": { "type": "string", "enum": ["json-stable-sort-v1"] },
+              "value": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

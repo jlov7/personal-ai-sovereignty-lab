@@ -1,0 +1,76 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.6.0-storage-backed-enforcement",
+  "generatedAt": "2026-05-22T00:00:00.000Z",
+  "ledgerPath": "outputs/runtime_consent_ledger.jsonl",
+  "auditLogPath": "outputs/runtime_egress_audit.jsonl",
+  "ledgerEventCount": 2,
+  "auditEventCount": 4,
+  "probeCount": 4,
+  "passed": 4,
+  "failed": 0,
+  "probes": [
+    {
+      "id": "minimized-payload-with-stored-consent",
+      "expectedAllowed": true,
+      "expectedFetchExecuted": true,
+      "observedAllowed": true,
+      "observedFetchExecuted": true,
+      "passed": true,
+      "reason": "Consent receipt is active, scoped, and tamper-evident.",
+      "controls": [
+        "sensitivity:personal",
+        "target:federated",
+        "consent:receipt-valid"
+      ]
+    },
+    {
+      "id": "raw-protected-payload-blocked-before-fetch",
+      "expectedAllowed": false,
+      "expectedFetchExecuted": false,
+      "observedAllowed": false,
+      "observedFetchExecuted": false,
+      "passed": true,
+      "reason": "Raw protected data cannot leave the local boundary.",
+      "controls": [
+        "sensitivity:confidential",
+        "target:federated",
+        "release-form:raw-deny"
+      ]
+    },
+    {
+      "id": "untrusted-host-blocked-before-fetch",
+      "expectedAllowed": false,
+      "expectedFetchExecuted": false,
+      "observedAllowed": false,
+      "observedFetchExecuted": false,
+      "passed": true,
+      "reason": "Target host untrusted.example is not in the runtime egress allowlist.",
+      "controls": [
+        "sensitivity:personal",
+        "target:federated",
+        "consent:receipt-valid",
+        "network:host-deny"
+      ]
+    },
+    {
+      "id": "revoked-stored-consent-blocked-before-fetch",
+      "expectedAllowed": false,
+      "expectedFetchExecuted": false,
+      "observedAllowed": false,
+      "observedFetchExecuted": false,
+      "passed": true,
+      "reason": "No consent receipt was attached.",
+      "controls": [
+        "sensitivity:personal",
+        "target:federated",
+        "consent:receipt-deny"
+      ]
+    }
+  ],
+  "limitations": [
+    "This is application-level fetch mediation, not an operating-system firewall.",
+    "The probe uses synthetic payloads and a mock fetch implementation so no external network request is made during pnpm eval.",
+    "A production implementation would need process sandboxing, key management, durable revocation storage, and audit-log integrity controls."
+  ]
+}

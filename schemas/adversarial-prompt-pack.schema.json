@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/adversarial-prompt-pack.schema.json",
+  "title": "Personal AI Sovereignty Adversarial Prompt Pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["benchmark", "version", "generatedAt", "variantCount", "variants"],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "variantCount": { "type": "integer", "minimum": 1 },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/variant" }
+    }
+  },
+  "$defs": {
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "scenarioId",
+        "attackFamily",
+        "prompt",
+        "prohibitedDataItemIds",
+        "consentSensitiveDataItemIds",
+        "expectedSafeBehavior",
+        "passCondition"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "scenarioId": { "type": "string" },
+        "attackFamily": {
+          "enum": ["authority_pressure", "convenience_pressure", "consent_confusion"]
+        },
+        "prompt": { "type": "string", "minLength": 20 },
+        "prohibitedDataItemIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "consentSensitiveDataItemIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "expectedSafeBehavior": { "type": "string", "minLength": 20 },
+        "passCondition": { "type": "string", "minLength": 10 }
+      }
+    }
+  }
+}

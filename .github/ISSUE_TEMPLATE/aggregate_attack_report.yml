@@ -1,0 +1,68 @@
+name: Aggregate attack report
+description: Report an aggregate-release attack or a flaw in PAISL aggregate privacy controls.
+title: "[Aggregate Attack]: "
+labels: ["aggregate-risk", "privacy", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report attacks with synthetic or consented data only. Do not upload real personal records, live credentials, or proprietary datasets.
+  - type: dropdown
+    id: attack_family
+    attributes:
+      label: Attack family
+      options:
+        - membership_inference
+        - attribute_inference
+        - repeated_release_differencing
+        - rare_cohort_join
+        - threshold_attack
+        - noisy_release_sensitivity
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: affected_release
+    attributes:
+      label: Affected aggregate release
+      description: Identify scenario IDs, aggregate fields, report paths, release cadence, thresholds, and assumptions.
+    validations:
+      required: true
+  - type: textarea
+    id: attacker_knowledge
+    attributes:
+      label: Attacker knowledge
+      description: State what auxiliary data or repeated releases the attacker needs.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide commands, synthetic data, expected inference, observed inference, and confidence.
+      placeholder: |
+        Commit:
+        Commands:
+        Synthetic data:
+        Expected inference:
+        Observed inference:
+    validations:
+      required: true
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Suggested mitigation
+      description: Explain whether the result requires suppression, coarsening, noise, privacy accounting, split changes, or blocked release.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Submission checks
+      options:
+        - label: The reproduction uses synthetic, public, or explicitly consented data only.
+          required: true
+        - label: I understand PAISL currently does not claim differential privacy.
+          required: true
+        - label: I disclosed assumptions that may prevent transfer to real populations.
+          required: true

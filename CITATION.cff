@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this benchmark scaffold, cite it as below."
+title: "Personal AI Sovereignty Lab (PAISL)"
+type: software
+authors:
+  - family-names: Lovell
+    given-names: Jason
+date-released: 2026-06-18
+version: 1.0.0-rc.0
+license: MIT
+repository-code: "https://github.com/jlov7/personal-ai-sovereignty-lab"
+abstract: "A local-first benchmark scaffold for evaluating user-sovereign personal AI agents across privacy, autonomy, consent, usefulness, explainability, data minimization, and overreach containment."
+keywords:
+  - personal AI
+  - AI evaluation
+  - local-first software
+  - privacy
+  - agent governance
+  - consent

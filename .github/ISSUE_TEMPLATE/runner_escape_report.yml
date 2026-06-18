@@ -1,0 +1,66 @@
+name: Runner escape report
+description: Report a suspected bundle verifier, runner, broker, or sandbox escape.
+title: "[Runner Escape]: "
+labels: ["runner-escape", "security", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include live secrets or exploit payloads against third-party systems. Provide the smallest reproducible fixture that demonstrates the boundary failure.
+  - type: dropdown
+    id: affected_layer
+    attributes:
+      label: Affected layer
+      options:
+        - artifact_bundle_verifier
+        - submitted_artifact_runner
+        - broker
+        - sandboxed_trace_runner
+        - docker_profile
+        - os_confinement_probe
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: expected_boundary
+    attributes:
+      label: Expected boundary
+      description: What should have been denied, blocked, minimized, or isolated?
+    validations:
+      required: true
+  - type: textarea
+    id: observed_behavior
+    attributes:
+      label: Observed behavior
+      description: What happened instead? Include command output and report paths if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Commands, fixture files, and environment needed to reproduce the issue.
+      placeholder: |
+        Commit:
+        OS:
+        Node:
+        Docker:
+        Commands:
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact assessment
+      description: Explain whether this leaks data, bypasses consent, escapes filesystem/network constraints, or corrupts benchmark evidence.
+    validations:
+      required: true
+  - type: checkboxes
+    id: disclosure
+    attributes:
+      label: Disclosure boundaries
+      options:
+        - label: I have removed secrets, private data, and third-party credentials from this report.
+          required: true
+        - label: I understand this repo does not claim production sandbox security.
+          required: true

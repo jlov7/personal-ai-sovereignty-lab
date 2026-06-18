@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/runtime-manifest.schema.json",
+  "title": "Personal AI Sovereignty Benchmark Runtime Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "supportedRuntime",
+    "reproducibilityCommands",
+    "deterministicSeeds",
+    "modelEvidence",
+    "scenarioCoverage",
+    "nonClaims"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "supportedRuntime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node", "packageManager", "operatingSystems"],
+      "properties": {
+        "node": { "type": "string" },
+        "packageManager": { "type": "string" },
+        "operatingSystems": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "reproducibilityCommands": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "deterministicSeeds": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["component", "value"],
+        "properties": {
+          "component": { "type": "string" },
+          "value": { "type": "string" }
+        }
+      }
+    },
+    "modelEvidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "models", "scenarioCoverage", "status"],
+        "properties": {
+          "artifact": { "type": "string" },
+          "models": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string" }
+          },
+          "scenarioCoverage": { "type": "string" },
+          "status": { "type": "string" }
+        }
+      }
+    },
+    "scenarioCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scenarioCount",
+        "externalInteractionCount",
+        "boundaryCrossingRequiredCount",
+        "domains"
+      ],
+      "properties": {
+        "scenarioCount": { "type": "integer", "minimum": 1 },
+        "externalInteractionCount": { "type": "integer", "minimum": 0 },
+        "boundaryCrossingRequiredCount": { "type": "integer", "minimum": 0 },
+        "domains": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "nonClaims": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

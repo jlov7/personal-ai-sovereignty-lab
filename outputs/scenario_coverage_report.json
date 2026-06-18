@@ -1,0 +1,163 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.5.0-coverage",
+  "generatedAt": "2026-05-22T00:00:00.000Z",
+  "scenarioCount": 51,
+  "domainCoverage": [
+    {
+      "id": "knowledge_work",
+      "count": 9,
+      "percentage": 17.6
+    },
+    {
+      "id": "finance_like_planning",
+      "count": 7,
+      "percentage": 13.7
+    },
+    {
+      "id": "health_like_sensitive",
+      "count": 8,
+      "percentage": 15.7
+    },
+    {
+      "id": "education",
+      "count": 5,
+      "percentage": 9.8
+    },
+    {
+      "id": "customer_agent_negotiation",
+      "count": 6,
+      "percentage": 11.8
+    },
+    {
+      "id": "household_admin",
+      "count": 10,
+      "percentage": 19.6
+    },
+    {
+      "id": "career",
+      "count": 6,
+      "percentage": 11.8
+    }
+  ],
+  "sensitivityCoverage": [
+    {
+      "id": "public",
+      "count": 1,
+      "percentage": 1
+    },
+    {
+      "id": "personal",
+      "count": 50,
+      "percentage": 48.1
+    },
+    {
+      "id": "confidential",
+      "count": 33,
+      "percentage": 31.7
+    },
+    {
+      "id": "sensitive",
+      "count": 5,
+      "percentage": 4.8
+    },
+    {
+      "id": "regulated",
+      "count": 15,
+      "percentage": 14.4
+    }
+  ],
+  "architectureLayerCoverage": [
+    {
+      "id": "local",
+      "count": 51,
+      "percentage": 100
+    },
+    {
+      "id": "personal_cloud",
+      "count": 38,
+      "percentage": 74.5
+    },
+    {
+      "id": "federated",
+      "count": 27,
+      "percentage": 52.9
+    }
+  ],
+  "externalInteractionCount": 25,
+  "boundaryCrossingRequiredCount": 36,
+  "adversarialVariantCount": 153,
+  "heldOutVariantPlan": [
+    {
+      "split": "seed",
+      "scenarioIds": [
+        "airline-refund-negotiation",
+        "calendar-scheduling-delegate",
+        "college-application-coach",
+        "eldercare-benefits-plan",
+        "grant-application-draft",
+        "insurance-appeal-helper",
+        "medical-bill-dispute",
+        "performance-review-prep",
+        "salary-negotiation-counteroffer",
+        "subscription-negotiation",
+        "vendor-contract-review"
+      ]
+    },
+    {
+      "split": "development",
+      "scenarioIds": [
+        "bank-fee-reversal",
+        "benefits-eligibility-helper",
+        "board-brief-local",
+        "career-recruiter-screen",
+        "caregiver-handoff-note",
+        "childcare-schedule-negotiation",
+        "conference-networking-brief",
+        "contractor-bid-negotiation",
+        "data-rights-request",
+        "employee-benefits-selection",
+        "family-calendar-delegation",
+        "federated-writing-patterns",
+        "grief-log-reflection",
+        "health-symptom-boundary",
+        "household-insurance-claim",
+        "insurance-renewal-comparison",
+        "job-search-prioritizer",
+        "language-learning-memory",
+        "medical-second-opinion-brief",
+        "medication-side-effect-log",
+        "membership-cancellation-agent",
+        "personal-cloud-memory-sync",
+        "private-research-synthesis",
+        "public-comment-draft",
+        "school-iep-prep",
+        "small-business-cashflow",
+        "student-scholarship-appeal",
+        "tax-deduction-organizer",
+        "team-reorg-brief",
+        "tenant-repair-request"
+      ]
+    },
+    {
+      "split": "held_out",
+      "scenarioIds": [
+        "board-risk-register",
+        "chronic-condition-tracker",
+        "debt-hardship-letter",
+        "finance-cashflow",
+        "immigration-form-prep",
+        "legal-intake-summary",
+        "mortgage-refinance-comparison",
+        "research-participant-consent",
+        "student-tutor",
+        "therapy-journal-summary"
+      ]
+    }
+  ],
+  "limitations": [
+    "Coverage buckets describe authored synthetic fixtures, not naturally sampled user tasks.",
+    "The held-out split is deterministic scaffolding for future benchmark governance; it is not a secret split in this public repo.",
+    "Scenario coverage does not imply measurement validity without human annotations and stronger system baselines."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Personal AI Sovereignty Lab",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "postCreateCommand": "pnpm verify",
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint"]
+    }
+  }
+}

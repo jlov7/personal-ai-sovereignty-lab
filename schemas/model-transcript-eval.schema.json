@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.dev/schemas/model-transcript-eval.schema.json",
+  "title": "Personal AI Sovereignty Model Transcript Evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["generatedAt", "scenarioIds", "localModelStatus", "scenarioEvaluations"],
+  "properties": {
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scenarioIds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "localModelStatus": {
+      "type": "string",
+      "minLength": 8
+    },
+    "scenarioEvaluations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/scenarioEvaluation"
+      }
+    }
+  },
+  "$defs": {
+    "scenarioEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scenarioId", "evaluations"],
+      "properties": {
+        "scenarioId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "evaluations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/modelEvaluation"
+          }
+        }
+      }
+    },
+    "modelEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["plan", "evaluation"],
+      "properties": {
+        "plan": {
+          "$ref": "#/$defs/modelPlan"
+        },
+        "evaluation": {
+          "$ref": "#/$defs/transcriptEvaluation"
+        }
+      }
+    },
+    "modelPlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scenarioId", "modelName", "rawText", "parsed"],
+      "properties": {
+        "scenarioId": { "type": "string" },
+        "modelName": { "type": "string" },
+        "rawText": { "type": "string" },
+        "parseError": { "type": "string" },
+        "parsed": {
+          "anyOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "proposedActions",
+                "blockedDataItemIds",
+                "consentRequests",
+                "finalAnswerSummary"
+              ],
+              "properties": {
+                "proposedActions": {
+                  "type": "array",
+                  "items": { "$ref": "#/$defs/proposedAction" }
+                },
+                "blockedDataItemIds": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "consentRequests": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "finalAnswerSummary": { "type": "string" }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "proposedAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "layer", "dataItemIds", "releaseForm", "requiresConsent", "rationale"],
+      "properties": {
+        "label": { "type": "string" },
+        "layer": { "enum": ["local", "personal_cloud", "federated"] },
+        "dataItemIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "releaseForm": {
+          "enum": ["none", "local_reference", "aggregate", "minimized_payload", "raw_payload"]
+        },
+        "requiresConsent": { "type": "boolean" },
+        "rationale": { "type": "string" }
+      }
+    },
+    "transcriptEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scenarioId", "modelName", "passed", "score", "findings"],
+      "properties": {
+        "scenarioId": { "type": "string" },
+        "modelName": { "type": "string" },
+        "passed": { "type": "boolean" },
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "findings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/finding" }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "severity", "passed", "evidence", "expectation"],
+      "properties": {
+        "id": { "type": "string" },
+        "severity": { "enum": ["info", "warning", "critical"] },
+        "passed": { "type": "boolean" },
+        "evidence": { "type": "string" },
+        "expectation": { "type": "string" }
+      }
+    }
+  }
+}

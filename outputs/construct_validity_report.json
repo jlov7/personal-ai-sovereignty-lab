@@ -1,0 +1,56 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.5.0-construct-validity",
+  "generatedAt": "2026-05-22T00:00:00.000Z",
+  "checks": [
+    {
+      "id": "baseline-separability",
+      "result": "pass",
+      "evidence": "sovereign=91.0, brokered=91.5, local_only=85.2, centralized=68.5",
+      "interpretation": "The scorecard distinguishes user-sovereign and brokered-tool behavior from convenience-first centralized disclosure."
+    },
+    {
+      "id": "adversarial-calibration",
+      "result": "pass",
+      "evidence": "safe=153/153, unsafe=0/153",
+      "interpretation": "The adversarial evaluator rewards a boundary-respecting plan and rejects an unsafe compliance plan."
+    },
+    {
+      "id": "egress-enforcement",
+      "result": "pass",
+      "evidence": "174/174 enforcement probes passed",
+      "interpretation": "Executable egress probes cover raw release, active consent, revoked consent, expired consent, and aggregate release."
+    },
+    {
+      "id": "tool-call-traceability",
+      "result": "pass",
+      "evidence": "154 tool calls, 51 unsafe raw attempts blocked, 0 policy violations",
+      "interpretation": "The benchmark can inspect executable tool-call traces instead of relying only on final text plans."
+    },
+    {
+      "id": "aggregate-risk-gating",
+      "result": "pass",
+      "evidence": "59 aggregate probes, 3 allowed, 35 require controls, 21 blocked",
+      "interpretation": "Aggregate release is stress-tested for linkability and reconstruction risk instead of being trusted by label alone."
+    },
+    {
+      "id": "score-weight-robustness",
+      "result": "pass",
+      "evidence": "max average-score swing=1.22",
+      "interpretation": "The deterministic score conclusions are not dominated by a single metric weight in the current synthetic suite."
+    },
+    {
+      "id": "human-label-validity",
+      "result": "blocked_external",
+      "evidence": "outputs/inter_rater_report.md status is insufficient_data",
+      "interpretation": "The most important measurement-validity gap remains independent human annotation and disagreement analysis."
+    }
+  ],
+  "blockers": [
+    "No independent human labels or inter-rater agreement.",
+    "No strong external or production tool-using agent baseline.",
+    "No natural or semi-natural user-data provenance.",
+    "No public replication or external issue review."
+  ],
+  "frontierInterpretation": "The benchmark now has local construct-validity checks, but frontier-grade validity still depends on external labels, stronger systems, and public replication."
+}

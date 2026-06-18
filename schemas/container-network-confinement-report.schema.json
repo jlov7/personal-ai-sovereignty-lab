@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/container-network-confinement-report.schema.json",
+  "title": "Personal AI Sovereignty Container Network Confinement Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "platform",
+    "confinementLayer",
+    "status",
+    "dockerAvailable",
+    "image",
+    "probeHostBinding",
+    "probeTargetHost",
+    "positiveControlPassed",
+    "containerDeniedNetwork",
+    "attempts",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "platform": { "type": "string" },
+    "confinementLayer": { "type": "string", "enum": ["docker_network_none"] },
+    "status": { "type": "string", "enum": ["passed", "unavailable", "failed"] },
+    "dockerAvailable": { "type": "boolean" },
+    "image": { "type": "string", "enum": ["node:24-alpine"] },
+    "probeHostBinding": { "type": "string", "enum": ["0.0.0.0"] },
+    "probeTargetHost": { "type": "string", "enum": ["host.docker.internal"] },
+    "positiveControlPassed": { "type": "boolean" },
+    "containerDeniedNetwork": { "type": "boolean" },
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "dockerArgs",
+          "expectedConnected",
+          "observedConnected",
+          "errorCode",
+          "exitCode",
+          "passed"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "dockerArgs": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "expectedConnected": { "type": "boolean" },
+          "observedConnected": { "type": "boolean" },
+          "errorCode": { "type": ["string", "null"] },
+          "exitCode": { "type": ["integer", "null"] },
+          "passed": { "type": "boolean" }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

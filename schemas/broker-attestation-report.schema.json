@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/broker-attestation-report.schema.json",
+  "title": "Personal AI Sovereignty Broker Attestation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "brokerMode",
+    "sourcePaths",
+    "traceCount",
+    "signedAttestationCount",
+    "verifiedAttestationCount",
+    "actionCount",
+    "brokerExecutedActionCount",
+    "brokerBlockedActionCount",
+    "claimedCompletedButBlockedCount",
+    "submittedBlockedConfirmedCount",
+    "evaluationLinks",
+    "attestations",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "brokerMode": { "type": "string", "enum": ["deterministic_policy_broker"] },
+    "sourcePaths": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "traceCount": { "type": "integer", "minimum": 1 },
+    "signedAttestationCount": { "type": "integer", "minimum": 1 },
+    "verifiedAttestationCount": { "type": "integer", "minimum": 0 },
+    "actionCount": { "type": "integer", "minimum": 1 },
+    "brokerExecutedActionCount": { "type": "integer", "minimum": 0 },
+    "brokerBlockedActionCount": { "type": "integer", "minimum": 0 },
+    "claimedCompletedButBlockedCount": { "type": "integer", "minimum": 0 },
+    "submittedBlockedConfirmedCount": { "type": "integer", "minimum": 0 },
+    "evaluationLinks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "traceId",
+          "externalTraceScore",
+          "privacyBoundaryViolations",
+          "consentViolations",
+          "aggregateControlViolations",
+          "brokerExecutedActions",
+          "brokerBlockedActions",
+          "claimedCompletedButBlocked",
+          "attestationValid"
+        ],
+        "properties": {
+          "traceId": { "type": "string" },
+          "externalTraceScore": { "type": "number", "minimum": 0, "maximum": 100 },
+          "privacyBoundaryViolations": { "type": "integer", "minimum": 0 },
+          "consentViolations": { "type": "integer", "minimum": 0 },
+          "aggregateControlViolations": { "type": "integer", "minimum": 0 },
+          "brokerExecutedActions": { "type": "integer", "minimum": 0 },
+          "brokerBlockedActions": { "type": "integer", "minimum": 0 },
+          "claimedCompletedButBlocked": { "type": "integer", "minimum": 0 },
+          "attestationValid": { "type": "boolean" }
+        }
+      }
+    },
+    "attestations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "attestationId",
+          "traceId",
+          "scenarioId",
+          "systemName",
+          "brokerVersion",
+          "brokerMode",
+          "confinementProfile",
+          "generatedAt",
+          "submittedActionCount",
+          "executedActionCount",
+          "blockedActionCount",
+          "claimedCompletedButBlockedCount",
+          "submittedBlockedConfirmedCount",
+          "actionResults",
+          "evaluatorLink",
+          "signature"
+        ],
+        "properties": {
+          "attestationId": { "type": "string" },
+          "traceId": { "type": "string" },
+          "scenarioId": { "type": "string" },
+          "systemName": { "type": "string" },
+          "brokerVersion": { "type": "string" },
+          "brokerMode": { "type": "string" },
+          "confinementProfile": { "type": "string" },
+          "generatedAt": { "type": "string", "format": "date-time" },
+          "submittedActionCount": { "type": "integer", "minimum": 1 },
+          "executedActionCount": { "type": "integer", "minimum": 0 },
+          "blockedActionCount": { "type": "integer", "minimum": 0 },
+          "claimedCompletedButBlockedCount": { "type": "integer", "minimum": 0 },
+          "submittedBlockedConfirmedCount": { "type": "integer", "minimum": 0 },
+          "actionResults": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "actionId",
+                "submittedStatus",
+                "brokerDecision",
+                "brokerExecuted",
+                "targetHost",
+                "dataItemIds",
+                "releaseForm",
+                "layer",
+                "findings",
+                "controls"
+              ],
+              "properties": {
+                "actionId": { "type": "string" },
+                "submittedStatus": { "type": "string" },
+                "brokerDecision": { "type": "string" },
+                "brokerExecuted": { "type": "boolean" },
+                "targetHost": { "type": "string" },
+                "dataItemIds": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "releaseForm": { "type": "string" },
+                "layer": { "type": "string" },
+                "findings": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["id", "severity", "dataItemId", "message"],
+                    "properties": {
+                      "id": { "type": "string" },
+                      "severity": { "type": "string" },
+                      "dataItemId": { "type": ["string", "null"] },
+                      "message": { "type": "string" }
+                    }
+                  }
+                },
+                "controls": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            }
+          },
+          "evaluatorLink": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["externalTraceEvaluationReport", "traceId"],
+            "properties": {
+              "externalTraceEvaluationReport": { "type": "string" },
+              "traceId": { "type": "string" }
+            }
+          },
+          "signature": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["algorithm", "keyId", "canonicalization", "value"],
+            "properties": {
+              "algorithm": { "type": "string", "enum": ["HMAC-SHA256"] },
+              "keyId": { "type": "string" },
+              "canonicalization": { "type": "string", "enum": ["json-stable-sort-v1"] },
+              "value": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    }
+  }
+}

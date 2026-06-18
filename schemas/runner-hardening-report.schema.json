@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-ai-sovereignty-lab.local/schemas/runner-hardening-report.schema.json",
+  "title": "Personal AI Sovereignty Runner Hardening Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "benchmark",
+    "version",
+    "generatedAt",
+    "status",
+    "dockerAvailable",
+    "contract",
+    "escapeCorpusSourcePaths",
+    "escapeCorpusCount",
+    "escapeCorpus",
+    "probeCount",
+    "passedProbeCount",
+    "deniedProbeCount",
+    "observedLimitationCount",
+    "probes",
+    "staticPolicyChecks",
+    "limitations"
+  ],
+  "properties": {
+    "benchmark": { "type": "string", "const": "personal-ai-sovereignty-benchmark" },
+    "version": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "status": { "type": "string", "enum": ["passed", "failed", "skipped", "unavailable"] },
+    "dockerAvailable": { "type": "boolean" },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profileId", "image", "args", "controls", "seccompAppArmor"],
+      "properties": {
+        "profileId": {
+          "type": "string",
+          "const": "docker_network_none_readonly_no_new_privileges_resource_limited_v1"
+        },
+        "image": { "type": "string" },
+        "args": { "type": "array", "items": { "type": "string" } },
+        "controls": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "category", "claim", "mechanism", "expectedEvidence", "limitation"],
+            "properties": {
+              "id": { "type": "string" },
+              "category": {
+                "type": "string",
+                "enum": ["network", "filesystem", "environment", "process", "package_install", "ipc", "resource"]
+              },
+              "claim": { "type": "string" },
+              "mechanism": { "type": "string" },
+              "expectedEvidence": { "type": "string" },
+              "limitation": { "type": "string" }
+            }
+          }
+        },
+        "seccompAppArmor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "seccomp", "appArmor", "reason"],
+          "properties": {
+            "status": { "type": "string", "const": "documented_not_enforced_by_fixture" },
+            "seccomp": { "type": "string" },
+            "appArmor": { "type": "string" },
+            "reason": { "type": "string" }
+          }
+        }
+      }
+    },
+    "escapeCorpusSourcePaths": { "type": "array", "items": { "type": "string" } },
+    "escapeCorpusCount": { "type": "integer", "minimum": 0 },
+    "escapeCorpus": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "category",
+          "attackDescription",
+          "expectedOutcome",
+          "mappedProbeId",
+          "control",
+          "limitation"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["network", "filesystem", "environment", "process", "package_install", "ipc", "resource"]
+          },
+          "attackDescription": { "type": "string" },
+          "expectedOutcome": { "type": "string", "enum": ["deny", "observe"] },
+          "mappedProbeId": { "type": "string" },
+          "control": { "type": "string" },
+          "limitation": { "type": "string" }
+        }
+      }
+    },
+    "probeCount": { "type": "integer", "minimum": 0 },
+    "passedProbeCount": { "type": "integer", "minimum": 0 },
+    "deniedProbeCount": { "type": "integer", "minimum": 0 },
+    "observedLimitationCount": { "type": "integer", "minimum": 0 },
+    "probes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "category", "expectedOutcome", "observed", "result", "evidence", "limitation"],
+        "properties": {
+          "id": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": ["network", "filesystem", "environment", "process", "package_install", "ipc", "resource"]
+          },
+          "expectedOutcome": { "type": "string", "enum": ["deny", "observe"] },
+          "observed": { "type": "string" },
+          "result": { "type": "string", "enum": ["pass", "fail", "skipped", "limitation"] },
+          "evidence": { "type": "string" },
+          "limitation": { "type": "string" }
+        }
+      }
+    },
+    "staticPolicyChecks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "passed", "evidence"],
+        "properties": {
+          "id": { "type": "string" },
+          "passed": { "type": "boolean" },
+          "evidence": { "type": "string" }
+        }
+      }
+    },
+    "limitations": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  }
+}

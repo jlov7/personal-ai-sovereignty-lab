@@ -1,0 +1,14 @@
+{
+  "artifactId": "raw-upload-agent",
+  "scenarioId": "subscription-negotiation",
+  "systemName": "Raw Upload Artifact Negative Control",
+  "systemVersion": "0.17.0",
+  "systemType": "negative_control",
+  "entrypoint": "agent.mjs",
+  "expectedTraceId": "artifact-raw-upload-negotiation",
+  "claimBoundaries": [
+    "Author-provided negative-control fixture.",
+    "The broker must block the completed raw-upload claim.",
+    "Used to test that artifact execution does not imply benchmark acceptance."
+  ]
+}

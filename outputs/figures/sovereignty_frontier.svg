@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="650" viewBox="0 0 1040 650" role="img" aria-labelledby="title desc">
+  <title id="title">PAISL boundary-control chart</title>
+  <desc id="desc">Control chart where x is task completion and y is boundary score, defined as one minus SLR.</desc>
+  <rect width="1040" height="650" fill="#ffffff"/>
+  <text x="42" y="40" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="23" font-weight="750" fill="#1f2328">Boundary-control chart</text>
+  <text x="42" y="66" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" fill="#57606a">Shows whether a run source avoids confirmed raw leaks while still completing objective task checks.</text>
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" fill="#57606a">
+  <line x1="88.00" y1="108.00" x2="88.00" y2="484.00" stroke="#d8dee4" stroke-width="1"/>
+  <line x1="88.00" y1="484.00" x2="658.00" y2="484.00" stroke="#d8dee4" stroke-width="1"/>
+  <text x="88.00" y="512.00" text-anchor="middle">0.00</text>
+  <text x="70.00" y="488.00" text-anchor="end">0.00</text>
+  <line x1="230.50" y1="108.00" x2="230.50" y2="484.00" stroke="#d8dee4" stroke-width="1"/>
+  <line x1="88.00" y1="390.00" x2="658.00" y2="390.00" stroke="#d8dee4" stroke-width="1"/>
+  <text x="230.50" y="512.00" text-anchor="middle">0.25</text>
+  <text x="70.00" y="394.00" text-anchor="end">0.25</text>
+  <line x1="373.00" y1="108.00" x2="373.00" y2="484.00" stroke="#d8dee4" stroke-width="1"/>
+  <line x1="88.00" y1="296.00" x2="658.00" y2="296.00" stroke="#d8dee4" stroke-width="1"/>
+  <text x="373.00" y="512.00" text-anchor="middle">0.50</text>
+  <text x="70.00" y="300.00" text-anchor="end">0.50</text>
+  <line x1="515.50" y1="108.00" x2="515.50" y2="484.00" stroke="#d8dee4" stroke-width="1"/>
+  <line x1="88.00" y1="202.00" x2="658.00" y2="202.00" stroke="#d8dee4" stroke-width="1"/>
+  <text x="515.50" y="512.00" text-anchor="middle">0.75</text>
+  <text x="70.00" y="206.00" text-anchor="end">0.75</text>
+  <line x1="658.00" y1="108.00" x2="658.00" y2="484.00" stroke="#d8dee4" stroke-width="1"/>
+  <line x1="88.00" y1="108.00" x2="658.00" y2="108.00" stroke="#d8dee4" stroke-width="1"/>
+  <text x="658.00" y="512.00" text-anchor="middle">1.00</text>
+  <text x="70.00" y="112.00" text-anchor="end">1.00</text>
+  </g>
+  <rect x="88" y="108" width="570" height="376" rx="3" fill="#f6f8fa" fill-opacity="0.38" stroke="#1f2328" stroke-width="1.4"/>
+  <text x="373.00" y="542.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2328">Task completion score</text>
+  <text x="373.00" y="562.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#57606a">mean share of objective success checks satisfied</text>
+  <text x="26" y="296.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#1f2328" transform="rotate(-90 26 296.00)">Boundary score</text>
+  <text x="48" y="296.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="11" text-anchor="middle" fill="#57606a" transform="rotate(-90 48 296.00)">one minus confirmed raw-leak rate</text>
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" fill="#1f2328">
+  <g data-agent="reference-policy">
+  <title>Reference policy: task completion 100%, boundary score 100%, fixture; n=51; completed</title>
+  <circle cx="658.00" cy="108.00" r="17" fill="#8250df" stroke="#1f2328" stroke-width="1.6"/>
+  <text x="658.00" y="111.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9.5" font-weight="800" fill="#ffffff" text-anchor="middle">REF</text>
+  </g>
+  <g data-agent="boundary-usefulness-control">
+  <title>Usefulness control: task completion 76%, boundary score 100%, fixture; n=51; completed</title>
+  <circle cx="523.88" cy="108.00" r="17" fill="#1f6feb" stroke="#1f2328" stroke-width="1.6"/>
+  <text x="523.88" y="111.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="9.5" font-weight="800" fill="#ffffff" text-anchor="middle">USE</text>
+  </g>
+  <g data-agent="openai-compatible:gemma4:26b">
+  <title>Live local run: gemma4 26B: task completion 33%, boundary score 100%, live model; n=1; unfinished</title>
+  <circle cx="277.98" cy="108.00" r="18" fill="#2da44e" stroke="#1f2328" stroke-width="1.6"/>
+  <text x="277.98" y="111.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">LIVE</text>
+  </g>
+  <g data-agent="centralized-negative-control">
+  <title>Negative control: task completion 0%, boundary score 0%, fixture; n=51; completed</title>
+  <circle cx="88.00" cy="484.00" r="17" fill="#d1242f" stroke="#1f2328" stroke-width="1.6"/>
+  <text x="88.00" y="487.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">LEAK</text>
+  </g>
+  </g>
+  <rect x="682" y="84" width="328" height="522" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="700.00" y="110.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="750" fill="#1f2328" text-anchor="start"><tspan x="700.00" dy="0">Rows</tspan></text>
+  <g data-agent-summary="reference-policy">
+  <circle cx="718" cy="153.00" r="15" fill="#8250df" stroke="#1f2328" stroke-width="1.4"/>
+  <text x="718" y="157.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">REF</text>
+  <text x="744.00" y="146.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328" text-anchor="start"><tspan x="744.00" dy="0">Reference policy</tspan><tspan x="744.00" dy="15">100% task / 100% boundary</tspan><tspan x="744.00" dy="15">fixture; n=51; completed</tspan></text>
+  </g>
+  <g data-agent-summary="boundary-usefulness-control">
+  <circle cx="718" cy="219.00" r="15" fill="#1f6feb" stroke="#1f2328" stroke-width="1.4"/>
+  <text x="718" y="223.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">USE</text>
+  <text x="744.00" y="212.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328" text-anchor="start"><tspan x="744.00" dy="0">Usefulness control</tspan><tspan x="744.00" dy="15">76% task / 100% boundary</tspan><tspan x="744.00" dy="15">fixture; n=51; completed</tspan></text>
+  </g>
+  <g data-agent-summary="openai-compatible:gemma4:26b">
+  <circle cx="718" cy="285.00" r="15" fill="#2da44e" stroke="#1f2328" stroke-width="1.4"/>
+  <text x="718" y="289.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">LIVE</text>
+  <text x="744.00" y="278.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328" text-anchor="start"><tspan x="744.00" dy="0">Live local run: gemma4 26B</tspan><tspan x="744.00" dy="15">33% task / 100% boundary</tspan><tspan x="744.00" dy="15">live model; n=1; unfinished</tspan></text>
+  </g>
+  <g data-agent-summary="centralized-negative-control">
+  <circle cx="718" cy="351.00" r="15" fill="#d1242f" stroke="#1f2328" stroke-width="1.4"/>
+  <text x="718" y="355.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="8.5" font-weight="800" fill="#ffffff" text-anchor="middle">LEAK</text>
+  <text x="744.00" y="344.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10.5" font-weight="700" fill="#1f2328" text-anchor="start"><tspan x="744.00" dy="0">Negative control</tspan><tspan x="744.00" dy="15">0% task / 0% boundary</tspan><tspan x="744.00" dy="15">fixture; n=51; completed</tspan></text>
+  </g>
+  <text x="700.00" y="426.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="14" font-weight="750" fill="#1f2328" text-anchor="start"><tspan x="700.00" dy="0">Axes</tspan></text>
+  <text x="700.00" y="458.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="400" fill="#57606a" text-anchor="start"><tspan x="700.00" dy="0">X: task completion, measured</tspan><tspan x="700.00" dy="17">as mean objective success</tspan><tspan x="700.00" dy="17">checks satisfied.</tspan></text>
+  <text x="700.00" y="528.00" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" font-weight="400" fill="#57606a" text-anchor="start"><tspan x="700.00" dy="0">Y: boundary score, measured</tspan><tspan x="700.00" dy="17">as one minus the confirmed</tspan><tspan x="700.00" dy="17">raw-leak rate.</tspan></text>
+  <text x="42" y="604" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" fill="#57606a">Sparse corners are expected: these are control rows, not a model leaderboard.</text>
+  <text x="42" y="626" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="12" fill="#57606a">Evidence shown: 153 fixture runs; 1 platform-tagged live run.</text>
+</svg>

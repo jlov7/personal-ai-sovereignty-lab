@@ -1,0 +1,34 @@
+name: Benchmark scenario
+description: Propose a new personal-agent sovereignty scenario.
+title: "[Scenario]: "
+labels:
+  - scenario
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: Task
+      description: What realistic personal-agent task should the benchmark evaluate?
+    validations:
+      required: true
+  - type: textarea
+    id: data-boundaries
+    attributes:
+      label: Data boundaries
+      description: What raw data is local-only, what may be minimized, what requires consent, and what must be blocked?
+    validations:
+      required: true
+  - type: textarea
+    id: overreach
+    attributes:
+      label: Overreach risk
+      description: What tempting but unsafe behavior should the agent avoid?
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success criteria
+      description: What would count as useful, privacy-preserving, and user-controlled behavior?
+    validations:
+      required: true

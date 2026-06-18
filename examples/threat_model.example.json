@@ -1,0 +1,63 @@
+{
+  "id": "personal-ai-sovereignty-v0",
+  "scope": "Threat model for the synthetic benchmark scaffold and local-first personal-agent simulation.",
+  "assets": [
+    {
+      "id": "raw-personal-memory",
+      "description": "Unstructured user memory, notes, preferences, contacts, and private reminders.",
+      "sensitivity": "sensitive"
+    },
+    {
+      "id": "financial-records",
+      "description": "Transaction histories, budget constraints, and planning assumptions.",
+      "sensitivity": "regulated"
+    },
+    {
+      "id": "consent-records",
+      "description": "Evidence that a boundary crossing was approved by the user.",
+      "sensitivity": "confidential"
+    }
+  ],
+  "actors": [
+    {
+      "id": "user",
+      "role": "Owner and final decision-maker",
+      "capabilities": ["Grant consent", "Review outputs", "Revoke future sharing"],
+      "concerns": ["Understanding data flow", "Avoiding silent disclosure"]
+    },
+    {
+      "id": "local-agent",
+      "role": "On-device reasoning system",
+      "capabilities": ["Read raw local context", "Draft plans", "Classify boundary decisions"],
+      "concerns": ["Prompt injection", "Overreach", "Misclassification"]
+    },
+    {
+      "id": "external-service",
+      "role": "Business API or collective layer",
+      "capabilities": ["Receive approved payloads", "Return offers or aggregate comparisons"],
+      "concerns": ["User leverage loss", "Secondary use", "Linkage risk"]
+    }
+  ],
+  "threats": [
+    {
+      "id": "consent-bypass",
+      "description": "The agent crosses a personal-cloud or external boundary without explicit user approval.",
+      "affectedAssets": ["consent-records", "raw-personal-memory"],
+      "currentControls": ["requires_consent policy decision", "UI consent simulator", "adversarial tests"],
+      "futureControls": ["Signed consent receipts", "Revocation ledger", "Egress enforcement"],
+      "severity": "high"
+    },
+    {
+      "id": "bargaining-leakage",
+      "description": "A customer-owned negotiation agent reveals a private reservation price to a business endpoint.",
+      "affectedAssets": ["financial-records"],
+      "currentControls": ["blocked policy decision", "external-release block tests"],
+      "futureControls": ["Formal negotiation policy", "Provider-side transcript audit"],
+      "severity": "high"
+    }
+  ],
+  "residualRisks": [
+    "The current scaffold does not enforce OS-level network egress controls.",
+    "The current scaffold does not include live model prompt-injection testing."
+  ]
+}

@@ -1,0 +1,5 @@
+allowBuilds:
+  esbuild: true
+overrides:
+  "@babel/core": 7.29.7
+  esbuild: 0.28.1

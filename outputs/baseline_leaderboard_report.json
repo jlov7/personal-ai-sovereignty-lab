@@ -1,0 +1,139 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.18.0-baseline-leaderboard",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "totalScenarioCount": 51,
+  "entries": [
+    {
+      "adapterId": "sovereign_hybrid",
+      "displayName": "Sovereign Hybrid Reference",
+      "evidenceClass": "internal_deterministic_adapter",
+      "runnableCommand": "pnpm eval",
+      "adapterPath": "src/evals/baselines.ts",
+      "scenarioCoverageCount": 51,
+      "scenarioCoverageRate": 1,
+      "scoreType": "benchmark_score",
+      "score": 91.04,
+      "scoreComparableToBenchmark": true,
+      "status": "active_seed",
+      "limitations": [
+        "Author-defined policy reference, not an independent baseline."
+      ]
+    },
+    {
+      "adapterId": "brokered_tool_agent",
+      "displayName": "Brokered Tool-Agent Adapter",
+      "evidenceClass": "internal_deterministic_adapter",
+      "runnableCommand": "pnpm eval",
+      "adapterPath": "src/evals/baselines.ts",
+      "scenarioCoverageCount": 51,
+      "scenarioCoverageRate": 1,
+      "scoreType": "benchmark_score",
+      "score": 91.47,
+      "scoreComparableToBenchmark": true,
+      "status": "active_seed",
+      "limitations": [
+        "Deterministic local tool-agent simulation, not a production personal agent."
+      ]
+    },
+    {
+      "adapterId": "centralized_cloud",
+      "displayName": "Centralized Cloud Negative Control",
+      "evidenceClass": "internal_deterministic_adapter",
+      "runnableCommand": "pnpm eval",
+      "adapterPath": "src/evals/baselines.ts",
+      "scenarioCoverageCount": 51,
+      "scenarioCoverageRate": 1,
+      "scoreType": "benchmark_score",
+      "score": 68.47,
+      "scoreComparableToBenchmark": true,
+      "status": "active_seed",
+      "limitations": [
+        "Negative control intentionally collapses data boundaries."
+      ]
+    },
+    {
+      "adapterId": "local_only",
+      "displayName": "Local-Only Negative Control",
+      "evidenceClass": "internal_deterministic_adapter",
+      "runnableCommand": "pnpm eval",
+      "adapterPath": "src/evals/baselines.ts",
+      "scenarioCoverageCount": 51,
+      "scenarioCoverageRate": 1,
+      "scoreType": "benchmark_score",
+      "score": 85.22,
+      "scoreComparableToBenchmark": true,
+      "status": "active_seed",
+      "limitations": [
+        "Negative control intentionally refuses useful consented boundary crossing."
+      ]
+    },
+    {
+      "adapterId": "submitted_artifact_fixture",
+      "displayName": "Submitted Artifact Fixture Adapter",
+      "evidenceClass": "submitted_artifact_fixture",
+      "runnableCommand": "pnpm submitted:runner",
+      "adapterPath": "src/evals/submittedArtifactRunnerReport.ts",
+      "scenarioCoverageCount": 1,
+      "scenarioCoverageRate": 0.02,
+      "scoreType": "runner_pass_rate",
+      "score": 100,
+      "scoreComparableToBenchmark": false,
+      "status": "active_seed",
+      "limitations": [
+        "Runner pass rate is not a benchmark score.",
+        "Current submitted artifacts are author fixtures, not independent external baselines.",
+        "Coverage is limited to fixture scenarios until outside systems submit artifacts."
+      ]
+    },
+    {
+      "adapterId": "strong_external_personal_agent",
+      "displayName": "Strong External Personal-Agent Baseline",
+      "evidenceClass": "external_required",
+      "runnableCommand": null,
+      "adapterPath": null,
+      "scenarioCoverageCount": 0,
+      "scenarioCoverageRate": 0,
+      "scoreType": "not_available",
+      "score": null,
+      "scoreComparableToBenchmark": true,
+      "status": "blocked_external",
+      "limitations": [
+        "Requires an independently submitted production or frontier-adjacent personal-agent system.",
+        "Must include action traces, consent evidence, and artifact bundle metadata."
+      ]
+    }
+  ],
+  "gates": [
+    {
+      "id": "strong-independent-baseline-required",
+      "status": "blocked_external",
+      "evidence": "0 independent external submissions; 0 production personal-agent submissions",
+      "requiredForValidationClaim": true,
+      "interpretation": "A public validation claim requires at least one independent production-grade or frontier-adjacent personal-agent baseline."
+    },
+    {
+      "id": "submitted-artifact-adapter-runnable",
+      "status": "pass_local",
+      "evidence": "2/2 submitted artifact fixtures passed",
+      "requiredForValidationClaim": false,
+      "interpretation": "The submitted-artifact adapter is runnable locally, but fixture success does not count as an external strong baseline."
+    }
+  ],
+  "blockedStrongBaselineClaim": true,
+  "localOpenAiCompatibleWrapper": {
+    "docsPath": "docs/baseline_adapters.md",
+    "requiredEnvironmentVariables": [
+      "OPENAI_BASE_URL",
+      "OPENAI_API_KEY",
+      "PAISL_BASELINE_MODEL"
+    ],
+    "nonClaim": "The wrapper is a maintainer convenience for local OpenAI-compatible endpoints; checked-in results remain fixture evidence unless independently submitted."
+  },
+  "limitations": [
+    "Internal deterministic baselines are useful negative controls but not external evidence.",
+    "Deterministic entry scores come from the baseline-adapter run; the headline mean in README.md and outputs/statistical_report.md comes from the separate reference-policy scorecard run, so the two averages differ slightly by construction.",
+    "Submitted-artifact fixture pass rates are not comparable to scorecard averages.",
+    "The leaderboard must remain blocked for validation claims until strong independent systems submit trace-bearing artifacts."
+  ]
+}

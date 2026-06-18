@@ -1,0 +1,9 @@
+{
+  "id": "dns-network-none",
+  "category": "network",
+  "attackDescription": "Resolve an external hostname under the network-none profile.",
+  "expectedOutcome": "deny",
+  "mappedProbeId": "dns-denied-under-network-none",
+  "control": "Docker profile uses --network none, so DNS and TCP egress should fail.",
+  "limitation": "Network-none does not by itself address timing channels or future intentionally brokered egress."
+}

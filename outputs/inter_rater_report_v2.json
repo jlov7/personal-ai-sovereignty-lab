@@ -1,0 +1,48 @@
+{
+  "benchmark": "personal-ai-sovereignty-harness",
+  "version": "0.25.0-inter-rater-v2",
+  "generatedAt": "2026-06-11T00:00:00.000Z",
+  "status": "blocked_external",
+  "annotationSource": "private/annotations/*.json",
+  "packetPath": "outputs/annotation_packet_v2.json",
+  "annotationCount": 0,
+  "anonymizedReviewerCount": 0,
+  "caseCount": 0,
+  "overlappingCaseCount": 0,
+  "minimumReviewerCount": 3,
+  "minimumOverlappingCaseCount": 5,
+  "thresholds": {
+    "strong": "alpha >= 0.8",
+    "tentative": "0.67 <= alpha < 0.8",
+    "revise": "alpha < 0.67"
+  },
+  "metrics": [
+    {
+      "id": "pairwise_cohen_kappa",
+      "value": null,
+      "interpretation": "Not computed until enough overlapping private annotations exist."
+    },
+    {
+      "id": "krippendorff_alpha_nominal",
+      "value": null,
+      "interpretation": "Not computed until enough overlapping private annotations exist."
+    },
+    {
+      "id": "human_automated_majority_agreement",
+      "value": null,
+      "interpretation": "Not computed until enough overlapping private annotations exist."
+    }
+  ],
+  "cases": [],
+  "disagreements": [],
+  "blockers": [
+    "Status remains blocked_external until at least three annotators submit private labels.",
+    "Status remains blocked_external until at least five cases have overlapping annotations.",
+    "Raw annotation files belong in private/annotations/ and must not be committed."
+  ],
+  "limitations": [
+    "This report commits only anonymized aggregates; raw annotator files are gitignored.",
+    "Automated-scorer disagreements require explicit disposition as scorer_bug or annotation_error before reconciliation.",
+    "Agreement metrics measure the annotation instrument, not external benchmark validation by themselves."
+  ]
+}

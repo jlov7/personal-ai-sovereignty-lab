@@ -1,0 +1,19 @@
+node_modules/
+dist/
+coverage/
+tsconfig.tsbuildinfo
+.playwright-mcp/
+.DS_Store
+.env
+.env.*
+!.env.example
+outputs/*.tmp
+outputs/screenshots/
+
+# Local workspace and editor state
+.codex/
+.specstory/
+.vscode/
+.cursorindexingignore
+.claude/
+private/

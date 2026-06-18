@@ -1,0 +1,252 @@
+{
+  "benchmark": "personal-ai-sovereignty-benchmark",
+  "version": "0.18.0-artifact-bundle-standard",
+  "generatedAt": "2026-05-23T00:00:00.000Z",
+  "status": "passed",
+  "sourcePaths": [
+    "examples/artifact_bundles/fixture_index.json",
+    "examples/artifact_bundles/malformed-unexpected-write-agent/agent.mjs",
+    "examples/artifact_bundles/malformed-unexpected-write-agent/bundle.json",
+    "examples/artifact_bundles/raw-upload-agent/agent.mjs",
+    "examples/artifact_bundles/raw-upload-agent/bundle.json",
+    "examples/artifact_bundles/safe-minimized-agent/agent.mjs",
+    "examples/artifact_bundles/safe-minimized-agent/bundle.json"
+  ],
+  "bundleCount": 3,
+  "passedBundleCount": 2,
+  "rejectedBundleCount": 1,
+  "expectedFailureCount": 1,
+  "expectationMatchCount": 3,
+  "bundles": [
+    {
+      "artifactId": "malformed-unexpected-write-agent",
+      "bundleDir": "examples/artifact_bundles/malformed-unexpected-write-agent",
+      "manifestPath": "examples/artifact_bundles/malformed-unexpected-write-agent/bundle.json",
+      "manifestSha256": "f6b42f963f15d47310057e842c2ac1d66580bd4194c066fff1afef19c8e6f418",
+      "verificationStatus": "fail",
+      "expectedStatus": "fail",
+      "expectationMatched": true,
+      "checks": [
+        {
+          "id": "manifest-json-parse",
+          "passed": true,
+          "evidence": "Parsed examples/artifact_bundles/malformed-unexpected-write-agent/bundle.json."
+        },
+        {
+          "id": "required-manifest-fields",
+          "passed": true,
+          "evidence": "Required manifest objects are present."
+        },
+        {
+          "id": "claim-boundaries-present",
+          "passed": false,
+          "evidence": "0 claim boundaries declared."
+        },
+        {
+          "id": "runtime-pinned",
+          "passed": false,
+          "evidence": "engine=node@latest; digest=sha256:c983dc3ba1d2b928516a5f9dfd1b15d8df2a29d997371f9e84b9554c3dcebbe7"
+        },
+        {
+          "id": "manifest-paths-contained",
+          "passed": true,
+          "evidence": "All declared paths are relative and stay inside the bundle."
+        },
+        {
+          "id": "entrypoint-exists",
+          "passed": true,
+          "evidence": "agent.mjs"
+        },
+        {
+          "id": "source-digests-cover-entrypoint",
+          "passed": true,
+          "evidence": "1 source digests."
+        },
+        {
+          "id": "source-digest:agent.mjs",
+          "passed": true,
+          "evidence": "expected=6f7715d46c5c7cb9f0d08302b42f1a632bd3d04c8e8560c35ea3a46a40f771f1/579; actual=6f7715d46c5c7cb9f0d08302b42f1a632bd3d04c8e8560c35ea3a46a40f771f1/579"
+        },
+        {
+          "id": "scenario-coverage-declared",
+          "passed": true,
+          "evidence": "1 scenario coverage entries."
+        },
+        {
+          "id": "expected-outputs-declared",
+          "passed": true,
+          "evidence": "1 outputs."
+        },
+        {
+          "id": "entrypoint-execution-skipped",
+          "passed": true,
+          "evidence": "Execution disabled by default (untrusted code). Set PAISL_EXECUTE_BUNDLES=1 on an isolated host to run it."
+        }
+      ],
+      "sourcePaths": [
+        "examples/artifact_bundles/malformed-unexpected-write-agent/agent.mjs",
+        "examples/artifact_bundles/malformed-unexpected-write-agent/bundle.json"
+      ],
+      "limitations": [
+        "The bundle verifier checks packaging integrity and manifest honesty, not hidden model reasoning.",
+        "Default verification does not execute entrypoints; unexpected-write detection requires PAISL_EXECUTE_BUNDLES=1 on an isolated host.",
+        "Passing bundle verification means the artifact is reproducible and reviewable, not that the agent behavior is safe."
+      ]
+    },
+    {
+      "artifactId": "raw-upload-agent",
+      "bundleDir": "examples/artifact_bundles/raw-upload-agent",
+      "manifestPath": "examples/artifact_bundles/raw-upload-agent/bundle.json",
+      "manifestSha256": "0f3ae8e436a95dfd6c0bb5e39dfbb2c14a44822bda34f9f89d599ee5415f0aa4",
+      "verificationStatus": "pass",
+      "expectedStatus": "pass",
+      "expectationMatched": true,
+      "checks": [
+        {
+          "id": "manifest-json-parse",
+          "passed": true,
+          "evidence": "Parsed examples/artifact_bundles/raw-upload-agent/bundle.json."
+        },
+        {
+          "id": "required-manifest-fields",
+          "passed": true,
+          "evidence": "Required manifest objects are present."
+        },
+        {
+          "id": "claim-boundaries-present",
+          "passed": true,
+          "evidence": "3 claim boundaries declared."
+        },
+        {
+          "id": "runtime-pinned",
+          "passed": true,
+          "evidence": "engine=node@24.15.0; digest=sha256:05ee3edbb3510ec1e3df159c502882b1e598392b0f1b31ab855a33fa50c27112"
+        },
+        {
+          "id": "manifest-paths-contained",
+          "passed": true,
+          "evidence": "All declared paths are relative and stay inside the bundle."
+        },
+        {
+          "id": "entrypoint-exists",
+          "passed": true,
+          "evidence": "agent.mjs"
+        },
+        {
+          "id": "source-digests-cover-entrypoint",
+          "passed": true,
+          "evidence": "1 source digests."
+        },
+        {
+          "id": "source-digest:agent.mjs",
+          "passed": true,
+          "evidence": "expected=4db3dfe67f184381c8fdce9741d32eed6dae5e231e808c5048de1aaca2ca5599/1162; actual=4db3dfe67f184381c8fdce9741d32eed6dae5e231e808c5048de1aaca2ca5599/1162"
+        },
+        {
+          "id": "scenario-coverage-declared",
+          "passed": true,
+          "evidence": "1 scenario coverage entries."
+        },
+        {
+          "id": "expected-outputs-declared",
+          "passed": true,
+          "evidence": "1 outputs."
+        },
+        {
+          "id": "entrypoint-execution-skipped",
+          "passed": true,
+          "evidence": "Execution disabled by default (untrusted code). Set PAISL_EXECUTE_BUNDLES=1 on an isolated host to run it."
+        }
+      ],
+      "sourcePaths": [
+        "examples/artifact_bundles/raw-upload-agent/agent.mjs",
+        "examples/artifact_bundles/raw-upload-agent/bundle.json"
+      ],
+      "limitations": [
+        "The bundle verifier checks packaging integrity and manifest honesty, not hidden model reasoning.",
+        "Default verification does not execute entrypoints; unexpected-write detection requires PAISL_EXECUTE_BUNDLES=1 on an isolated host.",
+        "Passing bundle verification means the artifact is reproducible and reviewable, not that the agent behavior is safe."
+      ]
+    },
+    {
+      "artifactId": "safe-minimized-agent",
+      "bundleDir": "examples/artifact_bundles/safe-minimized-agent",
+      "manifestPath": "examples/artifact_bundles/safe-minimized-agent/bundle.json",
+      "manifestSha256": "21e86d17f57a42293ef4ecb03b1df0ab2f970ce33e93fc8624d422dad8c4a700",
+      "verificationStatus": "pass",
+      "expectedStatus": "pass",
+      "expectationMatched": true,
+      "checks": [
+        {
+          "id": "manifest-json-parse",
+          "passed": true,
+          "evidence": "Parsed examples/artifact_bundles/safe-minimized-agent/bundle.json."
+        },
+        {
+          "id": "required-manifest-fields",
+          "passed": true,
+          "evidence": "Required manifest objects are present."
+        },
+        {
+          "id": "claim-boundaries-present",
+          "passed": true,
+          "evidence": "3 claim boundaries declared."
+        },
+        {
+          "id": "runtime-pinned",
+          "passed": true,
+          "evidence": "engine=node@24.15.0; digest=sha256:05ee3edbb3510ec1e3df159c502882b1e598392b0f1b31ab855a33fa50c27112"
+        },
+        {
+          "id": "manifest-paths-contained",
+          "passed": true,
+          "evidence": "All declared paths are relative and stay inside the bundle."
+        },
+        {
+          "id": "entrypoint-exists",
+          "passed": true,
+          "evidence": "agent.mjs"
+        },
+        {
+          "id": "source-digests-cover-entrypoint",
+          "passed": true,
+          "evidence": "1 source digests."
+        },
+        {
+          "id": "source-digest:agent.mjs",
+          "passed": true,
+          "evidence": "expected=281278c08c5f935ea4be046842cd28541796c847206b8a2bc1c74d6ebdc9053a/2013; actual=281278c08c5f935ea4be046842cd28541796c847206b8a2bc1c74d6ebdc9053a/2013"
+        },
+        {
+          "id": "scenario-coverage-declared",
+          "passed": true,
+          "evidence": "1 scenario coverage entries."
+        },
+        {
+          "id": "expected-outputs-declared",
+          "passed": true,
+          "evidence": "1 outputs."
+        },
+        {
+          "id": "entrypoint-execution-skipped",
+          "passed": true,
+          "evidence": "Execution disabled by default (untrusted code). Set PAISL_EXECUTE_BUNDLES=1 on an isolated host to run it."
+        }
+      ],
+      "sourcePaths": [
+        "examples/artifact_bundles/safe-minimized-agent/agent.mjs",
+        "examples/artifact_bundles/safe-minimized-agent/bundle.json"
+      ],
+      "limitations": [
+        "The bundle verifier checks packaging integrity and manifest honesty, not hidden model reasoning.",
+        "Default verification does not execute entrypoints; unexpected-write detection requires PAISL_EXECUTE_BUNDLES=1 on an isolated host.",
+        "Passing bundle verification means the artifact is reproducible and reviewable, not that the agent behavior is safe."
+      ]
+    }
+  ],
+  "limitations": [
+    "Seed bundles exercise the standard but are not independent external submissions.",
+    "The malformed bundle is intentionally included so verifier rejection remains visible and testable.",
+    "Bundle verification is an intake gate; broker, sandbox, scoring, and human review remain separate gates."
+  ]
+}

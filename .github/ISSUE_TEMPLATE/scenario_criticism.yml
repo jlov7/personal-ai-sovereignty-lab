@@ -1,0 +1,62 @@
+name: Scenario criticism
+description: Critique an existing PAISL scenario, split, mutation, or expected boundary.
+title: "[Scenario Criticism]: "
+labels: ["scenario", "criticism", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Criticism is useful when it can falsify, narrow, or improve the benchmark. Do not include real personal data; use synthetic examples or minimized excerpts.
+  - type: input
+    id: scenario_ids
+    attributes:
+      label: Scenario or mutation IDs
+      description: List the affected scenario IDs, mutation IDs, or split labels.
+      placeholder: "health-symptom-boundary, finance-cashflow"
+    validations:
+      required: true
+  - type: dropdown
+    id: criticism_type
+    attributes:
+      label: Criticism type
+      options:
+        - unrealistic_task
+        - wrong_boundary_label
+        - missing_failure_mode
+        - leakage_or_overreach_not_detected
+        - success_criteria_too_easy
+        - hidden_split_or_provenance_issue
+        - duplicate_or_low_value_case
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: critique
+    attributes:
+      label: Critique
+      description: Explain the flaw and why a serious benchmark reviewer should care.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_fix
+    attributes:
+      label: Proposed fix or rejection
+      description: Suggest a concrete scenario edit, mutation, rejection, or split change.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link to traces, scorecards, documentation, prior art, or synthetic examples that support the critique.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Data boundaries
+      options:
+        - label: I did not include real private user data or credentials.
+          required: true
+        - label: I understand accepted criticisms may reduce scores or remove scenarios rather than make the repo look better.
+          required: true
