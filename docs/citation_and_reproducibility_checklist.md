@@ -6,7 +6,7 @@ This checklist separates what a reviewer can reproduce locally from what still r
 
 - Use `CITATION.cff` as the canonical citation metadata.
 - Cite the GitHub repository URL and commit SHA used for any result.
-- If a future DOI is minted, cite the DOI and keep the commit SHA in the benchmark report.
+- Cite the Zenodo version DOI for the archived release and keep the exact Git tag or commit SHA in the benchmark report.
 - Do not cite PAISL as a validated benchmark standard until independent annotation, strong baseline, and public-review evidence exist.
 
 ## Local Reproduction
